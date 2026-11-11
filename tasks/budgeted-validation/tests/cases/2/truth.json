@@ -1,0 +1,305 @@
+{
+  "compounds": [
+    {
+      "compound_id": "C2250",
+      "binding_call": "supported",
+      "kinetics_status": "condition_dependent",
+      "issues": [
+        "flow_dependence"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2224",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2714",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2270",
+      "binding_call": "supported",
+      "kinetics_status": "unresolved",
+      "issues": [
+        "unresolved_dissociation"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2709",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 1.80145995505794e-07,
+      "kon_M_inv_s_inv": 272461.7586257067,
+      "koff_s_inv": 0.04908289474488729,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C2296",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2860",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2550",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2166",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "repeat_disagreement"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2828",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2852",
+      "binding_call": "supported",
+      "kinetics_status": "unresolved",
+      "issues": [
+        "unresolved_dissociation"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2318",
+      "binding_call": "supported",
+      "kinetics_status": "condition_dependent",
+      "issues": [
+        "flow_dependence"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2276",
+      "binding_call": "supported",
+      "kinetics_status": "condition_dependent",
+      "issues": [
+        "flow_dependence"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2582",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2339",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 7.128391299847896e-08,
+      "kon_M_inv_s_inv": 215997.093643316,
+      "koff_s_inv": 0.015397118031194451,
+      "decision": "advance"
+    },
+    {
+      "compound_id": "C2700",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "repeat_disagreement"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2775",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "repeat_disagreement"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2508",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 3.170300701338018e-07,
+      "kon_M_inv_s_inv": 228937.50204222638,
+      "koff_s_inv": 0.07258007232870442,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C2420",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2811",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 4.028239255223089e-08,
+      "kon_M_inv_s_inv": 267672.5281102748,
+      "koff_s_inv": 0.010782489852786147,
+      "decision": "advance"
+    },
+    {
+      "compound_id": "C2747",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 6.814676172059347e-08,
+      "kon_M_inv_s_inv": 256828.43828784258,
+      "koff_s_inv": 0.017502026387073752,
+      "decision": "advance"
+    },
+    {
+      "compound_id": "C2319",
+      "binding_call": "supported",
+      "kinetics_status": "unresolved",
+      "issues": [
+        "unresolved_dissociation"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C2933",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 1.7462749950902895e-07,
+      "kon_M_inv_s_inv": 270567.3887750093,
+      "koff_s_inv": 0.04724850655046718,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C2185",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    }
+  ],
+  "selected": [
+    "C2811",
+    "C2747",
+    "C2339"
+  ],
+  "batches": [
+    {
+      "batch_id": "B1",
+      "solvent_slope": 152.20892039433565,
+      "activity_fraction": 1.0,
+      "valid": true
+    },
+    {
+      "batch_id": "B2",
+      "solvent_slope": 153.3279184526657,
+      "activity_fraction": 0.65,
+      "valid": true
+    },
+    {
+      "batch_id": "B3",
+      "solvent_slope": 264.3334235591663,
+      "activity_fraction": 0.35,
+      "valid": true
+    },
+    {
+      "batch_id": "BX",
+      "solvent_slope": 131.18648657709676,
+      "activity_fraction": 0.04,
+      "valid": false
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "test": "omit_solvent",
+      "task": "solvent-reference-recovery",
+      "reward": 0.484527777778
+    },
+    {
+      "test": "omit_blank",
+      "task": "campaign-adjudication",
+      "reward": 0.75406862745
+    },
+    {
+      "test": "omit_activity",
+      "task": "surface-activity-drift",
+      "reward": 0.944925925926
+    },
+    {
+      "test": "accept_invalid_control",
+      "task": "campaign-adjudication",
+      "reward": 0.49
+    },
+    {
+      "test": "wrong_concentration_units",
+      "task": "campaign-reconstruction",
+      "reward": 0.809901960785
+    },
+    {
+      "test": "ignore_replicate_conflict",
+      "task": "replicate-adjudication",
+      "reward": 0.901963141025
+    },
+    {
+      "test": "legacy_pipeline",
+      "task": "pipeline-repair",
+      "reward": 0.576571869488
+    },
+    {
+      "test": "no_output",
+      "task": "campaign-adjudication",
+      "reward": 0.0
+    },
+    {
+      "test": "crashing_program",
+      "task": "campaign-adjudication",
+      "reward": 0.0
+    },
+    {
+      "test": "static_replay",
+      "task": "campaign-adjudication",
+      "reward": 0.418333333333
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "budgeted-validation",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "campaign-adjudication",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "campaign-reconstruction",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "condition-consistency",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "kinetic-evidence-audit",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "model-adequacy",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "pipeline-repair",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "replicate-adjudication",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "solvent-reference-recovery",
+      "reward": 1.0
+    },
+    {
+      "test": "alternative_optimizer",
+      "task": "surface-activity-drift",
+      "reward": 1.0
+    }
+  ],
+  "note": "Alternative optimizer shares preprocessing; this is not an independently authored scientific reference or expert review."
+}

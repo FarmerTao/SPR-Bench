@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this repository and record the exact commit used in your evaluation."
+title: "SPR-Bench: Agentic Surface Plasmon Resonance Analysis Benchmark"
+authors:
+  - name: "SPR-Bench contributors"
+version: 0.5.0
+date-released: 2026-11-11
+license: MIT
+repository-code: "https://github.com/FarmerTao/SPR-Bench"
+type: software

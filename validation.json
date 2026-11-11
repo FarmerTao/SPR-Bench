@@ -1,0 +1,57 @@
+{
+  "tasks": [
+    {
+      "task": "budgeted-validation",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "campaign-adjudication",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "campaign-reconstruction",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "condition-consistency",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "kinetic-evidence-audit",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "model-adequacy",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "pipeline-repair",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "replicate-adjudication",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "solvent-reference-recovery",
+      "reward": 1.0,
+      "failures": []
+    },
+    {
+      "task": "surface-activity-drift",
+      "reward": 1.0,
+      "failures": []
+    }
+  ],
+  "docker_e2e": "not run: Docker unavailable",
+  "privilege_isolation": "not run",
+  "actual_llm_trials": "not run"
+}

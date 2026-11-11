@@ -1,0 +1,197 @@
+{
+  "compounds": [
+    {
+      "compound_id": "C1273",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 2.5255239030058546e-08,
+      "kon_M_inv_s_inv": 137843.38123660118,
+      "koff_s_inv": 0.00348126754184185,
+      "decision": "advance"
+    },
+    {
+      "compound_id": "C1390",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 4.092037867997311e-08,
+      "kon_M_inv_s_inv": 204865.73646275137,
+      "koff_s_inv": 0.00838318351460736,
+      "decision": "advance"
+    },
+    {
+      "compound_id": "C1418",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1828",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1865",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 1.859769918687168e-07,
+      "kon_M_inv_s_inv": 269196.0268721739,
+      "koff_s_inv": 0.05006426730069715,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C1368",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1667",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1142",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1956",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 6.445024231507643e-08,
+      "kon_M_inv_s_inv": 190556.29363019607,
+      "koff_s_inv": 0.012281399299128993,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C1197",
+      "binding_call": "artifact_suspected",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "reference_binding"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1211",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1399",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 2.977039683587831e-07,
+      "kon_M_inv_s_inv": 133268.7692019107,
+      "koff_s_inv": 0.039674641449699594,
+      "decision": "reserve"
+    },
+    {
+      "compound_id": "C1561",
+      "binding_call": "inconclusive",
+      "kinetics_status": "not_applicable",
+      "issues": [
+        "invalid_control"
+      ],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1910",
+      "binding_call": "not_detected",
+      "kinetics_status": "not_applicable",
+      "issues": [],
+      "KD_M": null,
+      "kon_M_inv_s_inv": null,
+      "koff_s_inv": null,
+      "decision": "hold"
+    },
+    {
+      "compound_id": "C1791",
+      "binding_call": "supported",
+      "kinetics_status": "supported",
+      "issues": [],
+      "KD_M": 6.410680506172763e-08,
+      "kon_M_inv_s_inv": 284115.51939076884,
+      "koff_s_inv": 0.018213738216595516,
+      "decision": "advance"
+    }
+  ],
+  "selected": [
+    "C1273",
+    "C1390",
+    "C1791"
+  ],
+  "batches": [
+    {
+      "batch_id": "B1",
+      "solvent_slope": 246.08364076453867,
+      "activity_fraction": 1.0,
+      "valid": true
+    },
+    {
+      "batch_id": "B2",
+      "solvent_slope": 203.0631613716397,
+      "activity_fraction": 0.65,
+      "valid": true
+    },
+    {
+      "batch_id": "B3",
+      "solvent_slope": 110.31760463980939,
+      "activity_fraction": 0.35,
+      "valid": true
+    },
+    {
+      "batch_id": "BX",
+      "solvent_slope": 134.2266155757818,
+      "activity_fraction": 0.04,
+      "valid": false
+    }
+  ]
+}

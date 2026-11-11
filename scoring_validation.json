@@ -1,0 +1,19 @@
+{
+  "version": "0.5",
+  "passed": true,
+  "checks": [
+    "all weight rows sum to 1",
+    "parameter partial-credit boundaries",
+    "report absence has no effect",
+    "report content has no effect",
+    "perfect score is 1",
+    "parameter perturbation earns partial credit",
+    "critical-error caps .69 and .49",
+    "unknown advancement cap",
+    "invalid required output zero",
+    "failed execution zero",
+    "ten-task mean .916",
+    "missing task zero without reweighting"
+  ],
+  "docker_e2e": "not run"
+}

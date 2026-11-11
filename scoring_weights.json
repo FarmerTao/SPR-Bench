@@ -1,0 +1,116 @@
+{
+  "version": "0.5",
+  "task_weight": 0.1,
+  "weights": {
+    "campaign-adjudication": {
+      "mapping": 0.075,
+      "correction": 0.125,
+      "qc": 0.125,
+      "binding": 0.175,
+      "reportability": 0.125,
+      "quantification": 0.075,
+      "fit_consistency": 0.075,
+      "decisions": 0.175,
+      "execution": 0.05
+    },
+    "solvent-reference-recovery": {
+      "mapping": 0.05,
+      "correction": 0.3,
+      "qc": 0.1,
+      "binding": 0.175,
+      "reportability": 0.075,
+      "quantification": 0.1,
+      "fit_consistency": 0.075,
+      "decisions": 0.075,
+      "execution": 0.05
+    },
+    "kinetic-evidence-audit": {
+      "mapping": 0.05,
+      "correction": 0.1,
+      "qc": 0.1,
+      "binding": 0.1,
+      "reportability": 0.25,
+      "quantification": 0.2,
+      "fit_consistency": 0.1,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "condition-consistency": {
+      "mapping": 0.05,
+      "correction": 0.1,
+      "qc": 0.1,
+      "binding": 0.1,
+      "reportability": 0.25,
+      "quantification": 0.1,
+      "fit_consistency": 0.2,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "model-adequacy": {
+      "mapping": 0.05,
+      "correction": 0.1,
+      "qc": 0.1,
+      "binding": 0.1,
+      "reportability": 0.25,
+      "quantification": 0.1,
+      "fit_consistency": 0.2,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "surface-activity-drift": {
+      "mapping": 0.05,
+      "correction": 0.2,
+      "qc": 0.275,
+      "binding": 0.125,
+      "reportability": 0.1,
+      "quantification": 0.1,
+      "fit_consistency": 0.05,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "replicate-adjudication": {
+      "mapping": 0.05,
+      "correction": 0.1,
+      "qc": 0.225,
+      "binding": 0.15,
+      "reportability": 0.225,
+      "quantification": 0.1,
+      "fit_consistency": 0.05,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "campaign-reconstruction": {
+      "mapping": 0.275,
+      "correction": 0.175,
+      "qc": 0.125,
+      "binding": 0.1,
+      "reportability": 0.1,
+      "quantification": 0.075,
+      "fit_consistency": 0.05,
+      "decisions": 0.05,
+      "execution": 0.05
+    },
+    "pipeline-repair": {
+      "mapping": 0.075,
+      "correction": 0.125,
+      "qc": 0.125,
+      "binding": 0.125,
+      "reportability": 0.125,
+      "quantification": 0.125,
+      "fit_consistency": 0.125,
+      "decisions": 0.125,
+      "execution": 0.05
+    },
+    "budgeted-validation": {
+      "mapping": 0.05,
+      "correction": 0.1,
+      "qc": 0.1,
+      "binding": 0.125,
+      "reportability": 0.125,
+      "quantification": 0.1,
+      "fit_consistency": 0.075,
+      "decisions": 0.275,
+      "execution": 0.05
+    }
+  }
+}

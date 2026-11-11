@@ -1,0 +1,31 @@
+name: Validate benchmark
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  trusted-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python tools/check_repository.py
+      - run: python tools/test_scoring.py
+      - run: python tools/validate.py
+      - run: python tools/robustness.py
+      - run: python tools/check_repository.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-reports
+          path: |
+            validation.json
+            scoring_validation.json
+            robustness.json
