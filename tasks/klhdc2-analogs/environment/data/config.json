@@ -1,0 +1,11 @@
+{
+  "task": "klhdc2-analogs",
+  "kind": "trace",
+  "study": "KLHDC2",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "compound_set": "5_and_6",
+    "SPR_sheets_only": true
+  }
+}

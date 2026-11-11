@@ -1,0 +1,11 @@
+{
+  "task": "cyp3a4-sparse",
+  "kind": "trace",
+  "study": "CYP3A4",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "interpolated_missing_values": false,
+    "source_fit_columns_used": false
+  }
+}

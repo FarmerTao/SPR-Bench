@@ -1,0 +1,22 @@
+{
+  "fields": {
+    "coverage": [
+      "n",
+      "max_concentration_M"
+    ],
+    "response": [
+      "KD_M",
+      "Rmax_RU",
+      "offset_RU",
+      "rmse_RU",
+      "max_concentration_over_KD"
+    ]
+  },
+  "weights": {
+    "coverage": 0.15,
+    "response": 0.7,
+    "provenance": 0.1,
+    "scope": 0.05
+  },
+  "kind": "affinity"
+}

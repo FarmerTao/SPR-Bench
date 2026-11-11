@@ -1,0 +1,19 @@
+{
+  "task": "stat3-binding",
+  "kind": "trace",
+  "study": "STAT3",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false
+  },
+  "binding_assessment_contract": {
+    "keys": "each distinct compound present in measurements.csv",
+    "allowed": [
+      "interaction_supported",
+      "no_measurable_binding_under_tested_conditions",
+      "inconclusive"
+    ],
+    "construct": "mouse STAT3beta core 127-722",
+    "methods": "Double referenced; association 60 seconds, dissociation 600 seconds. Three flow rates are conditions, not replicates. Evaluate specific interaction patterns, not response sign alone."
+  }
+}

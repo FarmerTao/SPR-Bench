@@ -1,74 +1,61 @@
-"""Read-only integrity checks for the distributable benchmark (no submissions run)."""
+"""Structural, schema and generated-copy checks; does not execute submissions."""
+
+import hashlib, json, tomllib
 from pathlib import Path
-import hashlib
-import json
-import math
-import re
-import tomllib
-from scoring import GROUPS, WEIGHTS
-
-ROOT = Path(__file__).resolve().parents[1]
-
-
-def require(condition, message):
-    if not condition:
-        raise RuntimeError(message)
+from harbor.models.task.config import TaskConfig
+from ingest import ROOT
 
 
 def main():
-    catalog = json.loads((ROOT / 'task_catalog.json').read_text())
-    slugs = {entry['slug'] for entry in catalog}
-    require(len(slugs) == len(catalog) == 10, 'Expected ten unique tasks')
-    require(slugs == set(WEIGHTS), 'Catalog/scorer task mismatch')
-    require(slugs == {p.name for p in (ROOT / 'tasks').iterdir() if p.is_dir()},
-            'Unexpected task directories')
-    weights = json.loads((ROOT / 'scoring_weights.json').read_text())['weights']
-    for slug in sorted(slugs):
-        task = ROOT / 'tasks' / slug
-        config = tomllib.loads((task / 'task.toml').read_text())
-        require(config['verifier']['environment_mode'] == 'separate', slug + ': verifier mode')
-        require(config['artifacts'] == ['/app/submission'], slug + ': artifact scope')
-        for name in ('verifier.py', 'scoring.py'):
-            require((task / 'tests' / name).read_bytes() == (ROOT / 'tools' / name).read_bytes(),
-                    slug + ': stale ' + name)
-        require((task / 'solution/run.py').read_bytes() == (ROOT / 'tools/engine.py').read_bytes(),
-                slug + ': stale reference solution')
-        require((task / 'environment/spec/SCORING.md').read_bytes() == (ROOT / 'SCORING.md').read_bytes(),
-                slug + ': stale scoring specification')
-        require({p.name for p in (task / 'tests/cases').iterdir()} == {'0', '1', '2'},
-                slug + ': expected three cases')
-        rubric = json.loads((ROOT / 'rubrics' / (slug + '.json')).read_text())
-        actual = {c['id']: c['max_score'] for c in rubric['criteria']}
-        expected = dict(zip(GROUPS, WEIGHTS[slug]))
-        require(actual == weights[slug] == expected, slug + ': rubric weight drift')
-        require(math.isclose(sum(actual.values()), 1), slug + ': weights do not sum to one')
-        for criterion in rubric['criteria']:
-            atoms = criterion.get('subcriteria', [])
-            if atoms:
-                require(math.isclose(sum(a['max_score'] for a in atoms), criterion['max_score']),
-                        slug + ': atomic score mismatch')
-        visible = task / 'environment'
-        require(not list(visible.rglob('truth.json')) and not list(visible.rglob('trace_truth.csv')),
-                slug + ': truth in agent build context')
-        for p in (visible / 'data').iterdir():
-            require(p.read_bytes() == (task / 'tests/cases/0/data' / p.name).read_bytes(),
-                    slug + ': visible fixture drift: ' + p.name)
-    manifest = json.loads((ROOT / 'data_manifest.json').read_text())
-    paths = [row['path'] for row in manifest]
-    require(len(paths) == len(set(paths)), 'Duplicate manifest entry')
-    require(set(paths) == {str(p.relative_to(ROOT)) for p in ROOT.glob('tasks/*/environment/data/*') if p.is_file()},
-            'Manifest coverage mismatch')
-    for row in manifest:
-        require(hashlib.sha256((ROOT / row['path']).read_bytes()).hexdigest() == row['sha256'],
-                'Checksum mismatch: ' + row['path'])
-    # Root/documentation links only: task contracts also contain illustrative paths.
-    for p in [*ROOT.glob('*.md'), *ROOT.glob('docs/*.md'), *ROOT.glob('rubrics/*.md')]:
-        for target in re.findall(r'\]\(([^)]+)\)', p.read_text()):
-            if '://' in target or target.startswith('#'):
-                continue
-            require((p.parent / target.split('#')[0]).exists(), f'Broken link in {p.name}: {target}')
-    print(f'Repository integrity passed: {len(slugs)} tasks, {len(paths)} input checksums, synchronized rubrics and implementations.')
+    catalog = json.loads((ROOT / "task_catalog.json").read_text())
+    assert len(catalog) == 10
+    assert {p.name for p in (ROOT / "tasks").iterdir()} == {t["id"] for t in catalog}
+    for t in catalog:
+        p = ROOT / "tasks" / t["id"]
+        TaskConfig.model_validate(tomllib.loads((p / "task.toml").read_text()))
+        cfg = json.loads((p / "tests/scoring.json").read_text())
+        assert abs(sum(cfg["weights"].values()) - 1) < 1e-12
+        for source, dest in [
+            ("tools/reference.py", "solution/run.py"),
+            ("tools/verifier.py", "tests/verifier.py"),
+            ("CONTRACT.md", "environment/spec/CONTRACT.md"),
+            ("SCORING.md", "environment/spec/SCORING.md"),
+        ]:
+            assert (ROOT / source).read_bytes() == (p / dest).read_bytes(), (
+                t["id"],
+                dest,
+            )
+        assert {x.name for x in (p / "environment").iterdir()} == {
+            "Dockerfile",
+            "data",
+            "spec",
+        }
+        assert {x.name for x in (p / "environment/data").iterdir()} == {
+            "measurements.csv",
+            "config.json",
+        }
+        assert {x.name for x in (p / "tests/cases").iterdir()} == {"observed", "subset"}
+        for case in (p / "tests/cases").iterdir():
+            expected = json.loads((case / "expected.json").read_text())
+            assert expected["records"]
+            assert expected["input_sha256"] == {
+                x.name: hashlib.sha256(x.read_bytes()).hexdigest()
+                for x in sorted((case / "data").iterdir())
+            }
+        for f in ["config.json", "measurements.csv"]:
+            assert (p / "environment/data" / f).read_bytes() == (
+                p / "tests/cases/observed/data" / f
+            ).read_bytes()
+        assert "synthetic" not in (p / "task.toml").read_text()
+    for source in json.loads((ROOT / "sources/manifest.json").read_text()):
+        assert (
+            hashlib.sha256((ROOT / "sources" / source["file"]).read_bytes()).hexdigest()
+            == source["sha256"]
+        )
+    print(
+        "PASS: ten Harbor 0.25.0 configurations, generated code, input isolation layout, manifests and scoring weights"
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

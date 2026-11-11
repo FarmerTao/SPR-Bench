@@ -1,36 +1,23 @@
 # Contributing
 
-Use English for task prompts, contracts, code comments and benchmark documentation.
-Discuss new scientific tasks or changes to scoring in an issue before implementation.
-Bug fixes and documentation improvements are welcome as pull requests.
+Use English for code, task prompts and benchmark documentation. Use Python 3.12
+and install requirements-dev.txt. Edit canonical files in tools/, then rebuild
+with tools/ingest.py, tools/build.py and tools/docs.py. Generated copies must match.
+Run tools/check_repository.py and tools/validate.py before submitting.
+Local validation executes trusted code only; never run an unknown submission on
+your host. Use isolated disposable containers for untrusted agents.
 
-## Development
+Every new dataset needs an experimentally verified origin, clear redistribution
+rights, source/derived hashes, exact extraction coordinates and documented assay
+scope. Simulated curves, fitted predictions, image reconstructions and fabricated
+negative labels are not eligible for this experimental task set. Any separate
+simulation track must be explicitly named and excluded from real-data scores.
 
-Use Python 3.12 and install `requirements-dev.txt` in a virtual environment.
-Run `python tools/check_repository.py`, `python tools/test_scoring.py`,
-`python tools/validate.py`, and `python tools/robustness.py` before submitting.
-The host-side validators execute only trusted project programs; never substitute
-an unknown submission on your host.
+Scoring changes need documented behavior, regression checks, version changes and
+honest scientific limitations. Never hand-edit expected results to make a solver
+pass. Add independent expert review before claiming biological decision validity.
+Preserve original source licenses and attribution. Code contributions are MIT
+licensed; third-party data retain their own licenses.
 
-Edit canonical code in `tools/`. `python tools/rebuild.py` regenerates campaigns,
-copies implementations into tasks, updates documentation, and validates results.
-It overwrites generated task files. Review the resulting diff and run
-`python tools/check_repository.py` again. Do not hand-edit generated truth to
-make a solver pass.
-
-Every scoring change must include an example of the affected behavior, regression
-coverage, updated scoring documentation and a version/changelog entry. Scores
-from different scoring versions must not be silently combined. Data changes must
-update checksums and identify whether previous evaluations remain comparable.
-
-New scientific tasks need a stated evidence boundary, provenance, a generating
-truth or independently adjudicated reference, a working reference solution,
-plausible failing solutions and at least one reasonable alternative method.
-Do not claim expert validation, realistic difficulty or agent performance without
-measured evidence. Real experimental data require documented redistribution
-rights, de-identification where applicable and independent review.
-
-PRs should state the problem, resulting behavior and exact validation commands.
-Do not commit model credentials, private evaluation datasets, run logs or answers
-from unrelated evaluations. Contributions are licensed under the repository's
-MIT license. Be respectful and focus reviews on evidence and reproducibility.
+Pull requests should explain the problem, resulting behavior and validation.
+Do not commit credentials, private evaluation data or unrelated run logs.

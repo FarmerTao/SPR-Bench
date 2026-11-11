@@ -1,0 +1,8 @@
+point_id,compound,concentration_M,response_RU,source,source_sheet,source_row,source_column
+fluconazole-8,sample-001,9.99999999999999e-05,5.5901231765747,CYP3A4,SPR titration sheet 2,108,9
+fluconazole-7,sample-001,4.99999999999999e-05,5.74749946594238,CYP3A4,SPR titration sheet 2,58,8
+fluconazole-6,sample-001,2.49999999999999e-05,5.16602420806884,CYP3A4,SPR titration sheet 2,32,7
+fluconazole-5,sample-001,1.24999999999999e-05,4.36965370178222,CYP3A4,SPR titration sheet 2,19,6
+fluconazole-4,sample-001,6.24999999999999e-06,3.48230743408203,CYP3A4,SPR titration sheet 2,12,5
+fluconazole-3,sample-001,3.1249999999999896e-06,2.18948578834533,CYP3A4,SPR titration sheet 2,8,4
+fluconazole-1,sample-001,7.81249999999999e-07,0.939176261425018,CYP3A4,SPR titration sheet 2,3,2

@@ -1,0 +1,171 @@
+{
+  "records": [
+    {
+      "id": "compound-1-1",
+      "n": 4202,
+      "concentration_M": 1e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0251465,
+      "initial_sd_RU": 0.042598215007772236,
+      "p95_delta_RU": 1.9077955,
+      "tail_delta_RU": 0.054298242999999996,
+      "auc_RU_s": 352.1441734150832
+    },
+    {
+      "id": "compound-1-2",
+      "n": 4202,
+      "concentration_M": 2e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.102051,
+      "initial_sd_RU": 0.036649428962086915,
+      "p95_delta_RU": 3.006209,
+      "tail_delta_RU": 0.16024621649999998,
+      "auc_RU_s": 569.7823802942195
+    },
+    {
+      "id": "compound-1-3",
+      "n": 4202,
+      "concentration_M": 4e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0983887,
+      "initial_sd_RU": 0.023611097361572256,
+      "p95_delta_RU": 3.4668947,
+      "tail_delta_RU": 0.21410851,
+      "auc_RU_s": 658.8084820732411
+    },
+    {
+      "id": "compound-1-4",
+      "n": 4202,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.265991,
+      "initial_sd_RU": 0.04417792060424045,
+      "p95_delta_RU": 6.951401999999999,
+      "tail_delta_RU": 1.8628442500000002,
+      "auc_RU_s": 1505.3696786579526
+    },
+    {
+      "id": "compound-1-5",
+      "n": 4202,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.284668,
+      "initial_sd_RU": 0.03812181739538048,
+      "p95_delta_RU": 11.041298,
+      "tail_delta_RU": 3.04011285,
+      "auc_RU_s": 2401.6952416005647
+    },
+    {
+      "id": "compound-1-6",
+      "n": 4202,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.303711,
+      "initial_sd_RU": 0.053032089226518524,
+      "p95_delta_RU": 16.585631,
+      "tail_delta_RU": 4.5187595,
+      "auc_RU_s": 3626.510044607227
+    },
+    {
+      "id": "compound-1-7",
+      "n": 4202,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.30542,
+      "initial_sd_RU": 0.06465779822396876,
+      "p95_delta_RU": 24.044675,
+      "tail_delta_RU": 5.769835199999999,
+      "auc_RU_s": 5234.144023891455
+    },
+    {
+      "id": "compound-1-8",
+      "n": 4202,
+      "concentration_M": 1e-05,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.341797,
+      "initial_sd_RU": 0.04812600990419728,
+      "p95_delta_RU": 36.090892,
+      "tail_delta_RU": 6.427520749999999,
+      "auc_RU_s": 7653.296637952661
+    },
+    {
+      "id": "compound-2-1",
+      "n": 4202,
+      "concentration_M": 8e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0939941,
+      "initial_sd_RU": 0.028783075634044798,
+      "p95_delta_RU": 6.886656599999999,
+      "tail_delta_RU": 0.536094585,
+      "auc_RU_s": 1317.3447152626013
+    },
+    {
+      "id": "compound-2-2",
+      "n": 4202,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.145752,
+      "initial_sd_RU": 0.056202710488990844,
+      "p95_delta_RU": 9.6880665,
+      "tail_delta_RU": 2.50597025,
+      "auc_RU_s": 2127.1851462444024
+    },
+    {
+      "id": "compound-2-3",
+      "n": 4202,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.229492,
+      "initial_sd_RU": 0.03612369118917152,
+      "p95_delta_RU": 11.491657,
+      "tail_delta_RU": 3.4966075500000002,
+      "auc_RU_s": 2671.311621063929
+    },
+    {
+      "id": "compound-2-4",
+      "n": 4202,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.286621,
+      "initial_sd_RU": 0.04015136949506387,
+      "p95_delta_RU": 13.687311000000001,
+      "tail_delta_RU": 4.1630557,
+      "auc_RU_s": 3303.1027949026957
+    },
+    {
+      "id": "compound-2-5",
+      "n": 4202,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.2713625,
+      "initial_sd_RU": 0.03665639900446096,
+      "p95_delta_RU": 17.3178625,
+      "tail_delta_RU": 4.46684485,
+      "auc_RU_s": 4140.934480086
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "compound_set": "1_and_2",
+    "SPR_sheets_only": true
+  },
+  "input_sha256": {
+    "config.json": "f7ae3faabb849f54cfef81c0c679febc1bc4932e4c0bc42359ab0e1de7a6ca77",
+    "measurements.csv": "9003bf6c7ec5bb7e35c0cee433e50d936805e784a5a72c8aa51411eb44357ee6"
+  }
+}

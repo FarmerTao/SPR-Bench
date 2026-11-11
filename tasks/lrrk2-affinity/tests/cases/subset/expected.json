@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "id": "sample-001",
+      "n": 6,
+      "KD_M": 1.0077423538756066e-07,
+      "Rmax_RU": 55.88290144237422,
+      "offset_RU": 13.663940663195937,
+      "rmse_RU": 1.598157744785461,
+      "max_concentration_M": 5e-07,
+      "max_concentration_over_KD": 4.961585648128061
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "affinity_type": "apparent_steady_state",
+    "source_fit_is_ground_truth": false
+  },
+  "input_sha256": {
+    "config.json": "d4edd3deae0c6c47c55f2a0c4165757e5621afd6813a3f9234e789441c0ac115",
+    "measurements.csv": "38d3b6535ce029070fff75ddd12686df97aced3b919ca0cbb76474cd8125fbfa"
+  }
+}

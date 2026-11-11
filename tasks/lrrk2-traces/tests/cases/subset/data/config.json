@@ -1,0 +1,11 @@
+{
+  "task": "lrrk2-traces",
+  "kind": "trace",
+  "study": "LRRK2",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "analyte_class": "protein_DARPin",
+    "catalytic_inhibition_established_by_SPR": false
+  }
+}

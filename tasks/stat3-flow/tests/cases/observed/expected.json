@@ -1,0 +1,51 @@
+{
+  "records": [
+    {
+      "id": "S3I-201-80-100",
+      "n": 808,
+      "concentration_M": 7.999999999999999e-05,
+      "start_s": 0.0,
+      "end_s": 729.0,
+      "initial_median_RU": 10.01,
+      "initial_sd_RU": 5.47801221124609,
+      "p95_delta_RU": 5.419499999999999,
+      "tail_delta_RU": -8.902608695652173,
+      "auc_RU_s": -4215.901499999999
+    },
+    {
+      "id": "S3I-201-80-30",
+      "n": 808,
+      "concentration_M": 7.999999999999999e-05,
+      "start_s": 0.0,
+      "end_s": 729.0,
+      "initial_median_RU": 23.78,
+      "initial_sd_RU": 9.249321457860033,
+      "p95_delta_RU": 22.868499999999997,
+      "tail_delta_RU": 16.184347826086956,
+      "auc_RU_s": 13111.609500000002
+    },
+    {
+      "id": "S3I-201-80-60",
+      "n": 803,
+      "concentration_M": 7.999999999999999e-05,
+      "start_s": 0.0,
+      "end_s": 724.5,
+      "initial_median_RU": 20.39,
+      "initial_sd_RU": 9.5532155048556,
+      "p95_delta_RU": 13.136999999999993,
+      "tail_delta_RU": 4.424347826086958,
+      "auc_RU_s": 5296.850999999999
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "flow_rates_are_independent_replicates": false,
+    "flow_effects_can_confound_kinetics": true
+  },
+  "input_sha256": {
+    "config.json": "cf76831d062951922961f059edeb9d0971b173a58cb05ee2ef799afe12e7239e",
+    "measurements.csv": "e2c10f0f66a560366ce9ac97723b78d999e3762834d37ac680e370d2f7ee1df0"
+  }
+}

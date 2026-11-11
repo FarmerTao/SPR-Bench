@@ -1,0 +1,11 @@
+{
+  "task": "lrrk2-affinity",
+  "kind": "affinity",
+  "study": "LRRK2",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "affinity_type": "apparent_steady_state",
+    "source_fit_is_ground_truth": false
+  }
+}

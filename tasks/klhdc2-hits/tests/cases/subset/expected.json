@@ -1,0 +1,99 @@
+{
+  "records": [
+    {
+      "id": "sample-001",
+      "n": 4202,
+      "concentration_M": 1e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0251465,
+      "initial_sd_RU": 0.042598215007772236,
+      "p95_delta_RU": 1.9077955,
+      "tail_delta_RU": 0.054298242999999996,
+      "auc_RU_s": 352.1441734150832
+    },
+    {
+      "id": "sample-002",
+      "n": 4202,
+      "concentration_M": 4e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0983887,
+      "initial_sd_RU": 0.023611097361572256,
+      "p95_delta_RU": 3.4668947,
+      "tail_delta_RU": 0.21410851,
+      "auc_RU_s": 658.8084820732411
+    },
+    {
+      "id": "sample-003",
+      "n": 4202,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.284668,
+      "initial_sd_RU": 0.03812181739538048,
+      "p95_delta_RU": 11.041298,
+      "tail_delta_RU": 3.04011285,
+      "auc_RU_s": 2401.6952416005647
+    },
+    {
+      "id": "sample-004",
+      "n": 4202,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.30542,
+      "initial_sd_RU": 0.06465779822396876,
+      "p95_delta_RU": 24.044675,
+      "tail_delta_RU": 5.769835199999999,
+      "auc_RU_s": 5234.144023891455
+    },
+    {
+      "id": "sample-005",
+      "n": 4202,
+      "concentration_M": 8e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0939941,
+      "initial_sd_RU": 0.028783075634044798,
+      "p95_delta_RU": 6.886656599999999,
+      "tail_delta_RU": 0.536094585,
+      "auc_RU_s": 1317.3447152626013
+    },
+    {
+      "id": "sample-006",
+      "n": 4202,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.229492,
+      "initial_sd_RU": 0.03612369118917152,
+      "p95_delta_RU": 11.491657,
+      "tail_delta_RU": 3.4966075500000002,
+      "auc_RU_s": 2671.311621063929
+    },
+    {
+      "id": "sample-007",
+      "n": 4202,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.2713625,
+      "initial_sd_RU": 0.03665639900446096,
+      "p95_delta_RU": 17.3178625,
+      "tail_delta_RU": 4.46684485,
+      "auc_RU_s": 4140.934480086
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "compound_set": "1_and_2",
+    "SPR_sheets_only": true
+  },
+  "input_sha256": {
+    "config.json": "f7ae3faabb849f54cfef81c0c679febc1bc4932e4c0bc42359ab0e1de7a6ca77",
+    "measurements.csv": "ccbc3e80ac1459b37e3b7dc44937723b11527a7c4807887ffc5b831c4e119aef"
+  }
+}

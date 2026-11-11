@@ -1,0 +1,10 @@
+{
+  "task": "tbxt-triage",
+  "kind": "report",
+  "study": "TBXT",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "data_type": "report_points"
+  }
+}

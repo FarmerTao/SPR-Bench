@@ -1,0 +1,62 @@
+[
+  {
+    "file": "originals/stat3.xlsx",
+    "source": "STAT3",
+    "doi": "https://doi.org/10.1186/s13104-020-05189-w",
+    "download_url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs13104-020-05189-w/MediaObjects/13104_2020_5189_MOESM1_ESM.xlsx",
+    "license": "CC0-1.0 (data); article CC-BY-4.0",
+    "authors": "Mtwebana and Prinsloo, 2020",
+    "sha256": "a8078400650985e5de25b44d4ae8e642c4fcc0dff31df9418c44ad294a81d58d",
+    "bytes": 145294
+  },
+  {
+    "file": "originals/lrrk2.zip",
+    "source": "LRRK2",
+    "doi": "https://doi.org/10.5281/zenodo.10471514",
+    "download_url": "https://zenodo.org/api/records/10471514/files/Figure%201B_SPR%20datasets.zip/content",
+    "license": "CC-BY-4.0",
+    "authors": "Dederer et al., 2024",
+    "sha256": "484b7e7782ebc66ff69ca734592d3ec9d0681d86c8d1ddca6b070ec738b68997",
+    "bytes": 2316436
+  },
+  {
+    "file": "originals/cyp3a4.xlsx",
+    "source": "CYP3A4",
+    "doi": "https://doi.org/10.5281/zenodo.14721783",
+    "download_url": "https://zenodo.org/api/records/14721783/files/Figure%20S6%20Fluconazole%20SPR%20titrations.xlsx/content",
+    "license": "CC-BY-4.0",
+    "authors": "Knetsch et al., 2025",
+    "sha256": "89f69d55df6ebd3a06cad2ecf01c3f5f4286347387b45f98fbc611f44eb93f29",
+    "bytes": 1706313
+  },
+  {
+    "file": "originals/klhdc2-hits.xlsx",
+    "source": "KLHDC2",
+    "doi": "https://doi.org/10.7554/eLife.106844",
+    "download_url": "https://cdn.elifesciences.org/articles/106844/elife-106844-fig2-data1-v1.xlsx",
+    "license": "CC-BY-4.0",
+    "authors": "Zhou, Zhou et al., 2025",
+    "sha256": "bc1b7ff69f55c5c7febb7ca0a05ff39f88496eef9694f5a45f14f5329b5c245c",
+    "bytes": 553634
+  },
+  {
+    "file": "originals/klhdc2-analogs.xlsx",
+    "source": "KLHDC2",
+    "doi": "https://doi.org/10.7554/eLife.106844",
+    "download_url": "https://cdn.elifesciences.org/articles/106844/elife-106844-fig3-data1-v1.xlsx",
+    "license": "CC-BY-4.0",
+    "authors": "Zhou, Zhou et al., 2025",
+    "sha256": "4af37ee7723dde7f21e5f4bcf7bcd4ecfc9a187d323e28b29df2273c9ef42fc5",
+    "bytes": 442591
+  },
+  {
+    "file": "originals/tbxt.xlsx",
+    "source": "TBXT",
+    "doi": "https://doi.org/10.5281/zenodo.6394811",
+    "download_url": "https://zenodo.org/api/records/6394811/files/20201028%20LMW%20binding%20affinity%20screen%20for%20136%20UNC%20and%20Piramal%20compounds.xlsx/content",
+    "license": "CC-BY-2.0",
+    "authors": "Davis-Gilbert, Drewry, Hossain et al., 2022",
+    "sha256": "f010cca202fb4174dadd987425d45e2d3a75d7eea2a85a5cb454d5df70e08e53",
+    "bytes": 9108722
+  }
+]

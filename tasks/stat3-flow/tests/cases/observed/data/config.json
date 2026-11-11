@@ -1,0 +1,11 @@
+{
+  "task": "stat3-flow",
+  "kind": "trace",
+  "study": "STAT3",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "flow_rates_are_independent_replicates": false,
+    "flow_effects_can_confound_kinetics": true
+  }
+}

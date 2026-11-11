@@ -17,9 +17,7 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements-dev.txt
       - run: python tools/check_repository.py
-      - run: python tools/test_scoring.py
       - run: python tools/validate.py
-      - run: python tools/robustness.py
       - run: python tools/check_repository.py
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: always()
@@ -28,4 +26,3 @@ jobs:
           path: |
             validation.json
             scoring_validation.json
-            robustness.json

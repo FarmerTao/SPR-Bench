@@ -1,57 +1,59 @@
 {
-  "tasks": [
-    {
-      "task": "budgeted-validation",
+  "source_measurements_checked_cell_by_cell": 196217,
+  "tasks": {
+    "cyp3a4-affinity": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "campaign-adjudication",
+    "cyp3a4-sparse": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "campaign-reconstruction",
+    "klhdc2-analogs": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "condition-consistency",
+    "klhdc2-hits": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "kinetic-evidence-audit",
+    "lrrk2-affinity": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "model-adequacy",
+    "lrrk2-traces": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "pipeline-repair",
+    "stat3-binding": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "replicate-adjudication",
+    "stat3-flow": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "solvent-reference-recovery",
+    "tbxt-reference": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     },
-    {
-      "task": "surface-activity-drift",
+    "tbxt-triage": {
       "reward": 1.0,
-      "failures": []
+      "cases": 2
     }
-  ],
-  "docker_e2e": "not run: Docker unavailable",
-  "privilege_isolation": "not run",
-  "actual_llm_trials": "not run"
+  },
+  "alternative_optimizer": {
+    "cyp3a4-affinity": {
+      "score": 1.0,
+      "KD_M": 5.005787963407531e-06
+    },
+    "lrrk2-affinity": {
+      "score": 1.0,
+      "KD_M": 1.0416108275173165e-07
+    }
+  },
+  "host_only": true,
+  "harbor_docker_end_to_end": "not_run",
+  "expert_adjudication": "not_completed",
+  "agent_baseline": "not_run"
 }

@@ -1,0 +1,63 @@
+{
+  "records": [
+    {
+      "id": "sample-001",
+      "n": 1599,
+      "concentration_M": 7.799999999999999e-07,
+      "start_s": -29.5,
+      "end_s": 148.5,
+      "initial_median_RU": -0.055775132081180304,
+      "initial_sd_RU": 0.038274510603402964,
+      "p95_delta_RU": 0.9936040670792173,
+      "tail_delta_RU": 0.10891059089113689,
+      "auc_RU_s": 76.38481826116212
+    },
+    {
+      "id": "sample-002",
+      "n": 1598,
+      "concentration_M": 3.1249999999999997e-06,
+      "start_s": -29.3999996185302,
+      "end_s": 148.5,
+      "initial_median_RU": 0.0206499758642166,
+      "initial_sd_RU": 0.027867830699505186,
+      "p95_delta_RU": 2.1747285946436525,
+      "tail_delta_RU": 0.13423860512775682,
+      "auc_RU_s": 162.11265194611298
+    },
+    {
+      "id": "sample-003",
+      "n": 1596,
+      "concentration_M": 1.2499999999999999e-05,
+      "start_s": -29.2000007629394,
+      "end_s": 148.5,
+      "initial_median_RU": -0.0286000228879856,
+      "initial_sd_RU": 0.03938136624167672,
+      "p95_delta_RU": 4.399176858600878,
+      "tail_delta_RU": 0.27356855977464817,
+      "auc_RU_s": 348.4892366378756
+    },
+    {
+      "id": "sample-004",
+      "n": 1595,
+      "concentration_M": 4.9999999999999996e-05,
+      "start_s": -29.1000003814697,
+      "end_s": 148.5,
+      "initial_median_RU": -0.0236750076765019,
+      "initial_sd_RU": 0.05403380668469085,
+      "p95_delta_RU": 5.762635182179811,
+      "tail_delta_RU": 0.3332724247602158,
+      "auc_RU_s": 468.4578356109534
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "interpolated_missing_values": false,
+    "source_fit_columns_used": false
+  },
+  "input_sha256": {
+    "config.json": "bae0dca602459992f5f96aafc294c951aad77078b9d25e1d55c4b0583f218cd9",
+    "measurements.csv": "25fec56a0bc77c73e0ee9caffa0f7ea78d20bda990e087259d30ec9574fd3e3a"
+  }
+}

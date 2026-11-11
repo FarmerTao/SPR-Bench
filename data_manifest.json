@@ -1,362 +1,42 @@
 [
   {
-    "path": "tasks/budgeted-validation/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
+    "file": "cyp3a4-affinity.csv",
+    "rows": 8,
+    "sha256": "43728aa5e3bc9ffa7876a821f4ae80d5f808d736b7ba284b31945395c4682468"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/acquisition.csv",
-    "sha256": "cfbb1de86128e005fa80ea89e5d6cb455c5e652885fb20dac106043da5f6c609"
+    "file": "cyp3a4-traces.csv",
+    "rows": 12770,
+    "sha256": "31b29a5062f19c7c90a1c19f5f8fa7dfbf24db16c47413dd9bd1bbc9e3b11e98"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
+    "file": "klhdc2-analogs.csv",
+    "rows": 50190,
+    "sha256": "3283aa00b267dabb4470cbe4aaebdd912155882a08efdcfd2914d9360d53f8d8"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/compounds.csv",
-    "sha256": "74293aa4a505308f5ee7d7491ed8c1e5cc5c3bc01b313404bb2129cf9b89ce0e"
+    "file": "klhdc2-hits.csv",
+    "rows": 54626,
+    "sha256": "9003bf6c7ec5bb7e35c0cee433e50d936805e784a5a72c8aa51411eb44357ee6"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
+    "file": "lrrk2-affinity.csv",
+    "rows": 7,
+    "sha256": "2ffc3dd3c7ba9bcdffcf4aa852e4f288428f7f5ca7700a38bd0ac18c33139dfa"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/measurements.csv",
-    "sha256": "23373814d9174fe4f2ab4fca5daed32f74b5db44d6098f72954733a82405a191"
+    "file": "lrrk2-traces.csv",
+    "rows": 48314,
+    "sha256": "f140c9327205a8470a62d02d31ca8bc4c8f4f852121dfd9beda84e27e6bb7a2a"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
+    "file": "stat3.csv",
+    "rows": 7262,
+    "sha256": "742fe5de7ab65eb20daadf29bd9e695ba11f9f3d73151b35ebe0bb27322cdf2b"
   },
   {
-    "path": "tasks/budgeted-validation/environment/data/solvent_calibration.csv",
-    "sha256": "91d723b26d77280cccf07992ab91a9d5f85944293fe47147c154359848a307cb"
-  },
-  {
-    "path": "tasks/budgeted-validation/environment/data/vials.csv",
-    "sha256": "805897032c35c39101cb517885f946de7553f36ae0380f70a4e8c20921c5df19"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/acquisition.csv",
-    "sha256": "062d174fc42aa0e1ec9acb1591ef65c93d9b3b7f681ca84ace9b06acc544cb9a"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/compounds.csv",
-    "sha256": "ebbb1cf170a32cc8cfa852e3d621210834ce9be6118f42146be323c046a53f37"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/measurements.csv",
-    "sha256": "88443a8493a9764e20ed92da583f7ea1db447803fe785281bea74e828e46c284"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/solvent_calibration.csv",
-    "sha256": "7e5f23455732b38f7da6082ceb01c59ccf6c1be268362b35a478f6046169f6c8"
-  },
-  {
-    "path": "tasks/campaign-adjudication/environment/data/vials.csv",
-    "sha256": "6e7e5f4148405ef264c6bc2455f38101a7d26e95173f16378a4f0190cc47c02a"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/acquisition.csv",
-    "sha256": "fed3555f3629919470d873889929670b1fad1bfba9ae375a73757fafe4242c08"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/compounds.csv",
-    "sha256": "ef0569a1db56278b2109f3958be275478843b9258a23ac6095ad20240d23b383"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/measurements.csv",
-    "sha256": "0d6a6e0622931ba8ea604353323612c6797fda1e8de09347e583699a5262884a"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/solvent_calibration.csv",
-    "sha256": "b7674519881c365ce4e9d6735e6113b753a3416c5b97d25fcfad6720939412c5"
-  },
-  {
-    "path": "tasks/campaign-reconstruction/environment/data/vials.csv",
-    "sha256": "48741ecf81d32ae954ffaa77e13cedb53c50b43996e051d0b3aab22a5d33f26a"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/acquisition.csv",
-    "sha256": "760948bd28e4b6b00fad8022ac02e240df9f61104f72b047b075dd7db6766ce4"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/compounds.csv",
-    "sha256": "42355a6376d4045deeda9b120dd438026c376ed600ee70902c8c8767cdc88b49"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/measurements.csv",
-    "sha256": "62fb1cf90624d2d30270b28405834095ae54464db42a606f500f6295d1684f12"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/solvent_calibration.csv",
-    "sha256": "744ece1e44fa7845f677d1ce95039ae94f1a3ce731fff48003e1365e3cab98e0"
-  },
-  {
-    "path": "tasks/condition-consistency/environment/data/vials.csv",
-    "sha256": "60c189a00da8faffe6d3663da882c8e13cfe89f4b6410a67610e53ce942fc8ac"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/acquisition.csv",
-    "sha256": "ee860f7ca04838229894fe75c542a3347b7cf197506834f6eca5313b9171102e"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/compounds.csv",
-    "sha256": "91beb2a278227d338cf4df30847a119406831fd5362b219255445db9d1a0c197"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/measurements.csv",
-    "sha256": "8cdafe8000c973b2caab26b51c6c38ae1461851add95d0afb8ef5857a9bdac73"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/solvent_calibration.csv",
-    "sha256": "63ba24af30e9966c114f3d2534ace1bb1ac8142c1b31056afaced0e2626cb35b"
-  },
-  {
-    "path": "tasks/kinetic-evidence-audit/environment/data/vials.csv",
-    "sha256": "76d143ba461337fb8af2f300942c644a3c2a2bb23eb6bf3b0ff59dd4920be18a"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/acquisition.csv",
-    "sha256": "a310ab46dc9c0e6a4f9e535d7c4730967b0cbf944c75159ea8d42a8e38181043"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/compounds.csv",
-    "sha256": "7ea91e06d8d98039f2264fa3aeb2d34dd7224113da6b3572fd8641b78ca464c4"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/measurements.csv",
-    "sha256": "0f5d06e38f39c37e9691acd7a2acf731c5e144775b7fbe9756af1589f0e5eba2"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/solvent_calibration.csv",
-    "sha256": "0da6bb653cdd9c2f29a62c6f266df5a238b1ce905d4f7aceb0e4c33d0ae85f54"
-  },
-  {
-    "path": "tasks/model-adequacy/environment/data/vials.csv",
-    "sha256": "b915eb9f23dbdab73bb0a8685993ee6ea93d2bf26715a9690b2b4e53183a0902"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/acquisition.csv",
-    "sha256": "d1eda8a30fa1b013576a345b0ef99bca7669ae41533555c6dc9a4193bd160860"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/compounds.csv",
-    "sha256": "d7cb2b069fcb07442c383320d5e70ce25e844677ad1304bd941ff643a0e337f1"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/measurements.csv",
-    "sha256": "1e18095a701ffd99ca2a22d94c5467a9bbd21ec863a66e99d0c46543887f919b"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/solvent_calibration.csv",
-    "sha256": "0d7863d2ff180eb1a111c022e926490e6c5951efbfe2958bd43a5620947519b9"
-  },
-  {
-    "path": "tasks/pipeline-repair/environment/data/vials.csv",
-    "sha256": "a2d27095c7a77f75ccf067315492ede1bcc29a31a93cc0664a499dba54d8f9b7"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/acquisition.csv",
-    "sha256": "70209a361a34834bfc388ba37d2e51e90dac24cc9d70180da4fecdac5a63d9a9"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/compounds.csv",
-    "sha256": "70602b4a3ebbff7f000f1c96e6b925f19764343d1e5fe92ca5240c9110280e0f"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/measurements.csv",
-    "sha256": "ce3b1b284e1ff1f2623b2fbde3a331663b58bf516dc47459fd8802653f40734b"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/solvent_calibration.csv",
-    "sha256": "2a871602d3543d7932efe5f6f75550b9211635aa3aa86db5fcdb4d5214d32984"
-  },
-  {
-    "path": "tasks/replicate-adjudication/environment/data/vials.csv",
-    "sha256": "59c9b36c6a45ea1a03c2a2b905e4e4fd79fe251af9af21198e490909041f091d"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/acquisition.csv",
-    "sha256": "50a6e4abeb47acc13bc2d7ba75116e133887a79b8439a2e8b7f1438ea77be90f"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/compounds.csv",
-    "sha256": "933d880651d1aff81d57ad24ee8e836488642c56623a20e1a9182c60b0c572e4"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/measurements.csv",
-    "sha256": "3ea0bd77e8b00f0c4a91f9d35b95a41d9f85c69e2fb4adb3bf7999bbe28f033c"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/solvent_calibration.csv",
-    "sha256": "d4beb4f4d9037d729790b935d6928de6758cf0365d378aeb7261c2b2bd8409fe"
-  },
-  {
-    "path": "tasks/solvent-reference-recovery/environment/data/vials.csv",
-    "sha256": "0b7e34f1600c85a9575203c7fab8f676e13ded24827856dd81b3df5d1cb170f0"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/RUN_NOTES.md",
-    "sha256": "70857fe60c2f9849734c78b4e1a5a84dda6634b96c6fea45e8f4de194b1c5fe2"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/acquisition.csv",
-    "sha256": "0734f45f5f938917d5ba539a8e16c7c98bb7df85a6505d8de2d19dfa0d198431"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/blanks.csv",
-    "sha256": "dff6881dda44051ecc5c7a6e55c0c469f6c938f234a8a0380240fe43c36e0b2c"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/compounds.csv",
-    "sha256": "82e1f0eb604390cb9324d8316cd135a64aa2f2340dbbb8dea521278b35190f0f"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/controls.csv",
-    "sha256": "9734db93e495a691dbcb8509783cef705b9219fdb7462ead06ef5b30a915bf33"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/measurements.csv",
-    "sha256": "c6802d71165fadea3f4765d51d87e307ce815598ea64ab004f41d58184e6580e"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/project.json",
-    "sha256": "5419838e5a364a04c41da30a2c298deb4f8287eb7c6d524e781315d6d98dd079"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/solvent_calibration.csv",
-    "sha256": "b244cee1609f496cf563ee26a85f757da71c535a7c5b10fef0310756b4531b48"
-  },
-  {
-    "path": "tasks/surface-activity-drift/environment/data/vials.csv",
-    "sha256": "25904aaea484d4e5232cbbe5d7099be952d0694d3409f7218cde765e78d16008"
+    "file": "tbxt.csv",
+    "rows": 23040,
+    "sha256": "90639a4a7414dcb7d627ae27d6d2e0cefb39f66b975f57a163017565552db792"
   }
 ]

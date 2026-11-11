@@ -1,82 +1,153 @@
 [
   {
-    "id": 1,
-    "slug": "campaign-adjudication",
-    "title": "Adjudicate an SPR Screening Campaign",
-    "objective": "Deliver an evidence-supported hit assessment for a screening campaign assembled from several acquisition batches. Reconcile the sample records, determine which experiments can support a conclusion, and distinguish interpretable binding from apparent hits that do not survive the campaign controls. Produce a defensible follow-up shortlist.",
-    "compounds_per_case": 15,
-    "cases": 3
+    "id": "stat3-binding",
+    "title": "STAT3: compare measured response and scoped negative evidence",
+    "study": "STAT3",
+    "kind": "trace",
+    "source_file": "stat3.csv",
+    "rows": 7262,
+    "weights": {
+      "coverage": 0.15,
+      "response": 0.5,
+      "provenance": 0.1,
+      "scope": 0.05,
+      "binding_evidence": 0.2
+    },
+    "question": "Compare DPP and S3I-201 against mouse STAT3beta core 127-722. Distinguish a lack of measured response in this construct from a universal non-binder claim."
   },
   {
-    "id": 2,
-    "slug": "solvent-reference-recovery",
-    "title": "Recover Binding Evidence from Solvent-Affected Runs",
-    "objective": "The screening team reports strong responses that change between solvent conditions. Determine which compounds retain credible binding evidence after defensible calibration and correction. Quantify the recovered responses and identify cases that should not be advanced.",
-    "compounds_per_case": 15,
-    "cases": 3
+    "id": "stat3-flow",
+    "title": "STAT3: audit flow-dependent responses",
+    "study": "STAT3",
+    "kind": "trace",
+    "source_file": "stat3.csv",
+    "rows": 2419,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Compare the three flow rates for S3I-201. Quantify differences without treating flow conditions as biological replicates or estimating a concentration-series KD."
   },
   {
-    "id": 3,
-    "slug": "kinetic-evidence-audit",
-    "title": "Audit the Reportability of Binding Kinetics",
-    "objective": "Audit the kinetic characterization campaign. Decide which compounds support numerical rate constants, which show binding but do not support the proposed kinetic interpretation, and which require a repeat. Supply condition-specific fits and explain the limits of the reportable estimates.",
-    "compounds_per_case": 16,
-    "cases": 3
+    "id": "cyp3a4-sparse",
+    "title": "CYP3A4: reconstruct sparse observed sensorgrams",
+    "study": "CYP3A4",
+    "kind": "trace",
+    "source_file": "cyp3a4-traces.csv",
+    "rows": 12770,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Recover the eight fluconazole traces from sparse measured cells. Preserve each trace time grid and quantify its response without using the source fitted curves."
   },
   {
-    "id": 4,
-    "slug": "condition-consistency",
-    "title": "Assess Flow-Dependent Binding Evidence",
-    "objective": "Evaluate whether the characterization results are stable across flow conditions. Determine which compounds admit a common intrinsic-rate interpretation and which should be held for a condition-dependence investigation. Do not infer a unique transport mechanism from disagreement alone.",
-    "compounds_per_case": 16,
-    "cases": 3
+    "id": "cyp3a4-affinity",
+    "title": "CYP3A4: audit apparent steady-state affinity",
+    "study": "CYP3A4",
+    "kind": "affinity",
+    "source_file": "cyp3a4-affinity.csv",
+    "rows": 8,
+    "weights": {
+      "coverage": 0.15,
+      "response": 0.7,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Fit the observed fluconazole concentration-response points, quantify residuals and concentration coverage. Do not interpret an apparent KD as target selectivity or a kinetic rate."
   },
   {
-    "id": 5,
-    "slug": "model-adequacy",
-    "title": "Resolve Model Inadequacy in a Binding Campaign",
-    "objective": "A previous campaign report presented every response as a single-site kinetic interaction. Reassess whether that description is supported across concentration and replicate series. Identify compounds for which a simple model is an adequate reporting model and those requiring a more cautious interpretation.",
-    "compounds_per_case": 16,
-    "cases": 3
+    "id": "lrrk2-traces",
+    "title": "LRRK2: analyze protein binder concentration series",
+    "study": "LRRK2",
+    "kind": "trace",
+    "source_file": "lrrk2-traces.csv",
+    "rows": 48314,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Analyze the seven DARPin E11 sensorgrams. Separate measured binding response from evidence of catalytic inhibition or therapeutic readiness."
   },
   {
-    "id": 6,
-    "slug": "surface-activity-drift",
-    "title": "Recover a Campaign with Changing Surface Activity",
-    "objective": "Recover the campaign interpretation across changing surface activity and invalid acquisitions. Use the supplied control measurements to determine whether normalization is supported. Distinguish declining assay performance from genuine differences between compounds, and report which conclusions remain usable.",
-    "compounds_per_case": 15,
-    "cases": 3
+    "id": "lrrk2-affinity",
+    "title": "LRRK2: refit E11 affinity with a free offset",
+    "study": "LRRK2",
+    "kind": "affinity",
+    "source_file": "lrrk2-affinity.csv",
+    "rows": 7,
+    "weights": {
+      "coverage": 0.15,
+      "response": 0.7,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Refit seven observed E11 equilibrium responses with a free offset. Report residuals and coverage; author-fitted parameters are a comparison, not ground truth."
   },
   {
-    "id": 7,
-    "slug": "replicate-adjudication",
-    "title": "Reconcile Conflicting Replicate Measurements",
-    "objective": "Resolve disagreement between independent replicate series. Distinguish stable evidence from compounds whose apparent affinity cannot be responsibly summarized by a single estimate. Preserve every measurement in the audit trail and do not discard disagreeing repeats merely to improve a fit.",
-    "compounds_per_case": 16,
-    "cases": 3
+    "id": "klhdc2-hits",
+    "title": "KLHDC2: compare initial small-molecule hits",
+    "study": "KLHDC2",
+    "kind": "trace",
+    "source_file": "klhdc2-hits.csv",
+    "rows": 54626,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Compare measured sensorgrams for compounds 1 and 2. Avoid treating the neighboring fluorescence-polarization sheets as SPR data or treating representative traces as replicates."
   },
   {
-    "id": 8,
-    "slug": "campaign-reconstruction",
-    "title": "Reconstruct and Analyze an Acquisition Archive",
-    "objective": "Reconstruct the compound identities and concentrations in the acquisition archive, then complete a scientific hit assessment. The archive contains repeated exports, unsorted observations, mixed declared concentration units, and indirect sample identifiers. Demonstrate that the recovered mapping supports the reported conclusions.",
-    "compounds_per_case": 15,
-    "cases": 3
+    "id": "klhdc2-analogs",
+    "title": "KLHDC2: compare follow-up small molecules",
+    "study": "KLHDC2",
+    "kind": "trace",
+    "source_file": "klhdc2-analogs.csv",
+    "rows": 50190,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Analyze measured sensorgrams for compounds 5 and 6. Compare concentration-normalized evidence without inventing unreported controls or kinetic ground truth."
   },
   {
-    "id": 9,
-    "slug": "pipeline-repair",
-    "title": "Repair a Faulty SPR Analysis Pipeline",
-    "objective": "Repair or replace the supplied legacy analysis pipeline so that it produces scientifically defensible results for this campaign and new campaigns using the documented file contract. The current output is not a reference answer. Diagnose the scientific and software defects, deliver a corrected implementation, and include a regression-test explanation in the report.",
-    "compounds_per_case": 18,
-    "cases": 3
+    "id": "tbxt-reference",
+    "title": "TBXT: audit experimental reference correction",
+    "study": "TBXT",
+    "kind": "report",
+    "source_file": "tbxt.csv",
+    "rows": 23040,
+    "weights": {
+      "coverage": 0.25,
+      "response": 0.6,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Join active, reference and reference-subtracted late-binding report points by run/cycle/channel/window. Audit correction arithmetic and retain compound/series identities."
   },
   {
-    "id": 10,
-    "slug": "budgeted-validation",
-    "title": "Prioritize Orthogonal Validation from Campaign Evidence",
-    "objective": "Choose a shortlist for the next orthogonal-validation round under the project budget. Decisions must follow from the supplied raw measurements, run validity, replicate consistency, and reportable binding parameters. Make the scientific exclusions auditable; an attractive fitted affinity alone is insufficient.",
-    "compounds_per_case": 24,
-    "cases": 3
+    "id": "tbxt-triage",
+    "title": "TBXT: quantify corrected dose-response evidence",
+    "study": "TBXT",
+    "kind": "report",
+    "source_file": "tbxt.csv",
+    "rows": 23040,
+    "weights": {
+      "coverage": 0.2,
+      "response": 0.65,
+      "provenance": 0.1,
+      "scope": 0.05
+    },
+    "question": "Summarize corrected late-binding responses, reference binding and dose trends. These are screening-evidence metrics; a large response alone does not establish specific binding or justify a drug-development decision."
   }
 ]

@@ -1,0 +1,159 @@
+{
+  "records": [
+    {
+      "id": "compound-5-1",
+      "n": 4202,
+      "concentration_M": 3.13e-07,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.205078,
+      "initial_sd_RU": 0.028306789332727445,
+      "p95_delta_RU": 5.445056,
+      "tail_delta_RU": 3.0107606500000004,
+      "auc_RU_s": 1332.3013147487245
+    },
+    {
+      "id": "compound-5-2",
+      "n": 4202,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.239502,
+      "initial_sd_RU": 0.049494471307374104,
+      "p95_delta_RU": 7.068039,
+      "tail_delta_RU": 3.44639315,
+      "auc_RU_s": 1676.8500802052795
+    },
+    {
+      "id": "compound-5-3",
+      "n": 4202,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.262939,
+      "initial_sd_RU": 0.05205440954547502,
+      "p95_delta_RU": 9.4318645,
+      "tail_delta_RU": 3.929994,
+      "auc_RU_s": 2161.591791550076
+    },
+    {
+      "id": "compound-5-4",
+      "n": 4202,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.342285,
+      "initial_sd_RU": 0.04916285684622474,
+      "p95_delta_RU": 14.29127,
+      "tail_delta_RU": 4.50643305,
+      "auc_RU_s": 3110.0305204039187
+    },
+    {
+      "id": "compound-5-5",
+      "n": 4201,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.327393,
+      "initial_sd_RU": 0.05680646449947621,
+      "p95_delta_RU": 20.032693000000002,
+      "tail_delta_RU": 5.0618387,
+      "auc_RU_s": 4209.7891311295825
+    },
+    {
+      "id": "compound-5-6",
+      "n": 4201,
+      "concentration_M": 1e-05,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.3813485,
+      "initial_sd_RU": 0.05114180098297955,
+      "p95_delta_RU": 32.4462485,
+      "tail_delta_RU": 5.84125135,
+      "auc_RU_s": 6548.7149251895335
+    },
+    {
+      "id": "compound-6-1",
+      "n": 4164,
+      "concentration_M": 4e-08,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.0856934,
+      "initial_sd_RU": 0.02885212717246128,
+      "p95_delta_RU": 4.1210934,
+      "tail_delta_RU": 1.2378822000000003,
+      "auc_RU_s": 915.0309895921271
+    },
+    {
+      "id": "compound-6-2",
+      "n": 4163,
+      "concentration_M": 3.13e-07,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.249757,
+      "initial_sd_RU": 0.038442599686057746,
+      "p95_delta_RU": 5.178957,
+      "tail_delta_RU": 2.95335315,
+      "auc_RU_s": 1278.8246649339148
+    },
+    {
+      "id": "compound-6-3",
+      "n": 4164,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.06,
+      "end_s": 360.04,
+      "initial_median_RU": -0.296387,
+      "initial_sd_RU": 0.044585070037741634,
+      "p95_delta_RU": 6.999757,
+      "tail_delta_RU": 3.5816325499999997,
+      "auc_RU_s": 1690.6565128501338
+    },
+    {
+      "id": "compound-6-4",
+      "n": 4163,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.347657,
+      "initial_sd_RU": 0.04599667074618624,
+      "p95_delta_RU": 8.645802,
+      "tail_delta_RU": 4.2129502500000005,
+      "auc_RU_s": 2072.6946202624804
+    },
+    {
+      "id": "compound-6-5",
+      "n": 4163,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.353515,
+      "initial_sd_RU": 0.06615756611357719,
+      "p95_delta_RU": 11.521824999999998,
+      "tail_delta_RU": 4.97139375,
+      "auc_RU_s": 2698.4994616879735
+    },
+    {
+      "id": "compound-6-6",
+      "n": 4163,
+      "concentration_M": 5e-06,
+      "start_s": -60.06,
+      "end_s": 359.94,
+      "initial_median_RU": -0.439698,
+      "initial_sd_RU": 0.053133330233158076,
+      "p95_delta_RU": 15.778798,
+      "tail_delta_RU": 5.8568634,
+      "auc_RU_s": 3589.856142922832
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "compound_set": "5_and_6",
+    "SPR_sheets_only": true
+  },
+  "input_sha256": {
+    "config.json": "2653c1a9a50ea6ba603488bbb9af3b895c26fe432143234b769735291353c11c",
+    "measurements.csv": "3283aa00b267dabb4470cbe4aaebdd912155882a08efdcfd2914d9360d53f8d8"
+  }
+}

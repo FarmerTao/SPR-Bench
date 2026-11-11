@@ -1,0 +1,11 @@
+{
+  "task": "cyp3a4-affinity",
+  "kind": "affinity",
+  "study": "CYP3A4",
+  "required_claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "affinity_type": "apparent_steady_state",
+    "kinetic_rates_identifiable": false
+  }
+}

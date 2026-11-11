@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "id": "fluconazole",
+      "n": 8,
+      "KD_M": 5.00578827064104e-06,
+      "Rmax_RU": 6.140821789305742,
+      "offset_RU": -0.022786126052045268,
+      "rmse_RU": 0.14034912798652158,
+      "max_concentration_M": 9.99999999999999e-05,
+      "max_concentration_over_KD": 19.976873689704405
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "affinity_type": "apparent_steady_state",
+    "kinetic_rates_identifiable": false
+  },
+  "input_sha256": {
+    "config.json": "a718d1f99d5f3148627eed0a0f15ccfa5259137a73db5cbb5bb75f61b1c3ca9e",
+    "measurements.csv": "43728aa5e3bc9ffa7876a821f4ae80d5f808d736b7ba284b31945395c4682468"
+  }
+}

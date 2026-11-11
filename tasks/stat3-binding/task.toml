@@ -1,0 +1,26 @@
+schema_version = "1.4"
+artifacts = ["/app/submission"]
+[task]
+name = "spr-real/stat3-binding"
+description = "STAT3: compare measured response and scoped negative evidence"
+[metadata]
+author_name = "SPR-Bench contributors"
+difficulty = "hard"
+category = "scientific-data-analysis"
+tags = ["spr", "experimental", "stat3"]
+[agent]
+timeout_sec = 3600.0
+[verifier]
+timeout_sec = 600.0
+environment_mode = "separate"
+[verifier.environment]
+network_mode = "no-network"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+[environment]
+network_mode = "no-network"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+build_timeout_sec = 600.0
