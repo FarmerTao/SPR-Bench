@@ -259,6 +259,8 @@ def main():
         (test / "test.sh").write_text(
             '#!/bin/bash\nset -eu\nmkdir -p /logs/verifier\nprintf "0\\n" > /logs/verifier/reward.txt\npython3 /tests/verifier.py\n'
         )
+        (sol / "solve.sh").chmod(0o755)
+        (test / "test.sh").chmod(0o755)
         (root / "task.toml").write_text(
             f"""schema_version = "1.4"
 artifacts = ["/app/submission"]
