@@ -2,6 +2,45 @@ import json
 from pathlib import Path
 from ingest import ROOT
 
+FIELDS = {
+    "trace": {
+        "coverage": ["n", "concentration_M", "start_s", "end_s"],
+        "response": [
+            "initial_median_RU",
+            "initial_sd_RU",
+            "p95_delta_RU",
+            "tail_delta_RU",
+            "auc_RU_s",
+        ],
+    },
+    "affinity": {
+        "coverage": ["n", "max_concentration_M"],
+        "response": [
+            "KD_M",
+            "Rmax_RU",
+            "offset_RU",
+            "rmse_RU",
+            "max_concentration_over_KD",
+        ],
+    },
+    "report": {
+        "coverage": [
+            "n",
+            "n_corrected_late",
+            "n_concentrations",
+            "max_concentration_M",
+        ],
+        "response": [
+            "max_corrected_RU",
+            "min_corrected_RU",
+            "mean_corrected_RU",
+            "max_reference_RU",
+            "dose_slope_RU_per_uM",
+            "max_reference_subtraction_error_RU",
+        ],
+    },
+}
+
 
 def main():
     catalog = json.loads((ROOT / "task_catalog.json").read_text())
@@ -12,16 +51,16 @@ def main():
         for x in catalog
     )
     (ROOT / "README.md").write_text(
-        """# SPR-Bench
+        f"""# SPR-Bench
 
-**An experimental-data pilot for executable SPR analysis in drug discovery.**
+**An experimental-data pilot for executable protein/antibody SPR analysis.**
 
-SPR-Bench v0.6 replaces the previous synthetic pilot with publicly released,
-measured SPR data for small molecules or protein binders against protein targets.
-It contains ten Harbor tasks drawn from five studies: STAT3, CYP3A4, LRRK2,
-KLHDC2 and TBXT. There are **49 measured sensorgrams, 15 observed affinity
-report points, and 23,040 TBXT report-point rows** in the canonical selected data.
-No responses, concentrations, negative examples or replicates are simulated.
+SPR-Bench v0.7 is a protein/antibody SPR benchmark with two binding-assessment
+tasks. It contains ten Harbor tasks drawn from six studies: LRRK2/DARPin,
+designed macrocycles, ISG65/C3, D-box peptides, STAT3, and TBXT. There are **55
+measured sensorgrams, 57 observed affinity endpoints, 23,040 TBXT report-point
+rows, and two binding/non-binding tasks** in the canonical selected data. No responses,
+concentrations, negative examples or replicates are simulated.
 
 **Status:** public experimental-data pilot; local numerical and provenance checks
 have passed. Harbor + Docker end-to-end evaluation, independent SPR expert
@@ -38,55 +77,10 @@ input hashes and explicit scope constraints. Each task receives a score in [0,1]
 No narrative report or LLM judge contributes to the score.
 
 The current automatic score primarily measures reproducible data analysis.
-**It does not independently validate binding/nonbinding ground truth, target
-selectivity, clinical utility, or which molecule should enter development.**
-The STAT3 paper supplies a scoped reported negative result; TBXT screening responses
-and source-fitted affinity values are not independently adjudicated binder labels.
-The STAT3 binding task includes a 20% structured call component scored against
-the paper's scoped conclusions; those labels are not given in the agent input.
-They remain public, author-reported interpretations, not independently reviewed
-ground truth. Its reference program uses a study-specific association-slope
-heuristic, not a validated general binding classifier. The 5% scope component
-checks disclosed evidence limits, not hidden biological reasoning. More complete binding/advancement scoring requires expert-reviewed
-labels and orthogonal evidence; this release does not manufacture those labels.
 
 ## Tasks
 
-"""
-        + table
-        + """
-
-Tasks sharing a study are related views of the same experiments, not independent
-studies. In particular STAT3 and TBXT task pairs overlap, and affinity endpoints
-are not independent from the corresponding sensorgrams. Report per-task results
-and a study-balanced aggregate; never inflate sample size by counting these as
-independent experiments. See [evaluation protocol](docs/EVALUATION.md).
-
-## Data provenance and rights
-
-See [source catalogue](sources/README.md), [machine-readable source manifest](sources/manifest.json)
-and [data manifest](data_manifest.json). Original source files are retained outside
-agent images. Every extracted row records its original sheet/text member and row,
-plus a measurement-column index where applicable. SHA-256 hashes protect both
-originals and derived CSVs. The extraction code selects observed cells and converts
-concentration units to M; it never smooths, interpolates or generates responses.
-
-- STAT3: double-referenced measured curves for S3I-201 and 5,15-DPP; three flow rates
-  are distinct conditions, not replicate experiments.
-- CYP3A4: fluconazole curves and measured equilibrium points. Source `_Fit` and
-  `FittedCurve` columns are excluded; sparse observed time grids are preserved.
-- LRRK2: DARPin E11 curves and observed equilibrium points. Fitted curve and parameter
-  columns are excluded from agent inputs.
-- KLHDC2: only the SPR sheets for compounds 1, 2, 5 and 6. Neighboring fluorescence
-  polarization assays are not mislabelled as SPR.
-- TBXT: numerical report-point tables, not densely sampled sensorgrams. No kinetic
-  rate fitting is requested from these data.
-
-Code and benchmark-authored documentation are MIT licensed. Source data retain
-their original CC BY / CC0 terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-Nucleic-acid hybridization and aptamer studies are outside this release's scope.
-The old synthetic pilot is retained in Git history/tag `v0.5.0-synthetic`, not in
-the active task set. Scores across these releases are not comparable.
+{table}
 
 ## Quick start: trusted local checks
 
@@ -113,124 +107,119 @@ To reproduce the release from bundled originals:
 python tools/ingest.py
 python tools/build.py
 python tools/docs.py
-python tools/check_repository.py
-python tools/validate.py
 ```
 
-No download is needed to reproduce the selected data. Download URLs in the source
-manifest are retained for attribution and independent retrieval. Changing source
-bytes requires a new data version and hash review.
+## Design and evidence boundaries
 
-## Harbor evaluation
+The six studies provide measured protein/peptide/antibody SPR data:
 
-Tasks use Harbor **0.25.0** and schema 1.4. Each directory contains `instruction.md`,
-`task.toml`, `environment/Dockerfile`, `solution/solve.sh` and `tests/test.sh`.
-Agent containers receive data and the public contract only. Original workbooks,
-reference solutions, expected outputs and scoring code are not in their build
-contexts. Separate verifier containers receive the submitted `/app/submission`
-artifact and rerun `run.py` without networking. Submission processes run as an
-unprivileged user; trusted tests/logs are protected from that user.
+- **STAT3 binding**: DPP and S3I-201 across three flow conditions; the task also
+  requires a per-compound binding assessment. The author-scoped calls are
+  S3I-201 interaction-supported and DPP no-measurable-response in this construct;
+  they are not universal binder labels. **TBXT operational binding**: corrected
+  late-binding report points are classified with a disclosed 10 RU threshold;
+  the labels are a triage rule, not author binding truth.
+- **LRRK2/DARPin E11**: seven concentration series and seven equilibrium
+  endpoints. The protein binder is a DARPin; catalytic inhibition is not
+  established by SPR.
+- **Designed macrocycles**: three single-concentration sensorgrams for designed
+  macrocyclic binders. The source-fitted curves are excluded; a single trace does
+  not establish a KD.
+- **ISG65/C3**: six sheets of measured cycles for WT, ΔL2 and L2N188A ISG65
+  binding C3b and C3d. The ISG65 affinity task uses the measured response at the
+  end of the 120 s association phase from each trace; this derived endpoint is
+  documented in sources/README.md.
+- **D-box peptides**: D20 and D21 observed isotherms across the reported
+  concentration series. Source-fitted curves are excluded; the paired
+  sensorgrams remain in the source file but are not task inputs.
 
-With Docker running, the intended commands are:
+All response values are experimental. Source-fitted curves, simulated negatives,
+digitized images and fabricated concentrations are not included. The task
+contract distinguishes measured response summaries from fitted affinity
+parameters; neither establishes a biological mechanism, selectivity or drug
+readiness.
 
-```bash
-harbor run --path tasks --agent oracle --n-concurrent 1
-harbor run --path tasks --agent codex --model <provider/model> --n-concurrent 1
-```
+## Limitations
 
-These commands/configurations have been schema checked, **not run end to end** in
-this release. Verify artifact transfer and isolation before evaluating untrusted
-submissions. A host validation score of 1 is not a model result.
+- **Two binding tasks, different label authority.** STAT3 uses author-scoped
+  calls restricted to the tested construct/conditions. TBXT uses a disclosed
+  operational 10 RU threshold on corrected report points; it is a triage rule,
+  not author-reported binding truth. The other eight tasks are protein/peptide
+  trace or affinity analyses.
+- **Uneven study coverage.** LRRK2 contributes two tasks, ISG65 three, D-box
+  two, and Macrocycle/STAT3/TBXT one each. The recommended overall score is the
+  mean of the ten task scores, and study means are descriptive.
+- **Single-concentration traces.** The Macrocycle task cannot establish KD; its
+  disclosed claims say so.
+- **Derived ISG65 endpoints.** The ISG65 affinity endpoints are measured cells at
+  a fixed time, not source-reported equilibrium fits. See sources/README.md.
+- **No cluster-disjoint split, expert adjudication, agent baseline or
+  Docker/Harbor end-to-end run yet.**
 
-## Scoring and limitations
+## Source attribution
 
-[CONTRACT.md](CONTRACT.md) defines all output fields and tolerances.
-[SCORING.md](SCORING.md) defines exact score formulas.
-[RUBRICS.md](RUBRICS.md) gives each task's weights, subcriteria and evidence boundaries.
-[QUESTIONS.md](QUESTIONS.md) provides the task questions in one place.
-All fixtures and answers are public. Subsets test code reuse, not generalization
-to a new laboratory, patient, instrument or chemical series.
+See [sources/README.md](sources/README.md) and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Original files are unmodified;
+CSV conversion, selected measured cells, unit conversion, opaque identifiers and
+robustness subsets are the only changes.
 
-Real response data alone do not establish label quality. Representative curves,
-limited controls, unknown processing steps in some sources, rounded concentration
-headers and unavailable independent repeats limit inference. Initial-window
-summaries are explicitly defined numerical conventions, not confirmed association
-phase annotation. Affinity fits are apparent descriptive estimates, not true
-kinetic constants. No binary development-ready labels are supplied.
+## Citation
 
-Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).
-Security: [SECURITY.md](SECURITY.md). Citation: [CITATION.cff](CITATION.cff).
+Cite the original studies and this repository. Third-party data retain their
+source licenses; no endorsement by the original authors is implied.
 """
     )
-    questions = "# Task questions\n\nAll tasks use measured experimental data. See [contract](CONTRACT.md) for required program outputs.\n\n"
-    rubrics = "# Task-specific automatic rubrics\n\nEvery task is scored from 0 to 1. No report points are awarded.\n\n"
-    for x in catalog:
-        questions += f"## {x['id']}: {x['title']}\n\n{x['question']}\n\nSource study: {x['study']}; input: `{x['source_file']}`; {x['rows']:,} selected rows.\n\n"
-        cfg = json.loads((ROOT / "tasks" / x["id"] / "tests/scoring.json").read_text())
-        rubrics += f"## {x['id']}\n\n{x['question']}\n\n| Component | Weight | Automatic criterion |\n|---|---:|---|\n"
-        for cat, w in cfg["weights"].items():
-            desc = ", ".join("`" + f + "`" for f in cfg["fields"].get(cat, []))
-            if cat == "coverage":
-                desc = "Exact record-ID coverage; " + desc
-            if cat == "provenance":
-                desc = "Exact SHA-256 map of every supplied input file."
-            if cat == "binding_evidence":
-                desc = "Exact compound coverage and scoped binding calls compared with Mtwebana and Prinsloo (2020), DOI 10.1186/s13104-020-05189-w. Author-reported interpretation; not independent adjudication."
-            if cat == "scope":
-                desc = "Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth."
-            rubrics += f"| {cat} | {w:.0%} | {desc} |\n"
-        rubrics += "\nAll checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.\n\n"
-    (ROOT / "QUESTIONS.md").write_text(questions.rstrip() + "\n")
-    (ROOT / "RUBRICS.md").write_text(rubrics.rstrip() + "\n")
+    (ROOT / "QUESTIONS.md").write_text(
+        "# Task questions\n\nAll tasks use measured experimental data. See [CONTRACT.md](CONTRACT.md) for required program outputs.\n\n"
+        + "\n".join(
+            f"## {x['id']}: {x['title']}\n\n{x['question']}\n\nSource study: {x['study']}; input: `{x['source_file']}`; {x['rows']:,} selected rows.\n"
+            for x in catalog
+        )
+    )
     (ROOT / "SCORING.md").write_text(
-        """# Automatic scoring v0.6
+        """# Scoring
 
-Every task has its own score in [0,1]. Both cases contain real observations.
-For case c, category k, let m(c,k) be passed checks / expected checks, or zero if
-there are no checks. The case score is sum_k w(k)*m(c,k). The task score is the
-arithmetic mean of its two case scores. Every task has weights summing to 1.
+Each task is scored in [0,1] by a rule-based verifier. The score combines
+coverage, numerical response fields, provenance and disclosed scope claims.
 
-| Task type | Coverage | Response / fit | Provenance | Disclosed scope | Binding evidence |
+| Task family | Coverage | Response | Binding evidence | Provenance | Scope |
 |---|---:|---:|---:|---:|---:|
-| Trace (except STAT3 binding) and TBXT triage | 20% | 65% | 10% | 5% | 0% |
-| STAT3 binding | 15% | 50% | 10% | 5% | 20% |
-| Affinity | 15% | 70% | 10% | 5% | 0% |
-| TBXT reference audit | 25% | 60% | 10% | 5% | 0% |
+| Trace | 20% | 65% | 0% | 10% | 5% |
+| Affinity | 15% | 70% | 0% | 10% | 5% |
+| STAT3 binding | 15% | 50% | 20% | 10% | 5% |
+| TBXT operational binding | 15% | 50% | 20% | 10% | 5% |
+
+Coverage checks exact record IDs plus the listed coverage fields. Response checks
+the listed numerical fields against the reference computed from the supplied
+measurements. Provenance checks the SHA-256 manifest of the input files. Scope
+checks the disclosed claims exactly.
 
 For N expected records and F coverage fields, coverage contains 1 + N*F checks:
 one exact ID-set check and one check per expected record/field. Response contains
 N*R checks for R response fields. Provenance has one check. Scope has one check
-per disclosed claim. STAT3 binding evidence has one exact compound-coverage
-check plus one check for each source-supported scoped call. These labels are
-withheld from the agent image, but public in the repository and source article.
-No weighting depends on the amount of optional prose.
-See RUBRICS.md for exact fields and weights for each of ten tasks.
+per disclosed claim.
 
 Missing output, invalid JSON, duplicate JSON keys/record IDs, nonfinite JSON,
 program failure or timeout gives that case zero. Missing fields/records fail
 corresponding checks. An entirely empty record list can earn only provenance and
-scope credit (at most 0.15); STAT3 binding can additionally earn up to 0.20
-for source-consistent calls even if numerical evidence is absent. This partial
-credit does not constitute successful numerical analysis. Unexpected record
-IDs fail exact coverage. Null matches only a documented null reference value.
-Counts must match exactly. All numerical tolerances are in CONTRACT.md.
+scope credit (at most 0.15). A record list that passes coverage/provenance/scope
+but no response checks still earns those weights under the official score; its
+analysis_reward is zero. Unexpected record IDs fail exact coverage. Null matches
+only a documented null reference value. Counts must match exactly. All numerical
+tolerances are in CONTRACT.md.
 
 The reference numbers are recomputed from selected measurements, not synthesized
-kinetic truth. Measured source fit curves are excluded. Apparent KD fits use a
-specified least-squares model; the score does not claim this is the true biological
+kinetic truth. Source-fitted curves are excluded. Apparent KD fits use a specified
+least-squares model; the score does not claim this is the true biological
 mechanism. The disclosed scope component is intentionally easy and should be
 reported separately when comparing scientific analysis ability.
 
-Report all ten task scores and study means. The recommended overall score is the
-mean of five study means (each study has two tasks in this release, so this equals
-the ten-task mean). A missing task counts as zero. Do not treat ten tasks or the
-two robustness cases as independent biological replicates. Do not pool scores
+Report all ten task scores and study means. The recommended overall score is
+the mean of the ten task scores. Macrocycle, STAT3 and TBXT each contribute one
+task; LRRK2, ISG65 and D-box contribute multiple related tasks, so study means are
+descriptive rather than equally weighted. A missing task counts as zero. Do not treat ten tasks or
+the two robustness cases as independent biological replicates. Do not pool scores
 with the archived synthetic version or with later scoring versions.
-
-The STAT3 call rubric uses author-reported scoped conclusions for the tested
-compounds, construct and conditions (DOI
-10.1186/s13104-020-05189-w). It does not assert universal nonbinding, selectivity,
-or suitability for development. No independent expert adjudication is claimed.
 
 All fixtures, reference outputs and source papers are public. This is a public
 fixture evaluation; it is not a blind assessment. Local oracle scores and scoring
@@ -238,41 +227,98 @@ regression tests measure implementation consistency, not model capability or
 scientific label validity. No manually graded report or model-as-judge is used.
 """
     )
-    lines = "# Source catalogue and extraction notes\n\nFive studies; six bundled source files. Accessed 2026-11-11. These are measured experimental data, with source preprocessing retained.\n\n"
+    rub = "# Rubrics\n\nFields and weights per task. Coverage and response fields are listed in the executable contract; provenance and scope are weighted checks.\n\n"
+    for x in catalog:
+        f = FIELDS[x["kind"]]
+        rub += f"## {x['id']}\n\n{x['title']}\n\n| Category | Weight | Fields |\n|---|---:|---|\n"
+        rub += f"| Coverage | {x['weights']['coverage']:.0%} | {', '.join(f['coverage'])} |\n"
+        rub += f"| Response | {x['weights']['response']:.0%} | {', '.join(f['response'])} |\n"
+        if "binding_evidence" in x["weights"]:
+            rub += f"| Binding evidence | {x['weights']['binding_evidence']:.0%} | binding_assessments |\n"
+        rub += f"| Provenance | {x['weights']['provenance']:.0%} | input_sha256 |\n"
+        rub += f"| Scope | {x['weights']['scope']:.0%} | disclosed claims |\n\n"
+    (ROOT / "RUBRICS.md").write_text(rub.rstrip() + "\n")
+    (ROOT / "docs/EVALUATION.md").write_text(
+        """# Evaluation protocol
+
+This is a public protein/antibody SPR pilot. Ten task scores are computed
+individually, with an aggregate mean over the ten tasks. Macrocycle, STAT3 and
+TBXT contribute one task each; LRRK2, ISG65 and D-box contain related tasks and
+are not independent replicates. No confidence interval based on ten
+independent studies is justified.
+
+All inputs, expected outputs, reference programs and sources are public. Agent
+images exclude reference/test material, but this cannot undo prior exposure.
+Renaming IDs and taking measured subsets tests program reuse, not blind scientific
+generalization. A blind release requires held-out studies and independently
+reviewed labels, versioned acquisition metadata, a freeze date and an exposure
+policy.
+
+For any run record: repository commit, data/scoring version, Harbor version,
+model/provider, agent configuration, prompts, tools, resource limits, retries,
+randomness settings and costs. Report every trial, not only the best retry.
+Keep per-task metrics and logs with credentials removed. A missing task counts
+as zero. Report both the official reward and analysis_reward; the latter excludes
+coverage, provenance and scope. Do not pool results across synthetic v0.5 and
+experimental v0.6/v0.7.
+
+Local tests check source cell provenance, numerical consistency, defective outputs
+and an alternative optimizer. They do not establish independent scientific
+adjudication or secure Harbor runtime integration. No real-agent baseline has yet
+been measured. Harbor + Docker end-to-end testing remains outstanding.
+
+Do not interpret the score as validated binding classification, drug candidacy,
+clinical utility, or proof of wet-lab reliability. The present score primarily
+measures reproducible numerical analysis under an explicit contract. Expanded
+biological decision scoring requires expert-reviewed evidence and orthogonal
+validation; these have not been fabricated to fill gaps in public datasets.
+"""
+    )
+    lines = "# Source catalogue and extraction notes\n\nSix studies; seven bundled source files. Accessed 2026-11-12. These are measured experimental data, with source preprocessing retained.\n\n"
     for s in manifest:
         lines += f"## {s['source']} — {Path(s['file']).name}\n\n{s['authors']}. [Primary source]({s['doi']}); [original download]({s['download_url']}).\n\nLicense: {s['license']}. Bytes: {s['bytes']:,}. SHA-256: `{s['sha256']}`.\n\n"
     lines += """## Exact selection and evidence boundaries
 
-- STAT3: the three nonempty sheets in Additional file 1; numerical TIME and three
+- STAT3: three nonempty sheets in Additional file 1; numerical TIME and three
   flow-rate response columns. Blank cells are omitted per trace. Article methods
   specify double referencing. S3I-201 interaction and DPP lack of measurable
   response are author-reported conclusions restricted to mouse STAT3beta core
   residues 127–722 and tested conditions. They are not universal binding labels.
-- CYP3A4: `SPR titration sheet 1`, columns 1–9 (time and eight observations); and
-  observed cells in columns 2–9 of `SPR titration sheet 2`. Exclude `_Fit` and
-  `FittedCurve`. Trace concentration headers are rounded (e.g. 0.78 µM), whereas
-  endpoint concentrations retain their exported precision. Do not equate these
-  two representations without allowing for the source rounding.
-- LRRK2: ZIP members `Sensorgrams_E11.txt` and first two columns of
-  `Steady state_E11.txt`. Seven concentration series, 7.8125–500 nM. Source-fitted
-  parameters and curve columns are retained only in the original archive, never
-  provided to agents. Original authors report apparent KD 70.3 nM; this is a
-  comparison, not a gold-standard truth label. This release's specified unweighted
-  free-offset refit yields about 104 nM rather than 70.3 nM; the exported source
-  parameter is not used as the scoring target. Do not infer catalytic inhibition
-  from the SPR data alone.
-- KLHDC2: Figure 2E/2F and Figure 3F/3G only, corresponding to compounds 1/2 and
-  5/6. These are representative SPR traces; other worksheets contain orthogonal
-  fluorescence-polarization data and are excluded. Do not invent sensorgrams for
-  the compounds for which the article reports no robust SPR signal.
 - TBXT: `Report point table`, rows with Step purpose=Analysis, preserving original
   compound names and replicate/series suffixes. Relative responses, windows,
   concentrations, reference types and source row indices are retained. Selected
   workbook is `20201028 LMW binding affinity screen for 136 UNC and Piramal
   compounds.xlsx`. It supplies numeric report points and embedded sensorgram
   images, not a usable numeric full-time-series export. Source-fitted kinetic/
-  affinity tables are excluded from input. Response values do not supply an
-  independently validated 136-compound binder/nonbinder ground truth.
+  affinity tables are excluded from input. The binding labels are a disclosed
+  operational 10 RU threshold on the maximum corrected binding-late response,
+  not an independently validated 140-compound binder/nonbinder ground truth.
+- LRRK2: ZIP members `Sensorgrams_E11.txt` and first two columns of
+  `Steady state_E11.txt`. Seven concentration series, 7.8125–500 nM. Source-fitted
+  parameters and curve columns are retained only in the original archive, never
+  provided to agents. Original authors report apparent KD 70.3 nM; this is a
+  comparison, not a gold-standard truth label. The specified unweighted
+  free-offset refit is not forced to that value. Do not infer catalytic inhibition
+  from SPR alone.
+- Macrocycle: `macrocycle-fig2.xlsx` Sheet1 columns A/B (MCB_D2) and E/F
+  (MDB_D8), plus `macrocycle-fig4.xlsx` Sheet1 columns A/B (RBB_D10). Header rows
+  1–2; measured cells only; source-fitted columns C/G excluded. These are
+  single-concentration traces (20, 50 and 20 µM; 30 µL/min), not KD
+  measurements. The source reports global-fit KD values of 2 µM (MCB_D2),
+  1.9 µM (MDB_D8) and 9.4 nM (RBB_D10); these traces do not reproduce those
+  global fits.
+- ISG65: Figure 2—source data 1, six sheets (C3b/C3d × WT/ΔL2/L2N188A). Column A
+  is time; measured cycle columns are B,D,F,H,J,L (`Cycle ... _Y`); interleaved
+  source-fitted columns C,E,G,I,K are excluded. Six cycles per sheet, twofold
+  dilutions from 10 µM, 30 µL/min. The affinity task uses the measured response
+  cell nearest 120 s (end of the 120 s association phase) for each trace; this is
+  a derived endpoint, not a source-reported equilibrium fit. Source-fitted curves
+  and reported affinities are not scoring targets.
+- D-box: `dbox-fig4-data1.xlsx` sheets `Figure 4C -D20 Fc4-1 isotherm` and
+  `Figure 4D -D21 Fc4-1 isotherm`, data from row 2 (0.15625–10 µM). The paired
+  sensorgrams remain in the source file but are not task inputs. No fitted curve
+  is selected. D20/D21 are Fc-fused D-box peptides binding Cdc20; the tasks
+  summarize observed endpoints, not a kinetic mechanism.
 
 CSV conversion, selected sheets/columns, unit conversion, omitted empty cells,
 row ordering and robustness-case ID aliases are the only changes. No smoothing,
@@ -297,47 +343,16 @@ sources/manifest.json.
 | Data | Attribution | Terms |
 |---|---|---|
 | STAT3 | S. S. Mtwebana and E. Prinsloo (2020) | [CC0 data waiver](https://creativecommons.org/publicdomain/zero/1.0/); article [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| CYP3A4/nanodiscs | T. G. J. Knetsch, M. Ubbink, H. van Son, M. Kobayashi and contributors (2025) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| LRRK2/E11 | V. Dederer, M. Sanz Murillo, E. P. Karasmanis, S. Mathea, A. E. Leschziner, S. L. Reck-Peterson, S. Knapp (2024) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| KLHDC2 | H. Zhou, T. Zhou et al. (2025) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | TBXT | Z. Davis-Gilbert, D. Drewry, M. A. Hossain et al. (2022) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
+| LRRK2/DARPin E11 | V. Dederer, M. Sanz Murillo, E. P. Karasmanis, S. Mathea, A. E. Leschziner, S. L. Reck-Peterson, S. Knapp (2024) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Designed macrocycles | S. A. Rettie et al. (2025) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| ISG65/C3b-C3d | A. D. Cook, M. Carrington, M. K. Higgins (2024) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| D-box peptides | R. Eapen et al. (2026) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 Changes: selected measured sheets/cells, CSV conversion, concentration conversion
 to M, added source coordinates, and row/ID transformations for robustness tests.
 Original downloaded files are unmodified. No endorsement by the original authors
 is implied. Cite the original studies/datasets when using these measurements.
-"""
-    )
-    (ROOT / "docs/EVALUATION.md").write_text(
-        """# Evaluation protocol
-
-This is a public experimental-data pilot. Ten task scores are computed
-individually, with an aggregate mean over five study means. Each study has two
-related tasks; curves, derived endpoints and subset cases are not independent
-replicates. No confidence interval based on ten independent studies is justified.
-
-All inputs, expected outputs, reference programs and sources are public. Agent
-images exclude reference/test material, but this cannot undo prior exposure.
-Renaming IDs and taking measured subsets tests program reuse, not blind scientific
-generalization. A blind release requires held-out studies and independent reviewed
-labels, versioned acquisition metadata, a freeze date and an exposure policy.
-
-For any run record: repository commit, data/scoring version, Harbor version,
-model/provider, agent configuration, prompts, tools, resource limits, retries,
-randomness settings and costs. Report every trial, not only the best retry.
-Keep per-task metrics and logs with credentials removed. A missing task counts
-as zero. Do not pool results across synthetic v0.5 and experimental v0.6.
-
-Local tests check source cell provenance, numerical consistency, defective outputs
-and an alternative optimizer. They do not establish independent scientific
-adjudication or secure Harbor runtime integration. No real-agent baseline has yet
-been measured. Harbor + Docker end-to-end testing remains outstanding.
-
-Do not interpret the score as validated binding classification, drug candidacy,
-clinical utility, or proof of wet-lab reliability. The present score primarily
-measures reproducible numerical analysis under an explicit contract. Expanded
-biological decision scoring requires expert-reviewed evidence and orthogonal
-validation; these have not been fabricated to fill gaps in public datasets.
 """
     )
     (ROOT / "CONTRIBUTING.md").write_text(
@@ -369,24 +384,36 @@ Do not commit credentials, private evaluation data or unrelated run logs.
     (ROOT / "CHANGELOG.md").write_text(
         """# Changelog
 
+## 0.7.0 — 2026-11-12
+
+- Build ten SPR tasks from six studies: LRRK2/DARPin, designed macrocycles,
+  ISG65/C3, D-box peptides, STAT3, and TBXT.
+- Bundle seven attributable original files with exact source-cell mappings,
+  hashes, licenses and reproducible extraction of 55 sensorgrams, 57 affinity
+  endpoints and 23,040 TBXT report-point rows.
+- Add ISG65 C3b/C3d trace tasks and an ISG65 apparent-affinity task (measured
+  end-of-association endpoints), plus D20/D21 trace and affinity tasks.
+- Add a STAT3 binding/non-binding task with author-scoped DPP/S3I-201 calls,
+  and a TBXT operational binding-triage task with a disclosed 10 RU threshold,
+  input hashes and a binding-evidence scoring category.
+- Keep source-fitted curves out of every task input; scope claims disclose
+  single-concentration and derived-endpoint limits.
+- Remove the STAT3, CYP3A4, KLHDC2 and TBXT small-molecule tasks from the active
+  set. The archived v0.6 release remains in git history.
+- Limit claims explicitly: no expert-adjudicated binding/advancement ground
+  truth, no agent baseline, and Harbor + Docker end-to-end validation still
+  outstanding.
+
 ## 0.6.0 — 2026-11-11
 
-- Replace the active synthetic task set with ten experimental-data tasks from
-  five protein-target drug-discovery studies.
-- Bundle six attributable original files, exact source-cell mappings, hashes,
-  licenses and reproducible extraction of 49 sensorgrams and report-point data.
-- Exclude fitted predictions, non-SPR assays, nucleic-acid and aptamer examples.
-- Score numerical workflows, apparent equilibrium fits, reference audits and
-  explicit scope constraints automatically on a 0–1 scale; no report score.
-- Add measured-subset reruns, source-cell audits and scoring regression tests.
-- Limit claims explicitly: no expert-adjudicated binding/advancement ground truth,
-  no agent baseline, and Harbor + Docker end-to-end validation still outstanding.
-- Preserve the synthetic predecessor at tag v0.5.0-synthetic. Scores are incompatible.
+- Experimental-data pilot with ten mixed small-molecule/protein SPR tasks.
 """
     )
     for x in catalog:
-        p = ROOT / "tasks" / x["id"] / "environment/spec/SCORING.md"
-        p.write_text((ROOT / "SCORING.md").read_text())
+        (ROOT / "tasks" / x["id"] / "environment/spec/SCORING.md").write_text(
+            (ROOT / "SCORING.md").read_text()
+        )
+
 
 
 if __name__ == "__main__":

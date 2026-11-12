@@ -1,23 +1,18 @@
 [
   {
-    "file": "cyp3a4-affinity.csv",
-    "rows": 8,
-    "sha256": "43728aa5e3bc9ffa7876a821f4ae80d5f808d736b7ba284b31945395c4682468"
+    "file": "dbox-affinity.csv",
+    "rows": 14,
+    "sha256": "05d8f0e7c6127d1b73b13ae32b97451d73e6407d855d5383484dc05b3fbbf4fc"
   },
   {
-    "file": "cyp3a4-traces.csv",
-    "rows": 12770,
-    "sha256": "31b29a5062f19c7c90a1c19f5f8fa7dfbf24db16c47413dd9bd1bbc9e3b11e98"
+    "file": "isg65-affinity.csv",
+    "rows": 36,
+    "sha256": "43793147f686dfe2a742ed1168e3d616d260cc92cedbab148a988899514a175b"
   },
   {
-    "file": "klhdc2-analogs.csv",
-    "rows": 50190,
-    "sha256": "3283aa00b267dabb4470cbe4aaebdd912155882a08efdcfd2914d9360d53f8d8"
-  },
-  {
-    "file": "klhdc2-hits.csv",
-    "rows": 54626,
-    "sha256": "9003bf6c7ec5bb7e35c0cee433e50d936805e784a5a72c8aa51411eb44357ee6"
+    "file": "isg65-traces.csv",
+    "rows": 10850,
+    "sha256": "7d6d25598c0fe61a5a8743c2118877b7b2a0c5a795e640842eb132e243665dc0"
   },
   {
     "file": "lrrk2-affinity.csv",
@@ -28,6 +23,11 @@
     "file": "lrrk2-traces.csv",
     "rows": 48314,
     "sha256": "f140c9327205a8470a62d02d31ca8bc4c8f4f852121dfd9beda84e27e6bb7a2a"
+  },
+  {
+    "file": "macrocycle-traces.csv",
+    "rows": 7669,
+    "sha256": "1705ad88c0ddb0ef284c5b874d7caaf03a08abc16e27e635c259647010b8ffa0"
   },
   {
     "file": "stat3.csv",

@@ -1,12 +1,12 @@
 {
-  "cyp3a4-affinity": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "cyp3a4-sparse": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "klhdc2-analogs": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "klhdc2-hits": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "dbox-d20-affinity": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "dbox-d21-affinity": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "isg65-affinity": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "isg65-c3b-traces": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "isg65-c3d-traces": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
   "lrrk2-affinity": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
   "lrrk2-traces": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
+  "macrocycle-traces": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
   "stat3-binding": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "stat3-flow": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "tbxt-reference": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed",
-  "tbxt-triage": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed"
+  "tbxt-binding": "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed"
 }

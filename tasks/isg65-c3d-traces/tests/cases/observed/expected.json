@@ -1,0 +1,231 @@
+{
+  "records": [
+    {
+      "id": "ISG65-L2N188A-C3d-c23",
+      "n": 302,
+      "concentration_M": 1e-05,
+      "start_s": -60.08,
+      "end_s": 240.92,
+      "initial_median_RU": 0.012573225,
+      "initial_sd_RU": 0.03967892091051969,
+      "p95_delta_RU": 126.21952677499999,
+      "tail_delta_RU": 1.118103775,
+      "auc_RU_s": 15466.348123165857
+    },
+    {
+      "id": "ISG65-L2N188A-C3d-c24",
+      "n": 301,
+      "concentration_M": 5e-06,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.0704342,
+      "initial_sd_RU": 0.017865597631684847,
+      "p95_delta_RU": 87.61613419999999,
+      "tail_delta_RU": 1.4420906999999998,
+      "auc_RU_s": 10837.549083765629
+    },
+    {
+      "id": "ISG65-L2N188A-C3d-c25",
+      "n": 301,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.0332034,
+      "initial_sd_RU": 0.017305892926595567,
+      "p95_delta_RU": 57.3249034,
+      "tail_delta_RU": 1.1493254000000002,
+      "auc_RU_s": 7118.747534813572
+    },
+    {
+      "id": "ISG65-L2N188A-C3d-c26",
+      "n": 301,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.039184449999999996,
+      "initial_sd_RU": 0.02601029444611933,
+      "p95_delta_RU": 35.11578445,
+      "tail_delta_RU": 1.0469926500000002,
+      "auc_RU_s": 4358.6133337436795
+    },
+    {
+      "id": "ISG65-L2N188A-C3d-c27",
+      "n": 301,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.00927734,
+      "initial_sd_RU": 0.014761449670236997,
+      "p95_delta_RU": 20.17597734,
+      "tail_delta_RU": 0.7384410400000001,
+      "auc_RU_s": 2518.983406070309
+    },
+    {
+      "id": "ISG65-L2N188A-C3d-c28",
+      "n": 301,
+      "concentration_M": 3.125e-07,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.058178900000000006,
+      "initial_sd_RU": 0.024828890746939287,
+      "p95_delta_RU": 11.4592789,
+      "tail_delta_RU": 0.80069095,
+      "auc_RU_s": 1470.2790537970086
+    },
+    {
+      "id": "ISG65-WT-C3d-c1",
+      "n": 302,
+      "concentration_M": 1e-05,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.276123,
+      "initial_sd_RU": 0.05418072438228815,
+      "p95_delta_RU": 123.824973,
+      "tail_delta_RU": 17.019168,
+      "auc_RU_s": 16691.75360521453
+    },
+    {
+      "id": "ISG65-WT-C3d-c2",
+      "n": 302,
+      "concentration_M": 5e-06,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.6378174999999999,
+      "initial_sd_RU": 0.04953167999029031,
+      "p95_delta_RU": 82.1262325,
+      "tail_delta_RU": 13.2582325,
+      "auc_RU_s": 11129.4603751358
+    },
+    {
+      "id": "ISG65-WT-C3d-c3",
+      "n": 302,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.775757,
+      "initial_sd_RU": 0.04514517958935664,
+      "p95_delta_RU": 52.091497,
+      "tail_delta_RU": 10.002484999999998,
+      "auc_RU_s": 7158.78755187558
+    },
+    {
+      "id": "ISG65-WT-C3d-c4",
+      "n": 302,
+      "concentration_M": 1.25e-06,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.525757,
+      "initial_sd_RU": 0.03397978806213141,
+      "p95_delta_RU": 31.264541999999995,
+      "tail_delta_RU": 7.073388,
+      "auc_RU_s": 4346.506530398703
+    },
+    {
+      "id": "ISG65-WT-C3d-c5",
+      "n": 302,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.44811999999999996,
+      "initial_sd_RU": 0.03446162646874132,
+      "p95_delta_RU": 17.34829,
+      "tail_delta_RU": 4.523211500000001,
+      "auc_RU_s": 2474.76739405493
+    },
+    {
+      "id": "ISG65-WT-C3d-c6",
+      "n": 302,
+      "concentration_M": 3.125e-07,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.21838400000000002,
+      "initial_sd_RU": 0.027883045789794732,
+      "p95_delta_RU": 9.247174,
+      "tail_delta_RU": 2.7171030000000003,
+      "auc_RU_s": 1335.45209745084
+    },
+    {
+      "id": "ISG65-dL2-C3d-c12",
+      "n": 301,
+      "concentration_M": 1e-05,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.110596,
+      "initial_sd_RU": 0.01771423944363983,
+      "p95_delta_RU": 128.940404,
+      "tail_delta_RU": 5.8314515,
+      "auc_RU_s": 16361.911548895403
+    },
+    {
+      "id": "ISG65-dL2-C3d-c13",
+      "n": 301,
+      "concentration_M": 5e-06,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.152344,
+      "initial_sd_RU": 0.019753473347876395,
+      "p95_delta_RU": 89.093356,
+      "tail_delta_RU": 4.960418499999999,
+      "auc_RU_s": 11392.364131192024
+    },
+    {
+      "id": "ISG65-dL2-C3d-c14",
+      "n": 301,
+      "concentration_M": 2.5e-06,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.164307,
+      "initial_sd_RU": 0.01675625330844703,
+      "p95_delta_RU": 58.479193,
+      "tail_delta_RU": 3.9998465000000003,
+      "auc_RU_s": 7555.490568782203
+    },
+    {
+      "id": "ISG65-dL2-C3d-c15",
+      "n": 301,
+      "concentration_M": 1.25e-06,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.15271,
+      "initial_sd_RU": 0.013550622496771136,
+      "p95_delta_RU": 35.80259,
+      "tail_delta_RU": 3.0565114999999996,
+      "auc_RU_s": 4649.947202255635
+    },
+    {
+      "id": "ISG65-dL2-C3d-c16",
+      "n": 301,
+      "concentration_M": 6.25e-07,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.107056,
+      "initial_sd_RU": 0.00842641192207573,
+      "p95_delta_RU": 20.772744,
+      "tail_delta_RU": 2.169359,
+      "auc_RU_s": 2730.5864053633186
+    },
+    {
+      "id": "ISG65-dL2-C3d-c17",
+      "n": 301,
+      "concentration_M": 3.125e-07,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.144092,
+      "initial_sd_RU": 0.011506644855885385,
+      "p95_delta_RU": 12.403108,
+      "tail_delta_RU": 1.8516529999999998,
+      "auc_RU_s": 1694.8523021509955
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "source_fit_columns_used": false,
+    "kinetic_rates_identifiable": false
+  },
+  "input_sha256": {
+    "config.json": "699492eb99c9379d475b4b3ea01c0d39d2afceef4479a032d4bca1e960a94866",
+    "measurements.csv": "600f9a8e14eb3d3bb08748b5c21252c49a91f9d570b2fcab00b0a15149f495dd"
+  }
+}

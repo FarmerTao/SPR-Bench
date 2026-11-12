@@ -1,0 +1,75 @@
+{
+  "records": [
+    {
+      "id": "ISG65-L2N188A-C3b",
+      "n": 6,
+      "KD_M": 2.545281503511852e-05,
+      "Rmax_RU": 244.05452060733882,
+      "offset_RU": 4.6725284612820825,
+      "rmse_RU": 2.284765903018676,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 0.3928838514012104
+    },
+    {
+      "id": "ISG65-L2N188A-C3d",
+      "n": 6,
+      "KD_M": 1.9170116209203946e-05,
+      "Rmax_RU": 354.7249092966219,
+      "offset_RU": 6.411851502277429,
+      "rmse_RU": 3.089371615145311,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 0.5216452467407999
+    },
+    {
+      "id": "ISG65-WT-C3b",
+      "n": 6,
+      "KD_M": 4.732470189327971e-06,
+      "Rmax_RU": 205.81871633237094,
+      "offset_RU": 2.344738368151463,
+      "rmse_RU": 0.7822051294117649,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 2.1130613823095286
+    },
+    {
+      "id": "ISG65-WT-C3d",
+      "n": 6,
+      "KD_M": 1.2090347668565535e-05,
+      "Rmax_RU": 281.34350586292567,
+      "offset_RU": 4.245842891034035,
+      "rmse_RU": 2.4106422791130755,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 0.8271060745423919
+    },
+    {
+      "id": "ISG65-dL2-C3b",
+      "n": 6,
+      "KD_M": 7.924393255269917e-06,
+      "Rmax_RU": 148.45172837608615,
+      "offset_RU": 1.9795679591368487,
+      "rmse_RU": 0.46017689272835927,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 1.2619262671435134
+    },
+    {
+      "id": "ISG65-dL2-C3d",
+      "n": 6,
+      "KD_M": 8.586260384038697e-06,
+      "Rmax_RU": 238.05673271884123,
+      "offset_RU": 4.259015957448101,
+      "rmse_RU": 1.2859510969784476,
+      "max_concentration_M": 9.999999999999999e-06,
+      "max_concentration_over_KD": 1.1646513793815703
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "affinity_type": "apparent_steady_state",
+    "source_fit_is_ground_truth": false
+  },
+  "input_sha256": {
+    "config.json": "cd66f845f42c7d2f6308918f8596d310f6d95c00e049140fd7ab19303c0a270b",
+    "measurements.csv": "43793147f686dfe2a742ed1168e3d616d260cc92cedbab148a988899514a175b"
+  }
+}

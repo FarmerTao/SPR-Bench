@@ -10,6 +10,16 @@
     "bytes": 145294
   },
   {
+    "file": "originals/tbxt.xlsx",
+    "source": "TBXT",
+    "doi": "https://doi.org/10.5281/zenodo.6394811",
+    "download_url": "https://zenodo.org/api/records/6394811/files/20201028%20LMW%20binding%20affinity%20screen%20for%20136%20UNC%20and%20Piramal%20compounds.xlsx/content",
+    "license": "CC-BY-2.0",
+    "authors": "Davis-Gilbert, Drewry, Hossain et al., 2022",
+    "sha256": "f010cca202fb4174dadd987425d45e2d3a75d7eea2a85a5cb454d5df70e08e53",
+    "bytes": 9108722
+  },
+  {
     "file": "originals/lrrk2.zip",
     "source": "LRRK2",
     "doi": "https://doi.org/10.5281/zenodo.10471514",
@@ -20,43 +30,43 @@
     "bytes": 2316436
   },
   {
-    "file": "originals/cyp3a4.xlsx",
-    "source": "CYP3A4",
-    "doi": "https://doi.org/10.5281/zenodo.14721783",
-    "download_url": "https://zenodo.org/api/records/14721783/files/Figure%20S6%20Fluconazole%20SPR%20titrations.xlsx/content",
+    "file": "originals/macrocycle-fig2.xlsx",
+    "source": "Macrocycle",
+    "doi": "https://doi.org/10.1038/s41589-025-01929-w",
+    "download_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41589-025-01929-w/MediaObjects/41589_2025_1929_MOESM4_ESM.xlsx",
     "license": "CC-BY-4.0",
-    "authors": "Knetsch et al., 2025",
-    "sha256": "89f69d55df6ebd3a06cad2ecf01c3f5f4286347387b45f98fbc611f44eb93f29",
-    "bytes": 1706313
+    "authors": "Rettie et al., 2025",
+    "sha256": "36e1c96e9603fbcf0c9eacac9f3c72aa479ab30dd8f757a0ee28fa686d274f50",
+    "bytes": 389575
   },
   {
-    "file": "originals/klhdc2-hits.xlsx",
-    "source": "KLHDC2",
-    "doi": "https://doi.org/10.7554/eLife.106844",
-    "download_url": "https://cdn.elifesciences.org/articles/106844/elife-106844-fig2-data1-v1.xlsx",
+    "file": "originals/macrocycle-fig4.xlsx",
+    "source": "Macrocycle",
+    "doi": "https://doi.org/10.1038/s41589-025-01929-w",
+    "download_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41589-025-01929-w/MediaObjects/41589_2025_1929_MOESM6_ESM.xlsx",
     "license": "CC-BY-4.0",
-    "authors": "Zhou, Zhou et al., 2025",
-    "sha256": "bc1b7ff69f55c5c7febb7ca0a05ff39f88496eef9694f5a45f14f5329b5c245c",
-    "bytes": 553634
+    "authors": "Rettie et al., 2025",
+    "sha256": "aec410468f8730c6306eaf50154985b24c65c11612308349d1ddc3d510f11321",
+    "bytes": 184250
   },
   {
-    "file": "originals/klhdc2-analogs.xlsx",
-    "source": "KLHDC2",
-    "doi": "https://doi.org/10.7554/eLife.106844",
-    "download_url": "https://cdn.elifesciences.org/articles/106844/elife-106844-fig3-data1-v1.xlsx",
+    "file": "originals/isg65-fig2-data1.xlsx",
+    "source": "ISG65",
+    "doi": "https://doi.org/10.7554/eLife.88960",
+    "download_url": "https://cdn.elifesciences.org/articles/88960/elife-88960-fig2-data1-v1.xlsx",
     "license": "CC-BY-4.0",
-    "authors": "Zhou, Zhou et al., 2025",
-    "sha256": "4af37ee7723dde7f21e5f4bcf7bcd4ecfc9a187d323e28b29df2273c9ef42fc5",
-    "bytes": 442591
+    "authors": "Cook, Carrington, Higgins, 2024",
+    "sha256": "82f9885508388e446ebd013cc9952bf86a544df36d81a69d3b1612e9c711e5a0",
+    "bytes": 217765
   },
   {
-    "file": "originals/tbxt.xlsx",
-    "source": "TBXT",
-    "doi": "https://doi.org/10.5281/zenodo.6394811",
-    "download_url": "https://zenodo.org/api/records/6394811/files/20201028%20LMW%20binding%20affinity%20screen%20for%20136%20UNC%20and%20Piramal%20compounds.xlsx/content",
-    "license": "CC-BY-2.0",
-    "authors": "Davis-Gilbert, Drewry, Hossain et al., 2022",
-    "sha256": "f010cca202fb4174dadd987425d45e2d3a75d7eea2a85a5cb454d5df70e08e53",
-    "bytes": 9108722
+    "file": "originals/dbox-fig4-data1.xlsx",
+    "source": "D-box",
+    "doi": "https://doi.org/10.7554/eLife.104238",
+    "download_url": "https://cdn.elifesciences.org/articles/104238/elife-104238-fig4-data1-v1.xlsx",
+    "license": "CC-BY-4.0",
+    "authors": "Eapen et al., 2026",
+    "sha256": "3d4a19398f04fb6f3dd0bc919a819535aea607f389b4a5e467126cda69b351cc",
+    "bytes": 363946
   }
 ]

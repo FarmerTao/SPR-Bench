@@ -100,6 +100,7 @@ def analyze(data):
                 ),
             )
             pairs = {}
+            # Contract: the correction audit is restricted to binding-late rows.
             for r in late:
                 pairs.setdefault((r["run"], r["cycle"], r["channel"], r["window"]), {})[
                     r["sensorgram_type"]
@@ -133,6 +134,26 @@ def analyze(data):
                 else "no_measurable_binding_under_tested_conditions"
             )
             for k, v in slopes.items()
+        }
+    if cfg["task"] == "tbxt-binding":
+        threshold = float(cfg["binding_assessment_contract"]["threshold_RU"])
+        by_compound = {}
+        for r in rows:
+            if (
+                "binding late" in r["window"].lower()
+                and r["sensorgram_type"] == "Corrected"
+            ):
+                c = r["compound"]
+                by_compound[c] = max(
+                    by_compound.get(c, float("-inf")), float(r["response_RU"])
+                )
+        assessments = {
+            c: (
+                "interaction_supported"
+                if by_compound.get(c, float("-inf")) >= threshold
+                else "no_measurable_binding_under_operational_threshold"
+            )
+            for c in sorted({r["compound"] for r in rows})
         }
     return {
         "records": records,

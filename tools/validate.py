@@ -6,7 +6,22 @@ import numpy as np
 import openpyxl
 from scipy.optimize import curve_fit
 from ingest import ROOT, dump
-from verifier import evaluate, score
+from verifier import evaluate, prepare_submission, score
+
+
+def audit_submission_hardening():
+    with tempfile.TemporaryDirectory(prefix="spr-submission-") as tmp:
+        root = Path(tmp) / "submission"
+        root.mkdir()
+        (root / "run.py").write_text("print('ok')\n")
+        assert prepare_submission(root / "run.py") == (root / "run.py").resolve()
+        (root / "escape").symlink_to("/")
+        try:
+            prepare_submission(root / "run.py")
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("symlinked submission accepted")
 
 
 def audit_sources():
@@ -21,10 +36,11 @@ def audit_sources():
         )
         for k, v in [
             ("STAT3", "stat3.xlsx"),
-            ("CYP3A4", "cyp3a4.xlsx"),
-            ("KLHDC2-hits", "klhdc2-hits.xlsx"),
-            ("KLHDC2-analogs", "klhdc2-analogs.xlsx"),
             ("TBXT", "tbxt.xlsx"),
+            ("Macrocycle-Fig2", "macrocycle-fig2.xlsx"),
+            ("Macrocycle-Fig4", "macrocycle-fig4.xlsx"),
+            ("ISG65", "isg65-fig2-data1.xlsx"),
+            ("D-box", "dbox-fig4-data1.xlsx"),
         ]
     }
     sheets = {}
@@ -43,30 +59,26 @@ def audit_sources():
             source = row["source"]
             name = row["source_sheet"]
             k = source
-            if source == "KLHDC2":
-                k += "-hits" if "hits" in p.name else "-analogs"
             if (k, name) not in sheets:
                 sheets[k, name] = list(books[k][name].values)
             original = sheets[k, name][int(row["source_row"]) - 1]
             col = int(row.get("source_column", 10)) - 1
             assert float(original[col]) == float(row["response_RU"]), (p, row)
             if "time_s" in row:
-                tc = 6 if source == "TBXT" else col - 1 if source == "LRRK2" else 0
+                tc = (
+                    6
+                    if source == "TBXT"
+                    else col - 1
+                    if source == "LRRK2" or source.startswith("Macrocycle")
+                    else 0
+                )
                 assert float(original[tc]) == float(row["time_s"])
-            if source == "CYP3A4":
-                assert col <= 8, "source fitted columns entered input"
-            if source == "KLHDC2":
-                assert name in [
-                    "Figure 2E",
-                    "Figure 2F",
-                    "Figure 3F",
-                    "Figure 3G",
-                ], "non-SPR worksheet entered input"
             count += 1
     return count
 
 
 def main():
+    audit_submission_hardening()
     n = audit_sources()
     results = {}
     semantics = {}
@@ -77,8 +89,13 @@ def main():
                 task / "solution/run.py", task / "tests", tmp / task.name, isolate=False
             )
             assert abs(report["reward"] - 1) < 1e-12, (task.name, report["reward"])
+            assert abs(report["analysis_reward"] - 1) < 1e-12, (
+                task.name,
+                report["analysis_reward"],
+            )
             results[task.name] = {
                 "reward": report["reward"],
+                "analysis_reward": report.get("analysis_reward"),
                 "cases": len(report["cases"]),
             }
             case = task / "tests/cases/observed"
@@ -120,7 +137,7 @@ def main():
                 "empty, duplicate, nonfinite, missing records, fixed output, wrong response checks passed"
             )
         alternatives = {}
-        for name in ["cyp3a4-affinity", "lrrk2-affinity"]:
+        for name in ["dbox-d20-affinity", "lrrk2-affinity"]:
             p = ROOT / "tasks" / name / "environment/data"
             rows = list(csv.DictReader((p / "measurements.csv").open()))
             x = np.array([float(r["concentration_M"]) * 1e6 for r in rows])
@@ -172,7 +189,8 @@ def main():
     )
     dump(ROOT / "scoring_validation.json", semantics)
     print(
-        f"PASS: {n} source measurement cells, 10 tasks x 2 cases, scoring regressions, 2 alternative fits"
+        f"PASS: {n} source measurement cells, 10 tasks x 2 cases, scoring regressions, "
+        "submission symlink hardening, 2 alternative fits"
     )
 
 

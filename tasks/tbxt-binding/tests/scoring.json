@@ -1,0 +1,26 @@
+{
+  "fields": {
+    "coverage": [
+      "n",
+      "n_corrected_late",
+      "n_concentrations",
+      "max_concentration_M"
+    ],
+    "response": [
+      "max_corrected_RU",
+      "min_corrected_RU",
+      "mean_corrected_RU",
+      "max_reference_RU",
+      "dose_slope_RU_per_uM",
+      "max_reference_subtraction_error_RU"
+    ]
+  },
+  "weights": {
+    "coverage": 0.15,
+    "response": 0.5,
+    "provenance": 0.1,
+    "scope": 0.05,
+    "binding_evidence": 0.2
+  },
+  "kind": "report"
+}

@@ -12,41 +12,20 @@ TASKS = [
         "stat3.csv",
         "trace",
         "STAT3",
-        {
-            "DPP": "no_measurable_binding_under_tested_conditions",
-            "S3I-201": "source_supports_interaction_not_selectivity",
-        },
+        {},
         "Compare DPP and S3I-201 against mouse STAT3beta core 127-722. Distinguish a lack of measured response in this construct from a universal non-binder claim.",
     ),
     (
-        "stat3-flow",
-        "STAT3: audit flow-dependent responses",
-        "stat3.csv",
-        "trace",
-        "STAT3",
+        "tbxt-binding",
+        "TBXT: operational binding triage from corrected report points",
+        "tbxt.csv",
+        "report",
+        "TBXT",
         {
-            "flow_rates_are_independent_replicates": False,
-            "flow_effects_can_confound_kinetics": True,
+            "operational_threshold_RU": 10.0,
+            "labels_are_benchmark_rule_not_author_truth": True,
         },
-        "Compare the three flow rates for S3I-201. Quantify differences without treating flow conditions as biological replicates or estimating a concentration-series KD.",
-    ),
-    (
-        "cyp3a4-sparse",
-        "CYP3A4: reconstruct sparse observed sensorgrams",
-        "cyp3a4-traces.csv",
-        "trace",
-        "CYP3A4",
-        {"interpolated_missing_values": False, "source_fit_columns_used": False},
-        "Recover the eight fluconazole traces from sparse measured cells. Preserve each trace time grid and quantify its response without using the source fitted curves.",
-    ),
-    (
-        "cyp3a4-affinity",
-        "CYP3A4: audit apparent steady-state affinity",
-        "cyp3a4-affinity.csv",
-        "affinity",
-        "CYP3A4",
-        {"affinity_type": "apparent_steady_state", "kinetic_rates_identifiable": False},
-        "Fit the observed fluconazole concentration-response points, quantify residuals and concentration coverage. Do not interpret an apparent KD as target selectivity or a kinetic rate.",
+        "Compute corrected late-binding report points and classify each compound with the disclosed 10 RU operational threshold. This is a triage rule, not author-reported binding truth.",
     ),
     (
         "lrrk2-traces",
@@ -70,40 +49,76 @@ TASKS = [
         "Refit seven observed E11 equilibrium responses with a free offset. Report residuals and coverage; author-fitted parameters are a comparison, not ground truth.",
     ),
     (
-        "klhdc2-hits",
-        "KLHDC2: compare initial small-molecule hits",
-        "klhdc2-hits.csv",
+        "macrocycle-traces",
+        "Designed macrocycles: analyze SPR sensorgrams",
+        "macrocycle-traces.csv",
         "trace",
-        "KLHDC2",
-        {"compound_set": "1_and_2", "SPR_sheets_only": True},
-        "Compare measured sensorgrams for compounds 1 and 2. Avoid treating the neighboring fluorescence-polarization sheets as SPR data or treating representative traces as replicates.",
+        "Macrocycle",
+        {
+            "source_fit_columns_used": False,
+            "single_concentration_traces_do_not_establish_KD": True,
+        },
+        "Analyze measured SPR sensorgrams for three designed macrocyclic binders (MCB_D2/MCL1, MDB_D8/MDM2 and RBB_D10/RbtA). Report the benchmark trace summaries; do not use the source-fitted curves or treat a single-concentration trace as a KD measurement.",
     ),
     (
-        "klhdc2-analogs",
-        "KLHDC2: compare follow-up small molecules",
-        "klhdc2-analogs.csv",
+        "isg65-c3b-traces",
+        "ISG65 C3b binding: analyze SPR sensorgrams",
+        "isg65-traces.csv",
         "trace",
-        "KLHDC2",
-        {"compound_set": "5_and_6", "SPR_sheets_only": True},
-        "Analyze measured sensorgrams for compounds 5 and 6. Compare concentration-normalized evidence without inventing unreported controls or kinetic ground truth.",
+        "ISG65",
+        {
+            "source_fit_columns_used": False,
+            "kinetic_rates_identifiable": False,
+        },
+        "Analyze measured C3b-binding SPR sensorgrams for ISG65 WT, ISG65ΔL2 and ISG65 L2N188A. Report the benchmark trace summaries; do not use the source-fitted columns or infer kinetic rates.",
     ),
     (
-        "tbxt-reference",
-        "TBXT: audit experimental reference correction",
-        "tbxt.csv",
-        "report",
-        "TBXT",
-        {"data_type": "report_points", "kinetic_rates_identifiable": False},
-        "Join active, reference and reference-subtracted late-binding report points by run/cycle/channel/window. Audit correction arithmetic and retain compound/series identities.",
+        "isg65-c3d-traces",
+        "ISG65 C3d binding: analyze SPR sensorgrams",
+        "isg65-traces.csv",
+        "trace",
+        "ISG65",
+        {
+            "source_fit_columns_used": False,
+            "kinetic_rates_identifiable": False,
+        },
+        "Analyze measured C3d-binding SPR sensorgrams for ISG65 WT, ISG65ΔL2 and ISG65 L2N188A. Report the benchmark trace summaries; do not use the source-fitted columns or infer kinetic rates.",
     ),
     (
-        "tbxt-triage",
-        "TBXT: quantify corrected dose-response evidence",
-        "tbxt.csv",
-        "report",
-        "TBXT",
-        {"data_type": "report_points", "drug_readiness": "not_established"},
-        "Summarize corrected late-binding responses, reference binding and dose trends. These are screening-evidence metrics; a large response alone does not establish specific binding or justify a drug-development decision.",
+        "isg65-affinity",
+        "ISG65: apparent steady-state affinity",
+        "isg65-affinity.csv",
+        "affinity",
+        "ISG65",
+        {
+            "affinity_type": "apparent_steady_state",
+            "source_fit_is_ground_truth": False,
+        },
+        "Fit the six observed ISG65 concentration-response series (C3b/C3d × WT/ΔL2/L2N188A) using the measured end-of-association responses. Report residuals and coverage; do not treat the fit as a kinetic mechanism.",
+    ),
+    (
+        "dbox-d20-affinity",
+        "D-box D20: fit apparent steady-state affinity",
+        "dbox-affinity.csv",
+        "affinity",
+        "D-box",
+        {
+            "affinity_type": "apparent_steady_state",
+            "source_fit_is_ground_truth": False,
+        },
+        "Fit the observed D20 concentration-response endpoints. Report residuals and coverage; an apparent KD does not establish a mechanism.",
+    ),
+    (
+        "dbox-d21-affinity",
+        "D-box D21: fit apparent steady-state affinity",
+        "dbox-affinity.csv",
+        "affinity",
+        "D-box",
+        {
+            "affinity_type": "apparent_steady_state",
+            "source_fit_is_ground_truth": False,
+        },
+        "Fit the observed D21 concentration-response endpoints. Report residuals and coverage; an apparent KD does not establish a mechanism.",
     ),
 ]
 CLAIMS = {
@@ -152,7 +167,7 @@ WEIGHTS = {"coverage": 0.20, "response": 0.65, "provenance": 0.10, "scope": 0.05
 CONTRACT = """# Executable output contract
 Create `/app/submission/run.py`, runnable as:
 `python run.py --input-dir INPUT --output-dir OUTPUT`.
-It must read the supplied directory and write `OUTPUT/results.json`. Use Python, NumPy, SciPy, pandas or standard libraries. No network is available. The verifier reruns your program on the visible input and a deterministic subset with renamed IDs and reordered rows. All response values remain real measured values; these are robustness cases, not independent experiments. Do not hardcode record IDs or results.
+It must read the supplied directory and write `OUTPUT/results.json`. Use Python, NumPy, SciPy, pandas or standard libraries. No network is available. The verifier reruns your program on the visible input and a deterministic subset with renamed IDs and reordered rows. Compound names and source-sheet metadata may also be aliased in the subset. All response values remain real measured values; these are robustness cases, not independent experiments. Do not hardcode record IDs or results.
 
 JSON schema: `{"records":[{"id":"...", ...numeric fields...}], "claims":{...}, "input_sha256":{"config.json":"...","measurements.csv":"..."}}`. Include exactly the required records, no duplicate IDs. Hash every input file. `claims` must retain the explicitly supplied evidence-scope constraints in config.json; these are disclosed guardrails, not a hidden biological reasoning test. The 5% scope score is a contract check. No prose report is scored.
 
@@ -162,13 +177,16 @@ For trace tasks group by trace_id; sort by time_s. Output n, concentration_M, st
 
 For affinity tasks group by compound. Fit unweighted least squares R = Rmax*C/(KD+C)+offset to the provided observed endpoints. Use Rmax >= 0, free offset and KD in [1e-12,1] M. Report n, KD_M, Rmax_RU, offset_RU, rmse_RU (sqrt(SSE/n)), max_concentration_M, max_concentration_over_KD. Fitting this descriptive model does not validate its mechanism. These two small datasets do not establish kon/koff, selectivity, independent uncertainty, or drug readiness.
 
-For report tasks group by compound + "|" + channel, keeping the original compound identifiers (including suffixes). Use rows whose window contains "binding late" case-insensitively. Retain only groups containing Corrected rows. Output n (all input rows in group), n_corrected_late, n_concentrations (unique corrected-late concentrations), max_concentration_M, max_corrected_RU, min_corrected_RU, mean_corrected_RU, max_reference_RU (Reference late rows), dose_slope_RU_per_uM (ordinary linear regression with intercept over corrected-late responses; 0 if one concentration). For max_reference_subtraction_error_RU match run/cycle/channel/window and take max(abs(Active - Reference - Reference subtracted)); use null if no complete triplet. This checks provided relative report-point arithmetic, not unavailable raw sensorgrams. Do not assume solvent-corrected values equal reference subtraction.
+For tbxt-binding, classify each compound by the maximum Corrected response among binding-late rows: at least 10 RU means `interaction_supported`; otherwise `no_measurable_binding_under_operational_threshold`. This is a disclosed operational triage rule, not author-reported binding truth.
+
+For report tasks group by compound + "|" + channel, keeping the original compound identifiers (including suffixes). Use rows whose window contains "binding late" case-insensitively. Retain only groups containing Corrected rows. Output n (all input rows in group), n_corrected_late, n_concentrations (unique corrected-late concentrations), max_concentration_M, max_corrected_RU, min_corrected_RU, mean_corrected_RU, max_reference_RU (Reference late rows), dose_slope_RU_per_uM (ordinary linear regression with intercept over corrected-late responses; 0 if one concentration). For max_reference_subtraction_error_RU, among rows whose window contains "binding late", match run/cycle/channel/window and take max(abs(Active - Reference - Reference subtracted)); use null if no complete triplet. This checks provided relative report-point arithmetic, not unavailable raw sensorgrams. Do not assume solvent-corrected values equal reference subtraction.
 
 Numerical scoring tolerances: counts exact; concentration/time values rtol=1e-6 with atol=1e-15 for concentration and 1e-6 seconds for time; trace/report response summaries rtol=1e-4, atol=1e-4; affinity parameter/reconstruction summaries rtol=0.02, atol=1e-5 RU (KD atol=1e-12 M). Nonfinite values and duplicate JSON keys are invalid. See SCORING.md for weights and limits.
 """
 
 
 def main():
+    (ROOT / "CONTRACT.md").write_text(CONTRACT)
     catalog = []
     for ix, (name, title, file, kind, study, claims, question) in enumerate(TASKS):
         root = ROOT / "tasks" / name
@@ -178,8 +196,14 @@ def main():
         for p in [env / "data", env / "spec", test / "cases", sol]:
             p.mkdir(parents=True, exist_ok=True)
         rows = list(csv.DictReader((ROOT / "data" / file).open()))
-        if name == "stat3-flow":
-            rows = [r for r in rows if r["compound"] == "S3I-201"]
+        if name == "isg65-c3b-traces":
+            rows = [r for r in rows if r["target"] == "C3b"]
+        if name == "isg65-c3d-traces":
+            rows = [r for r in rows if r["target"] == "C3d"]
+        if name.startswith("dbox-d20"):
+            rows = [r for r in rows if r["compound"] == "D20"]
+        if name.startswith("dbox-d21"):
+            rows = [r for r in rows if r["compound"] == "D21"]
         if name == "stat3-binding":
             claims = {}
         config = dict(
@@ -195,6 +219,17 @@ def main():
                 ],
                 "construct": "mouse STAT3beta core 127-722",
                 "methods": "Double referenced; association 60 seconds, dissociation 600 seconds. Three flow rates are conditions, not replicates. Evaluate specific interaction patterns, not response sign alone.",
+            }
+        if name == "tbxt-binding":
+            config["binding_assessment_contract"] = {
+                "keys": "each distinct compound present in measurements.csv",
+                "allowed": [
+                    "interaction_supported",
+                    "no_measurable_binding_under_operational_threshold",
+                ],
+                "threshold_RU": 10.0,
+                "rule": "classify each compound by the maximum Corrected response among binding-late rows; >= 10 RU => interaction_supported, otherwise no_measurable_binding_under_operational_threshold",
+                "methods": "This is a disclosed operational triage rule, not author-reported binding truth.",
             }
         write(env / "data/measurements.csv", rows)
         dump(env / "data/config.json", config)
@@ -218,32 +253,70 @@ def main():
                 for x in r:
                     x[key] = mapping[x[key]]
                 r.reverse()
+            compound_map = {}
+            binding_labels = {}
+            if name in ("stat3-binding", "tbxt-binding"):
+                if name == "stat3-binding":
+                    binding_labels = {
+                        c: (
+                            "interaction_supported"
+                            if c == "S3I-201"
+                            else "no_measurable_binding_under_tested_conditions"
+                        )
+                        for c in sorted({x["compound"] for x in r})
+                    }
+                else:
+                    by_compound = {}
+                    for x in r:
+                        if (
+                            "binding late" in x["window"].lower()
+                            and x["sensorgram_type"] == "Corrected"
+                        ):
+                            c = x["compound"]
+                            by_compound[c] = max(
+                                by_compound.get(c, float("-inf")),
+                                float(x["response_RU"]),
+                            )
+                    binding_labels = {
+                        c: (
+                            "interaction_supported"
+                            if by_compound.get(c, float("-inf")) >= 10.0
+                            else "no_measurable_binding_under_operational_threshold"
+                        )
+                        for c in sorted({x["compound"] for x in r})
+                    }
+                if case == "subset":
+                    compound_map = {
+                        c: f"sample-C{i+1:03d}"
+                        for i, c in enumerate(sorted(binding_labels))
+                    }
+                    for x in r:
+                        x["compound"] = compound_map[x["compound"]]
+                        # Do not leave the original compound recoverable from
+                        # subset metadata; the binding call must come from curves.
+                        x["source_sheet"] = "anonymized"
+                        x["source_row"] = "0"
+                        x["source_column"] = "0"
             write(d / "measurements.csv", r)
             dump(d / "config.json", config)
             expected = analyze(d)
-            if name == "stat3-binding":
+            if name in ("stat3-binding", "tbxt-binding"):
                 expected["binding_assessments"] = {
-                    k: (
-                        "interaction_supported"
-                        if k == "S3I-201"
-                        else "no_measurable_binding_under_tested_conditions"
-                    )
-                    for k in sorted({x["compound"] for x in r})
+                    (compound_map[c] if case == "subset" else c): label
+                    for c, label in binding_labels.items()
                 }
             dump(casepath / "expected.json", expected)
         weights = dict(WEIGHTS)
         if "affinity" in name:
             weights.update(coverage=0.15, response=0.70)
-        if name == "stat3-binding":
+        if name in ("stat3-binding", "tbxt-binding"):
             weights.update(coverage=0.15, response=0.50, binding_evidence=0.20)
-        if name == "tbxt-reference":
-            weights.update(coverage=0.25, response=0.60)
         dump(
             test / "scoring.json", dict(fields=FIELDS[kind], weights=weights, kind=kind)
         )
         (env / "spec/CONTRACT.md").write_text(CONTRACT)
         (root / "instruction.md").write_text(
-            f"# {title}\n\n{question}\n\nMeasured data are in `/app/data`. Read `/app/spec/CONTRACT.md` and implement the reproducible analysis program. No narrative report is graded. Input responses are experimental; no simulated curves are included.\n"
+            f"# {title}\n\n{question}\n\nMeasured data are in `/app/data`. Read `/app/spec/CONTRACT.md` and implement the reproducible analysis program. No narrative report is graded. Input responses are experimental; no simulated curves are included. Identifiers may be aliased in the robustness subset; do not key analysis off names.\n"
         )
         (env / "Dockerfile").write_text(
             'FROM python:3.12.10-slim\nWORKDIR /app\nRUN pip install --no-cache-dir numpy==2.2.6 scipy==1.15.3 pandas==2.2.3 matplotlib==3.10.3\nCOPY data /app/data\nCOPY spec /app/spec\nRUN mkdir -p /app/submission /app/output\nCMD ["bash"]\n'

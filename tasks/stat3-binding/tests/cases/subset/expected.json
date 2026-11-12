@@ -62,8 +62,8 @@
     }
   ],
   "binding_assessments": {
-    "DPP": "no_measurable_binding_under_tested_conditions",
-    "S3I-201": "interaction_supported"
+    "sample-C001": "no_measurable_binding_under_tested_conditions",
+    "sample-C002": "interaction_supported"
   },
   "claims": {
     "drug_readiness": "not_established",
@@ -71,6 +71,6 @@
   },
   "input_sha256": {
     "config.json": "efeb1e8d425612070a22c0755da80762df331cf40c736d48c7aa508aa4d4d070",
-    "measurements.csv": "642ce01920f3ecfd0d38a9dcc04e4195911cb4f0880b7c54102b64770c0ff3e4"
+    "measurements.csv": "5ca1c62863e25682ecb6930af58592b1ebcce4b47419dc596afb9f7a7e8d9562"
   }
 }

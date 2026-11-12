@@ -5,3 +5,5 @@ __pycache__/
 outputs/
 jobs/
 *.egg-info/
+.uvcache/
+.pytest_cache/

@@ -28,34 +28,6 @@ def sheet(file, name):
     )
 
 
-def traces(file, names, source, target, scale=1e-9):
-    out = []
-    for name, compound in names:
-        r = sheet(file, name)
-        for col, header in enumerate(r[0][1:], 1):
-            concentration = float(re.search(r"[\d.]+", str(header))[0]) * scale
-            for rownum, row in enumerate(r[1:], 2):
-                if isinstance(row[0], (int, float)) and isinstance(
-                    row[col], (int, float)
-                ):
-                    out.append(
-                        dict(
-                            trace_id=f"{compound}-{col}",
-                            compound=compound,
-                            target=target,
-                            concentration_M=concentration,
-                            flow_uL_min="",
-                            time_s=row[0],
-                            response_RU=row[col],
-                            source=source,
-                            source_sheet=name,
-                            source_row=rownum,
-                            source_column=col + 1,
-                        )
-                    )
-    return out
-
-
 def main():
     d = ROOT / "data"
     sources = []
@@ -69,6 +41,14 @@ def main():
             "Mtwebana and Prinsloo, 2020",
         ),
         (
+            "tbxt.xlsx",
+            "TBXT",
+            "https://doi.org/10.5281/zenodo.6394811",
+            "https://zenodo.org/api/records/6394811/files/20201028%20LMW%20binding%20affinity%20screen%20for%20136%20UNC%20and%20Piramal%20compounds.xlsx/content",
+            "CC-BY-2.0",
+            "Davis-Gilbert, Drewry, Hossain et al., 2022",
+        ),
+        (
             "lrrk2.zip",
             "LRRK2",
             "https://doi.org/10.5281/zenodo.10471514",
@@ -77,36 +57,36 @@ def main():
             "Dederer et al., 2024",
         ),
         (
-            "cyp3a4.xlsx",
-            "CYP3A4",
-            "https://doi.org/10.5281/zenodo.14721783",
-            "https://zenodo.org/api/records/14721783/files/Figure%20S6%20Fluconazole%20SPR%20titrations.xlsx/content",
+            "macrocycle-fig2.xlsx",
+            "Macrocycle",
+            "https://doi.org/10.1038/s41589-025-01929-w",
+            "https://static-content.springer.com/esm/art%3A10.1038%2Fs41589-025-01929-w/MediaObjects/41589_2025_1929_MOESM4_ESM.xlsx",
             "CC-BY-4.0",
-            "Knetsch et al., 2025",
+            "Rettie et al., 2025",
         ),
         (
-            "klhdc2-hits.xlsx",
-            "KLHDC2",
-            "https://doi.org/10.7554/eLife.106844",
-            "https://cdn.elifesciences.org/articles/106844/elife-106844-fig2-data1-v1.xlsx",
+            "macrocycle-fig4.xlsx",
+            "Macrocycle",
+            "https://doi.org/10.1038/s41589-025-01929-w",
+            "https://static-content.springer.com/esm/art%3A10.1038%2Fs41589-025-01929-w/MediaObjects/41589_2025_1929_MOESM6_ESM.xlsx",
             "CC-BY-4.0",
-            "Zhou, Zhou et al., 2025",
+            "Rettie et al., 2025",
         ),
         (
-            "klhdc2-analogs.xlsx",
-            "KLHDC2",
-            "https://doi.org/10.7554/eLife.106844",
-            "https://cdn.elifesciences.org/articles/106844/elife-106844-fig3-data1-v1.xlsx",
+            "isg65-fig2-data1.xlsx",
+            "ISG65",
+            "https://doi.org/10.7554/eLife.88960",
+            "https://cdn.elifesciences.org/articles/88960/elife-88960-fig2-data1-v1.xlsx",
             "CC-BY-4.0",
-            "Zhou, Zhou et al., 2025",
+            "Cook, Carrington, Higgins, 2024",
         ),
         (
-            "tbxt.xlsx",
-            "TBXT",
-            "https://doi.org/10.5281/zenodo.6394811",
-            "https://zenodo.org/api/records/6394811/files/20201028%20LMW%20binding%20affinity%20screen%20for%20136%20UNC%20and%20Piramal%20compounds.xlsx/content",
-            "CC-BY-2.0",
-            "Davis-Gilbert, Drewry, Hossain et al., 2022",
+            "dbox-fig4-data1.xlsx",
+            "D-box",
+            "https://doi.org/10.7554/eLife.104238",
+            "https://cdn.elifesciences.org/articles/104238/elife-104238-fig4-data1-v1.xlsx",
+            "CC-BY-4.0",
+            "Eapen et al., 2026",
         ),
     ]
     for file, source, doi, url, license, authors in info:
@@ -124,6 +104,8 @@ def main():
             )
         )
     dump(ROOT / "sources/manifest.json", sources)
+
+    # STAT3: three nonempty sheets; numerical TIME and three flow-rate responses.
     rows = []
     for name, compound, conc in [
         ("80Um 30 60 100uLper min 5dpp", "DPP", 80),
@@ -151,57 +133,40 @@ def main():
                         )
                     )
     write(d / "stat3.csv", rows)
-    names = [("Figure 2E", "compound-1"), ("Figure 2F", "compound-2")]
-    write(d / "klhdc2-hits.csv", traces("klhdc2-hits.xlsx", names, "KLHDC2", "KLHDC2"))
-    write(
-        d / "klhdc2-analogs.csv",
-        traces(
-            "klhdc2-analogs.xlsx",
-            [("Figure 3F", "compound-5"), ("Figure 3G", "compound-6")],
-            "KLHDC2",
-            "KLHDC2",
-        ),
-    )
-    # Explicitly select observed columns 2..9, never the paired fitted columns.
-    r = sheet("cyp3a4.xlsx", "SPR titration sheet 1")
+
+    # TBXT: corrected late-binding report points; no fitted curves.
+    r = sheet("tbxt.xlsx", "Report point table")
     rows = []
-    for col in range(1, 9):
-        c = float(re.search(r"[\d.]+", r[0][col])[0]) * 1e-6
-        for n, row in enumerate(r[1:], 2):
-            if isinstance(row[0], (int, float)) and isinstance(row[col], (int, float)):
-                rows.append(
-                    dict(
-                        trace_id=f"fluconazole-{col}",
-                        compound="fluconazole",
-                        target="CYP3A4 nanodisc",
-                        concentration_M=c,
-                        flow_uL_min="",
-                        time_s=row[0],
-                        response_RU=row[col],
-                        source="CYP3A4",
-                        source_sheet="SPR titration sheet 1",
-                        source_row=n,
-                        source_column=col + 1,
-                    )
-                )
-    write(d / "cyp3a4-traces.csv", rows)
-    points = []
-    for n, row in enumerate(sheet("cyp3a4.xlsx", "SPR titration sheet 2")[1:], 2):
-        for col in range(1, 9):
-            if isinstance(row[col], (int, float)):
-                points.append(
-                    dict(
-                        point_id=f"fluconazole-{col}",
-                        compound="fluconazole",
-                        concentration_M=row[0] * 1e-6,
-                        response_RU=row[col],
-                        source="CYP3A4",
-                        source_sheet="SPR titration sheet 2",
-                        source_row=n,
-                        source_column=col + 1,
-                    )
-                )
-    write(d / "cyp3a4-affinity.csv", points)
+    for n, row in enumerate(r[3:], 4):
+        if row[15] != "Analysis":
+            continue
+        rows.append(
+            dict(
+                record_id=f"row-{n}",
+                run=row[0],
+                cycle=row[1],
+                channel=row[2],
+                sensorgram_type=row[4],
+                window=row[5],
+                time_s=row[6],
+                window_s=row[7],
+                response_RU=row[9],
+                sd_RU=row[10],
+                slope_RU_s=row[11],
+                compound=row[17],
+                concentration_M=(
+                    row[18] * 1e-6 if isinstance(row[18], (float, int)) else ""
+                ),
+                flow_uL_min=row[20],
+                contact_s=row[21],
+                source="TBXT",
+                source_sheet="Report point table",
+                source_row=n,
+            )
+        )
+    write(d / "tbxt.csv", rows)
+
+    # LRRK2 DARPin E11: seven concentration series plus seven equilibrium endpoints.
     with zipfile.ZipFile(ROOT / "sources/originals/lrrk2.zip") as z:
         r = list(
             csv.reader(
@@ -252,36 +217,131 @@ def main():
                     )
                 )
         write(d / "lrrk2-affinity.csv", points)
-    r = sheet("tbxt.xlsx", "Report point table")
+
+    # Designed macrocycles: measured sensorgrams only; fitted columns are not selected.
+    macro_specs = [
+        ("macrocycle-fig2.xlsx", "MCB_D2", "MCL1", 20e-6, 1, 2, "Macrocycle-Fig2"),
+        ("macrocycle-fig2.xlsx", "MDB_D8", "MDM2", 50e-6, 5, 6, "Macrocycle-Fig2"),
+        ("macrocycle-fig4.xlsx", "RBB_D10", "RbtA", 20e-6, 1, 2, "Macrocycle-Fig4"),
+    ]
     rows = []
-    for n, row in enumerate(r[3:], 4):
-        if row[15] != "Analysis":
-            continue
-        rows.append(
+    for file, compound, target, conc, tcol, ycol, source in macro_specs:
+        r = sheet(file, "Sheet1")
+        for n, row in enumerate(r[2:], 3):
+            if isinstance(row[tcol - 1], (int, float)) and isinstance(
+                row[ycol - 1], (int, float)
+            ):
+                rows.append(
+                    dict(
+                        trace_id=compound,
+                        compound=compound,
+                        target=target,
+                        concentration_M=conc,
+                        flow_uL_min=30,
+                        time_s=row[tcol - 1],
+                        response_RU=row[ycol - 1],
+                        source=source,
+                        source_sheet="Sheet1",
+                        source_row=n,
+                        source_column=ycol,
+                    )
+                )
+    write(d / "macrocycle-traces.csv", rows)
+
+    # ISG65 SPR: six sheets, six measured cycles each; fitted columns are skipped.
+    isg65 = [
+        ("biotin-C3b ISG65", "C3b", "ISG65-WT"),
+        ("biotin-C3d ISG65", "C3d", "ISG65-WT"),
+        ("biotin-C3b ISG65ΔL2", "C3b", "ISG65-dL2"),
+        ("biotin-C3d ISG65ΔL2", "C3d", "ISG65-dL2"),
+        ("biotin-C3b ISG65L2N188A etc.", "C3b", "ISG65-L2N188A"),
+        ("biotin-C3d ISG65L2N188A etc.", "C3d", "ISG65-L2N188A"),
+    ]
+    rows = []
+    for sheet_name, target, compound in isg65:
+        r = sheet("isg65-fig2-data1.xlsx", sheet_name)
+        for col, header in enumerate(r[0]):
+            if (
+                not isinstance(header, str)
+                or header.startswith("Fitted")
+                or not header.startswith("Cycle:")
+                or not header.endswith("_Y")
+            ):
+                continue
+            m = re.search(r"([\d.]+)\s*nM", header)
+            c = re.search(r"Cycle: (\d+)", header)
+            if not m or not c:
+                continue
+            concentration = float(m.group(1)) * 1e-9
+            cycle = int(c.group(1))
+            for n, row in enumerate(r[1:], 2):
+                if isinstance(row[0], (int, float)) and isinstance(
+                    row[col], (int, float)
+                ):
+                    rows.append(
+                        dict(
+                            trace_id=f"{compound}-{target}-c{cycle}",
+                            compound=compound,
+                            target=target,
+                            concentration_M=concentration,
+                            flow_uL_min=30,
+                            time_s=row[0],
+                            response_RU=row[col],
+                            source="ISG65",
+                            source_sheet=sheet_name,
+                            source_row=n,
+                            source_column=col + 1,
+                        )
+                    )
+    write(d / "isg65-traces.csv", rows)
+    # Apparent steady-state endpoints: the measured response at the end of the
+    # 120 s association phase (closest observed time to 120 s), one cell per trace.
+    by_trace = {}
+    for r in rows:
+        by_trace.setdefault(r["trace_id"], []).append(r)
+    points = []
+    for trace_id, g in sorted(by_trace.items()):
+        p = min(g, key=lambda r: abs(float(r["time_s"]) - 120.0))
+        points.append(
             dict(
-                record_id=f"row-{n}",
-                run=row[0],
-                cycle=row[1],
-                channel=row[2],
-                sensorgram_type=row[4],
-                window=row[5],
-                time_s=row[6],
-                window_s=row[7],
-                response_RU=row[9],
-                sd_RU=row[10],
-                slope_RU_s=row[11],
-                compound=row[17],
-                concentration_M=(
-                    row[18] * 1e-6 if isinstance(row[18], (float, int)) else ""
-                ),
-                flow_uL_min=row[20],
-                contact_s=row[21],
-                source="TBXT",
-                source_sheet="Report point table",
-                source_row=n,
+                point_id=trace_id,
+                compound=p["compound"] + "-" + p["target"],
+                concentration_M=p["concentration_M"],
+                response_RU=p["response_RU"],
+                source=p["source"],
+                source_sheet=p["source_sheet"],
+                source_row=p["source_row"],
+                source_column=p["source_column"],
             )
         )
-    write(d / "tbxt.csv", rows)
+    write(d / "isg65-affinity.csv", points)
+
+    # D-box peptides D20/D21: eight measured concentrations in each sensorgram
+    # and the paired observed isotherms; no fitted values are selected.
+    dbox_specs = [
+        ("Figure 4C -D20 Fc4-1 sensorgram", "Figure 4C -D20 Fc4-1 isotherm", "D20"),
+        ("Figure 4D -D21 Fc4-1 sensorgram", "Figure 4D -D21 Fc4-1 isotherm", "D21"),
+    ]
+    points = []
+    for _sensorgram_sheet, isotherm_sheet, compound in dbox_specs:
+        r = sheet("dbox-fig4-data1.xlsx", isotherm_sheet)
+        for n, row in enumerate(r[1:], 2):
+            if isinstance(row[0], (int, float)) and isinstance(row[1], (int, float)):
+                points.append(
+                    dict(
+                        point_id=f"{compound}-p{n-1}",
+                        compound=compound,
+                        target="Cdc20",
+                        concentration_M=row[0] * 1e-6,
+                        response_RU=row[1],
+                        source="D-box",
+                        source_sheet=isotherm_sheet,
+                        source_row=n,
+                        source_column=2,
+                    )
+                )
+    write(d / "dbox-affinity.csv", points)
+
     dump(
         ROOT / "data_manifest.json",
         [

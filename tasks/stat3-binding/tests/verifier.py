@@ -110,8 +110,28 @@ def score(output, expected, config):
     )
 
 
+def prepare_submission(code):
+    """Reject symlinked submissions and make a regular tree readable by uid 65534."""
+    if code.is_symlink() or code.parent.is_symlink():
+        raise ValueError("submission must not be a symlink")
+    root = code.parent.resolve()
+    resolved = code.resolve()
+    if resolved.parent != root or not resolved.is_file():
+        raise ValueError("submission must contain a regular run.py")
+    for dirpath, dirnames, filenames in os.walk(root, followlinks=False):
+        for name in dirnames + filenames:
+            if (Path(dirpath) / name).is_symlink():
+                raise ValueError("submission must not contain symlinks")
+        os.chmod(dirpath, 0o755)
+        for name in filenames:
+            os.chmod(Path(dirpath) / name, 0o644)
+    return resolved
+
+
 def evaluate(code, tests, logs, isolate=True, timeout=120):
-    code, tests, logs = map(lambda p: Path(p).resolve(), (code, tests, logs))
+    code = Path(code)
+    tests = Path(tests).resolve()
+    logs = Path(logs).resolve()
     logs.mkdir(parents=True, exist_ok=True)
     (logs / "reward.txt").write_text("0\n")
     if not code.is_file():
@@ -124,9 +144,9 @@ def evaluate(code, tests, logs, isolate=True, timeout=120):
     if secure:
         os.chmod(tests, 0o700)
         os.chmod(logs, 0o700)
-        for p in [code.parent, *code.parent.rglob("*")]:
-            if not p.is_symlink():
-                os.chmod(p, 0o755 if p.is_dir() else 0o644)
+        code = prepare_submission(code)
+    else:
+        code = code.resolve()
     config = load(tests / "scoring.json")
     reports = []
     for case in sorted((tests / "cases").iterdir()):
@@ -189,8 +209,32 @@ def evaluate(code, tests, logs, isolate=True, timeout=120):
             except Exception as e:
                 result = {"score": 0.0, "error": str(e), "checks": []}
             reports.append(dict(case=case.name, **result))
+    analysis_weights = {
+        k: w
+        for k, w in config["weights"].items()
+        if k in {"response", "binding_evidence"}
+    }
+    total_analysis_weight = sum(analysis_weights.values())
+
+    def analysis_of(result):
+        categories = result.get("categories") or {}
+        if not total_analysis_weight:
+            return 0.0
+        return (
+            sum(categories.get(k, 0.0) * w for k, w in analysis_weights.items())
+            / total_analysis_weight
+        )
+
+    analysis_reward = (
+        sum(analysis_of(r) for r in reports) / len(reports) if reports else 0.0
+    )
     reward = sum(r["score"] for r in reports) / len(reports) if reports else 0.0
-    report = {"reward": reward, "cases": reports, "privilege_isolation": secure}
+    report = {
+        "reward": reward,
+        "analysis_reward": analysis_reward,
+        "cases": reports,
+        "privilege_isolation": secure,
+    }
     (logs / "metrics.json").write_text(json.dumps(report, indent=2))
     (logs / "reward.txt").write_text(str(reward) + "\n")
     return report

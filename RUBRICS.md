@@ -1,134 +1,115 @@
-# Task-specific automatic rubrics
+# Rubrics
 
-Every task is scored from 0 to 1. No report points are awarded.
+Fields and weights per task. Coverage and response fields are listed in the executable contract; provenance and scope are weighted checks.
 
 ## stat3-binding
 
-Compare DPP and S3I-201 against mouse STAT3beta core 127-722. Distinguish a lack of measured response in this construct from a universal non-binder claim.
+STAT3: compare measured response and scoped negative evidence
 
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 15% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 50% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
-| binding_evidence | 20% | Exact compound coverage and scoped binding calls compared with Mtwebana and Prinsloo (2020), DOI 10.1186/s13104-020-05189-w. Author-reported interpretation; not independent adjudication. |
+| Coverage | 15% | n, concentration_M, start_s, end_s |
+| Response | 50% | initial_median_RU, initial_sd_RU, p95_delta_RU, tail_delta_RU, auc_RU_s |
+| Binding evidence | 20% | binding_assessments |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## tbxt-binding
 
-## stat3-flow
+TBXT: operational binding triage from corrected report points
 
-Compare the three flow rates for S3I-201. Quantify differences without treating flow conditions as biological replicates or estimating a concentration-series KD.
-
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 65% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
-
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
-
-## cyp3a4-sparse
-
-Recover the eight fluconazole traces from sparse measured cells. Preserve each trace time grid and quantify its response without using the source fitted curves.
-
-| Component | Weight | Automatic criterion |
-|---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 65% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
-
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
-
-## cyp3a4-affinity
-
-Fit the observed fluconazole concentration-response points, quantify residuals and concentration coverage. Do not interpret an apparent KD as target selectivity or a kinetic rate.
-
-| Component | Weight | Automatic criterion |
-|---|---:|---|
-| coverage | 15% | Exact record-ID coverage; `n`, `max_concentration_M` |
-| response | 70% | `KD_M`, `Rmax_RU`, `offset_RU`, `rmse_RU`, `max_concentration_over_KD` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
-
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+| Coverage | 15% | n, n_corrected_late, n_concentrations, max_concentration_M |
+| Response | 50% | max_corrected_RU, min_corrected_RU, mean_corrected_RU, max_reference_RU, dose_slope_RU_per_uM, max_reference_subtraction_error_RU |
+| Binding evidence | 20% | binding_assessments |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
 ## lrrk2-traces
 
-Analyze the seven DARPin E11 sensorgrams. Separate measured binding response from evidence of catalytic inhibition or therapeutic readiness.
+LRRK2: analyze protein binder concentration series
 
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 65% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
-
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+| Coverage | 20% | n, concentration_M, start_s, end_s |
+| Response | 65% | initial_median_RU, initial_sd_RU, p95_delta_RU, tail_delta_RU, auc_RU_s |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
 ## lrrk2-affinity
 
-Refit seven observed E11 equilibrium responses with a free offset. Report residuals and coverage; author-fitted parameters are a comparison, not ground truth.
+LRRK2: refit E11 affinity with a free offset
 
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 15% | Exact record-ID coverage; `n`, `max_concentration_M` |
-| response | 70% | `KD_M`, `Rmax_RU`, `offset_RU`, `rmse_RU`, `max_concentration_over_KD` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
+| Coverage | 15% | n, max_concentration_M |
+| Response | 70% | KD_M, Rmax_RU, offset_RU, rmse_RU, max_concentration_over_KD |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## macrocycle-traces
 
-## klhdc2-hits
+Designed macrocycles: analyze SPR sensorgrams
 
-Compare measured sensorgrams for compounds 1 and 2. Avoid treating the neighboring fluorescence-polarization sheets as SPR data or treating representative traces as replicates.
-
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 65% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
+| Coverage | 20% | n, concentration_M, start_s, end_s |
+| Response | 65% | initial_median_RU, initial_sd_RU, p95_delta_RU, tail_delta_RU, auc_RU_s |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## isg65-c3b-traces
 
-## klhdc2-analogs
+ISG65 C3b binding: analyze SPR sensorgrams
 
-Analyze measured sensorgrams for compounds 5 and 6. Compare concentration-normalized evidence without inventing unreported controls or kinetic ground truth.
-
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `concentration_M`, `start_s`, `end_s` |
-| response | 65% | `initial_median_RU`, `initial_sd_RU`, `p95_delta_RU`, `tail_delta_RU`, `auc_RU_s` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
+| Coverage | 20% | n, concentration_M, start_s, end_s |
+| Response | 65% | initial_median_RU, initial_sd_RU, p95_delta_RU, tail_delta_RU, auc_RU_s |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## isg65-c3d-traces
 
-## tbxt-reference
+ISG65 C3d binding: analyze SPR sensorgrams
 
-Join active, reference and reference-subtracted late-binding report points by run/cycle/channel/window. Audit correction arithmetic and retain compound/series identities.
-
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 25% | Exact record-ID coverage; `n`, `n_corrected_late`, `n_concentrations`, `max_concentration_M` |
-| response | 60% | `max_corrected_RU`, `min_corrected_RU`, `mean_corrected_RU`, `max_reference_RU`, `dose_slope_RU_per_uM`, `max_reference_subtraction_error_RU` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
+| Coverage | 20% | n, concentration_M, start_s, end_s |
+| Response | 65% | initial_median_RU, initial_sd_RU, p95_delta_RU, tail_delta_RU, auc_RU_s |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## isg65-affinity
 
-## tbxt-triage
+ISG65: apparent steady-state affinity
 
-Summarize corrected late-binding responses, reference binding and dose trends. These are screening-evidence metrics; a large response alone does not establish specific binding or justify a drug-development decision.
-
-| Component | Weight | Automatic criterion |
+| Category | Weight | Fields |
 |---|---:|---|
-| coverage | 20% | Exact record-ID coverage; `n`, `n_corrected_late`, `n_concentrations`, `max_concentration_M` |
-| response | 65% | `max_corrected_RU`, `min_corrected_RU`, `mean_corrected_RU`, `max_reference_RU`, `dose_slope_RU_per_uM`, `max_reference_subtraction_error_RU` |
-| provenance | 10% | Exact SHA-256 map of every supplied input file. |
-| scope | 5% | Exact disclosed scope constraints in config.json; these are contract checks, not inferred biological ground truth. |
+| Coverage | 15% | n, max_concentration_M |
+| Response | 70% | KD_M, Rmax_RU, offset_RU, rmse_RU, max_concentration_over_KD |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
 
-All checks within each component receive equal shares of that component. Missing expected records fail their field checks; unknown IDs fail the exact-coverage check. Two case scores are averaged. See SCORING.md for the formula and CONTRACT.md for numerical conventions/tolerances.
+## dbox-d20-affinity
+
+D-box D20: fit apparent steady-state affinity
+
+| Category | Weight | Fields |
+|---|---:|---|
+| Coverage | 15% | n, max_concentration_M |
+| Response | 70% | KD_M, Rmax_RU, offset_RU, rmse_RU, max_concentration_over_KD |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |
+
+## dbox-d21-affinity
+
+D-box D21: fit apparent steady-state affinity
+
+| Category | Weight | Fields |
+|---|---:|---|
+| Coverage | 15% | n, max_concentration_M |
+| Response | 70% | KD_M, Rmax_RU, offset_RU, rmse_RU, max_concentration_over_KD |
+| Provenance | 10% | input_sha256 |
+| Scope | 5% | disclosed claims |

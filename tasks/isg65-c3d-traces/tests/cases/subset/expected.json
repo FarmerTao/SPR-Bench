@@ -1,0 +1,123 @@
+{
+  "records": [
+    {
+      "id": "sample-001",
+      "n": 302,
+      "concentration_M": 1e-05,
+      "start_s": -60.08,
+      "end_s": 240.92,
+      "initial_median_RU": 0.012573225,
+      "initial_sd_RU": 0.03967892091051969,
+      "p95_delta_RU": 126.21952677499999,
+      "tail_delta_RU": 1.118103775,
+      "auc_RU_s": 15466.348123165857
+    },
+    {
+      "id": "sample-002",
+      "n": 301,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.0332034,
+      "initial_sd_RU": 0.017305892926595567,
+      "p95_delta_RU": 57.3249034,
+      "tail_delta_RU": 1.1493254000000002,
+      "auc_RU_s": 7118.747534813572
+    },
+    {
+      "id": "sample-003",
+      "n": 301,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.08,
+      "end_s": 239.92,
+      "initial_median_RU": -0.00927734,
+      "initial_sd_RU": 0.014761449670236997,
+      "p95_delta_RU": 20.17597734,
+      "tail_delta_RU": 0.7384410400000001,
+      "auc_RU_s": 2518.983406070309
+    },
+    {
+      "id": "sample-004",
+      "n": 302,
+      "concentration_M": 1e-05,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.276123,
+      "initial_sd_RU": 0.05418072438228815,
+      "p95_delta_RU": 123.824973,
+      "tail_delta_RU": 17.019168,
+      "auc_RU_s": 16691.75360521453
+    },
+    {
+      "id": "sample-005",
+      "n": 302,
+      "concentration_M": 2.5e-06,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.775757,
+      "initial_sd_RU": 0.04514517958935664,
+      "p95_delta_RU": 52.091497,
+      "tail_delta_RU": 10.002484999999998,
+      "auc_RU_s": 7158.78755187558
+    },
+    {
+      "id": "sample-006",
+      "n": 302,
+      "concentration_M": 6.25e-07,
+      "start_s": -60.38,
+      "end_s": 240.62,
+      "initial_median_RU": -0.44811999999999996,
+      "initial_sd_RU": 0.03446162646874132,
+      "p95_delta_RU": 17.34829,
+      "tail_delta_RU": 4.523211500000001,
+      "auc_RU_s": 2474.76739405493
+    },
+    {
+      "id": "sample-007",
+      "n": 301,
+      "concentration_M": 1e-05,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.110596,
+      "initial_sd_RU": 0.01771423944363983,
+      "p95_delta_RU": 128.940404,
+      "tail_delta_RU": 5.8314515,
+      "auc_RU_s": 16361.911548895403
+    },
+    {
+      "id": "sample-008",
+      "n": 301,
+      "concentration_M": 2.5e-06,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.164307,
+      "initial_sd_RU": 0.01675625330844703,
+      "p95_delta_RU": 58.479193,
+      "tail_delta_RU": 3.9998465000000003,
+      "auc_RU_s": 7555.490568782203
+    },
+    {
+      "id": "sample-009",
+      "n": 301,
+      "concentration_M": 6.25e-07,
+      "start_s": -59.28,
+      "end_s": 240.72,
+      "initial_median_RU": 0.107056,
+      "initial_sd_RU": 0.00842641192207573,
+      "p95_delta_RU": 20.772744,
+      "tail_delta_RU": 2.169359,
+      "auc_RU_s": 2730.5864053633186
+    }
+  ],
+  "binding_assessments": {},
+  "claims": {
+    "drug_readiness": "not_established",
+    "biological_ground_truth_available": false,
+    "source_fit_columns_used": false,
+    "kinetic_rates_identifiable": false
+  },
+  "input_sha256": {
+    "config.json": "699492eb99c9379d475b4b3ea01c0d39d2afceef4479a032d4bca1e960a94866",
+    "measurements.csv": "b2c2d07a9935bdd7932f59ea5ff9501d9719c047287ef13501ff855bae972f53"
+  }
+}
