@@ -88,13 +88,22 @@ def main():
             report = evaluate(
                 task / "solution/run.py", task / "tests", tmp / task.name, isolate=False
             )
-            assert abs(report["reward"] - 1) < 1e-12, (task.name, report["reward"])
+            assert report["reward"] == 1, (task.name, report["reward"])
+            floor = evaluate(
+                ROOT / "tools/floor_baseline.py",
+                task / "tests",
+                tmp / (task.name + "-floor"),
+                isolate=False,
+            )
+            assert floor["reward"] == 0, (task.name, "bookkeeping-only floor passed")
+            assert floor["analysis_reward"] < 0.5, (task.name, floor["analysis_reward"])
             assert abs(report["analysis_reward"] - 1) < 1e-12, (
                 task.name,
                 report["analysis_reward"],
             )
             results[task.name] = {
                 "reward": report["reward"],
+                "floor_partial_reward": round(floor["partial_reward"], 6),
                 "analysis_reward": report.get("analysis_reward"),
                 "cases": len(report["cases"]),
             }
@@ -190,7 +199,7 @@ def main():
     dump(ROOT / "scoring_validation.json", semantics)
     print(
         f"PASS: {n} source measurement cells, 10 tasks x 2 cases, scoring regressions, "
-        "submission symlink hardening, 2 alternative fits"
+        "submission symlink hardening, binary-reward floor, 2 alternative fits"
     )
 
 

@@ -19,9 +19,10 @@ jobs:
       - run: python -m pip install -r requirements-dev.txt
       - run: python tools/check_repository.py
       - run: python tools/validate.py
+      - run: python tools/check_tbsci.py
       - run: python tools/docs.py
       - run: git diff --exit-code
-      - run: harbor lint tasks/*
+      - run: harbor lint tasks/* tbsci/tasks/life-sciences/biology/*
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: always()
         with:

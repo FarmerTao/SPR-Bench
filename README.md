@@ -2,12 +2,23 @@
 
 **An experimental-data pilot for executable protein/antibody SPR analysis.**
 
-SPR-Bench v0.7 is a protein/antibody SPR benchmark with two binding-assessment
+SPR-Bench v0.8 has two tiers, both in the
+[Terminal-Bench-Science](https://github.com/harbor-framework/terminal-bench-science)
+task format (Harbor, separate no-network verifier, binary reward, canary strings):
+
+- **Core tier** (`tasks/`): ten measured-data tasks with fully specified
+  analysis contracts, for internal evaluation and RL rollouts.
+- **TB-Science track** (`tbsci/`): `spr-kinetic-triage`, an expert-level raw
+  multi-cycle kinetics task on simulated data with exact latent truth, staged
+  for submission to Terminal-Bench-Science. It is a separately named simulation
+  track and is never pooled with core-tier scores.
+
+The core tier is a protein/antibody SPR set with two binding-assessment
 tasks. It contains ten Harbor tasks drawn from six studies: LRRK2/DARPin,
 designed macrocycles, ISG65/C3, D-box peptides, STAT3, and TBXT. There are **55
 measured sensorgrams, 57 observed affinity endpoints, 23,040 TBXT report-point
-rows, and two binding/non-binding tasks** in the canonical selected data. No responses,
-concentrations, negative examples or replicates are simulated.
+rows, and two binding/non-binding tasks** in the canonical selected data. No core-tier
+responses, concentrations, negative examples or replicates are simulated.
 
 **Status:** public experimental-data pilot; local numerical and provenance checks
 have passed. Harbor + Docker end-to-end evaluation, independent SPR expert
@@ -20,10 +31,29 @@ The agent reads measured CSV data and experimental scope, writes Python, and
 submits a reusable analysis program. A separate verifier reruns it on two cases:
 the visible data and a reordered/renamed subset of the same measured observations.
 It checks numerical evidence, descriptive affinity fitting where appropriate,
-input hashes and explicit scope constraints. Each task receives a score in [0,1].
-No narrative report or LLM judge contributes to the score.
+input hashes and explicit scope constraints. The reward is binary: 1 only if
+every pytest check passes on both cases. Per-category partial scores are kept in
+`metrics.json` (`partial_reward`, `analysis_reward`) for diagnostics and reward
+shaping, never as the headline score. No narrative report or LLM judge
+contributes to the score.
 
-The current automatic score primarily measures reproducible data analysis.
+The core tier primarily measures reproducible data analysis under an explicit
+contract; it is not calibrated to Terminal-Bench-Science difficulty.
+
+## Running agents
+
+```bash
+pip install harbor==0.25.0
+harbor run -p tasks -a oracle            # expect reward 1 on every task
+harbor run -p tasks -a nop               # expect reward 0 on every task
+harbor run -p tasks -a claude-code -m <provider/model> -k 5 -n 4
+harbor run -p tbsci/tasks/life-sciences/biology/spr-kinetic-triage -a oracle
+```
+
+Report pass@1 as the mean binary reward over all k trials per task, plus
+per-task pass counts. For RL rollouts, the binary reward is the
+default signal; `analysis_reward` from `metrics.json` may be used for shaping
+but must not be reported as a benchmark score.
 
 ## Tasks
 
@@ -113,6 +143,8 @@ readiness.
   a fixed time, not source-reported equilibrium fits. See sources/README.md.
 - **No cluster-disjoint split, expert adjudication, agent baseline or
   Docker/Harbor end-to-end run yet.**
+- **Core-tier answers are public.** Expected outputs live in this repository, so
+  core-tier agents run without network access, unlike Terminal-Bench-Science.
 
 ## Source attribution
 

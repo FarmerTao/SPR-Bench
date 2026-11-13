@@ -19,7 +19,7 @@ def main():
             ("tools/reference.py", "solution/run.py"),
             ("tools/verifier.py", "tests/verifier.py"),
             ("CONTRACT.md", "environment/spec/CONTRACT.md"),
-            ("SCORING.md", "environment/spec/SCORING.md"),
+            ("tools/test_outputs.py", "tests/test_outputs.py"),
         ]:
             assert (ROOT / source).read_bytes() == (p / dest).read_bytes(), (
                 t["id"],

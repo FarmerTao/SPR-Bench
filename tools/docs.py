@@ -55,12 +55,23 @@ def main():
 
 **An experimental-data pilot for executable protein/antibody SPR analysis.**
 
-SPR-Bench v0.7 is a protein/antibody SPR benchmark with two binding-assessment
+SPR-Bench v0.8 has two tiers, both in the
+[Terminal-Bench-Science](https://github.com/harbor-framework/terminal-bench-science)
+task format (Harbor, separate no-network verifier, binary reward, canary strings):
+
+- **Core tier** (`tasks/`): ten measured-data tasks with fully specified
+  analysis contracts, for internal evaluation and RL rollouts.
+- **TB-Science track** (`tbsci/`): `spr-kinetic-triage`, an expert-level raw
+  multi-cycle kinetics task on simulated data with exact latent truth, staged
+  for submission to Terminal-Bench-Science. It is a separately named simulation
+  track and is never pooled with core-tier scores.
+
+The core tier is a protein/antibody SPR set with two binding-assessment
 tasks. It contains ten Harbor tasks drawn from six studies: LRRK2/DARPin,
 designed macrocycles, ISG65/C3, D-box peptides, STAT3, and TBXT. There are **55
 measured sensorgrams, 57 observed affinity endpoints, 23,040 TBXT report-point
-rows, and two binding/non-binding tasks** in the canonical selected data. No responses,
-concentrations, negative examples or replicates are simulated.
+rows, and two binding/non-binding tasks** in the canonical selected data. No core-tier
+responses, concentrations, negative examples or replicates are simulated.
 
 **Status:** public experimental-data pilot; local numerical and provenance checks
 have passed. Harbor + Docker end-to-end evaluation, independent SPR expert
@@ -73,10 +84,29 @@ The agent reads measured CSV data and experimental scope, writes Python, and
 submits a reusable analysis program. A separate verifier reruns it on two cases:
 the visible data and a reordered/renamed subset of the same measured observations.
 It checks numerical evidence, descriptive affinity fitting where appropriate,
-input hashes and explicit scope constraints. Each task receives a score in [0,1].
-No narrative report or LLM judge contributes to the score.
+input hashes and explicit scope constraints. The reward is binary: 1 only if
+every pytest check passes on both cases. Per-category partial scores are kept in
+`metrics.json` (`partial_reward`, `analysis_reward`) for diagnostics and reward
+shaping, never as the headline score. No narrative report or LLM judge
+contributes to the score.
 
-The current automatic score primarily measures reproducible data analysis.
+The core tier primarily measures reproducible data analysis under an explicit
+contract; it is not calibrated to Terminal-Bench-Science difficulty.
+
+## Running agents
+
+```bash
+pip install harbor==0.25.0
+harbor run -p tasks -a oracle            # expect reward 1 on every task
+harbor run -p tasks -a nop               # expect reward 0 on every task
+harbor run -p tasks -a claude-code -m <provider/model> -k 5 -n 4
+harbor run -p tbsci/tasks/life-sciences/biology/spr-kinetic-triage -a oracle
+```
+
+Report pass@1 as the mean binary reward over all k trials per task, plus
+per-task pass counts. For RL rollouts, the binary reward is the
+default signal; `analysis_reward` from `metrics.json` may be used for shaping
+but must not be reported as a benchmark score.
 
 ## Tasks
 
@@ -155,6 +185,8 @@ readiness.
   a fixed time, not source-reported equilibrium fits. See sources/README.md.
 - **No cluster-disjoint split, expert adjudication, agent baseline or
   Docker/Harbor end-to-end run yet.**
+- **Core-tier answers are public.** Expected outputs live in this repository, so
+  core-tier agents run without network access, unlike Terminal-Bench-Science.
 
 ## Source attribution
 
@@ -179,8 +211,11 @@ source licenses; no endorsement by the original authors is implied.
     (ROOT / "SCORING.md").write_text(
         """# Scoring
 
-Each task is scored in [0,1] by a rule-based verifier. The score combines
-coverage, numerical response fields, provenance and disclosed scope claims.
+Each task's official reward is binary. A rule-based verifier reruns the
+submission on every case and pytest asserts that every coverage, response,
+binding-evidence, provenance and scope check passes; test.sh writes 1 only if
+all pass, else 0. The weighted partial score below is a diagnostic written to
+`metrics.json` as `partial_reward`.
 
 | Task family | Coverage | Response | Binding evidence | Provenance | Scope |
 |---|---:|---:|---:|---:|---:|
@@ -200,7 +235,9 @@ N*R checks for R response fields. Provenance has one check. Scope has one check
 per disclosed claim.
 
 Missing output, invalid JSON, duplicate JSON keys/record IDs, nonfinite JSON,
-program failure or timeout gives that case zero. Missing fields/records fail
+program failure or timeout gives that case zero. A bookkeeping-only submission
+(IDs, counts, hashes, copied claims and a constant binding call, no analysis)
+earns partial_reward of 0.24-0.43 but binary reward 0; tools/validate.py enforces this. Missing fields/records fail
 corresponding checks. An entirely empty record list can earn only provenance and
 scope credit (at most 0.15). A record list that passes coverage/provenance/scope
 but no response checks still earns those weights under the official score; its
@@ -214,8 +251,8 @@ least-squares model; the score does not claim this is the true biological
 mechanism. The disclosed scope component is intentionally easy and should be
 reported separately when comparing scientific analysis ability.
 
-Report all ten task scores and study means. The recommended overall score is
-the mean of the ten task scores. Macrocycle, STAT3 and TBXT each contribute one
+Report all ten task pass rates and study means. The recommended overall score is
+the mean binary reward over the ten tasks. Macrocycle, STAT3 and TBXT each contribute one
 task; LRRK2, ISG65 and D-box contribute multiple related tasks, so study means are
 descriptive rather than equally weighted. A missing task counts as zero. Do not treat ten tasks or
 the two robustness cases as independent biological replicates. Do not pool scores
@@ -258,9 +295,9 @@ For any run record: repository commit, data/scoring version, Harbor version,
 model/provider, agent configuration, prompts, tools, resource limits, retries,
 randomness settings and costs. Report every trial, not only the best retry.
 Keep per-task metrics and logs with credentials removed. A missing task counts
-as zero. Report both the official reward and analysis_reward; the latter excludes
-coverage, provenance and scope. Do not pool results across synthetic v0.5 and
-experimental v0.6/v0.7.
+as zero. Report the binary reward (pass rate over all trials); analysis_reward
+and partial_reward are diagnostics. Do not pool results across synthetic v0.5,
+experimental v0.6-v0.8 core tasks, or the simulated TB-Science track.
 
 Local tests check source cell provenance, numerical consistency, defective outputs
 and an alternative optimizer. They do not establish independent scientific
@@ -384,6 +421,21 @@ Do not commit credentials, private evaluation data or unrelated run logs.
     (ROOT / "CHANGELOG.md").write_text(
         """# Changelog
 
+## 0.8.0 — 2026-11-13
+
+- Adopt the Terminal-Bench-Science task format for the core tier: canary
+  strings, author metadata, task-voice instructions with the time-limit suffix,
+  three-section task READMEs, pytest + CTRF verifier with pinned tooling, and a
+  binary reward (all checks on all cases). Partial scores move to metrics.json.
+- Stop shipping SCORING.md inside agent environments.
+- Alias STAT3/TBXT robustness-case compounds in hash order so aliases no longer
+  reveal the alphabetical order of real compound names.
+- Add a bookkeeping-only floor submission to validate.py; it must earn reward 0.
+- Add the separately named TB-Science track `tbsci/` with
+  `spr-kinetic-triage`: raw dual-flow-cell multi-cycle kinetics on simulated
+  data with latent truth, a reference and an independent solver, and
+  seed-calibrated tolerances.
+
 ## 0.7.0 — 2026-11-12
 
 - Build ten SPR tasks from six studies: LRRK2/DARPin, designed macrocycles,
@@ -409,10 +461,6 @@ Do not commit credentials, private evaluation data or unrelated run logs.
 - Experimental-data pilot with ten mixed small-molecule/protein SPR tasks.
 """
     )
-    for x in catalog:
-        (ROOT / "tasks" / x["id"] / "environment/spec/SCORING.md").write_text(
-            (ROOT / "SCORING.md").read_text()
-        )
 
 
 

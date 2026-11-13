@@ -17,9 +17,9 @@ For any run record: repository commit, data/scoring version, Harbor version,
 model/provider, agent configuration, prompts, tools, resource limits, retries,
 randomness settings and costs. Report every trial, not only the best retry.
 Keep per-task metrics and logs with credentials removed. A missing task counts
-as zero. Report both the official reward and analysis_reward; the latter excludes
-coverage, provenance and scope. Do not pool results across synthetic v0.5 and
-experimental v0.6/v0.7.
+as zero. Report the binary reward (pass rate over all trials); analysis_reward
+and partial_reward are diagnostics. Do not pool results across synthetic v0.5,
+experimental v0.6-v0.8 core tasks, or the simulated TB-Science track.
 
 Local tests check source cell provenance, numerical consistency, defective outputs
 and an alternative optimizer. They do not establish independent scientific

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.0 — 2026-11-13
+
+- Adopt the Terminal-Bench-Science task format for the core tier: canary
+  strings, author metadata, task-voice instructions with the time-limit suffix,
+  three-section task READMEs, pytest + CTRF verifier with pinned tooling, and a
+  binary reward (all checks on all cases). Partial scores move to metrics.json.
+- Stop shipping SCORING.md inside agent environments.
+- Alias STAT3/TBXT robustness-case compounds in hash order so aliases no longer
+  reveal the alphabetical order of real compound names.
+- Add a bookkeeping-only floor submission to validate.py; it must earn reward 0.
+- Add the separately named TB-Science track `tbsci/` with
+  `spr-kinetic-triage`: raw dual-flow-cell multi-cycle kinetics on simulated
+  data with latent truth, a reference and an independent solver, and
+  seed-calibrated tolerances.
+
 ## 0.7.0 — 2026-11-12
 
 - Build ten SPR tasks from six studies: LRRK2/DARPin, designed macrocycles,

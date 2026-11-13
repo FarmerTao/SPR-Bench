@@ -1,7 +1,10 @@
 # Scoring
 
-Each task is scored in [0,1] by a rule-based verifier. The score combines
-coverage, numerical response fields, provenance and disclosed scope claims.
+Each task's official reward is binary. A rule-based verifier reruns the
+submission on every case and pytest asserts that every coverage, response,
+binding-evidence, provenance and scope check passes; test.sh writes 1 only if
+all pass, else 0. The weighted partial score below is a diagnostic written to
+`metrics.json` as `partial_reward`.
 
 | Task family | Coverage | Response | Binding evidence | Provenance | Scope |
 |---|---:|---:|---:|---:|---:|
@@ -21,7 +24,9 @@ N*R checks for R response fields. Provenance has one check. Scope has one check
 per disclosed claim.
 
 Missing output, invalid JSON, duplicate JSON keys/record IDs, nonfinite JSON,
-program failure or timeout gives that case zero. Missing fields/records fail
+program failure or timeout gives that case zero. A bookkeeping-only submission
+(IDs, counts, hashes, copied claims and a constant binding call, no analysis)
+earns partial_reward of 0.24-0.43 but binary reward 0; tools/validate.py enforces this. Missing fields/records fail
 corresponding checks. An entirely empty record list can earn only provenance and
 scope credit (at most 0.15). A record list that passes coverage/provenance/scope
 but no response checks still earns those weights under the official score; its
@@ -35,8 +40,8 @@ least-squares model; the score does not claim this is the true biological
 mechanism. The disclosed scope component is intentionally easy and should be
 reported separately when comparing scientific analysis ability.
 
-Report all ten task scores and study means. The recommended overall score is
-the mean of the ten task scores. Macrocycle, STAT3 and TBXT each contribute one
+Report all ten task pass rates and study means. The recommended overall score is
+the mean binary reward over the ten tasks. Macrocycle, STAT3 and TBXT each contribute one
 task; LRRK2, ISG65 and D-box contribute multiple related tasks, so study means are
 descriptive rather than equally weighted. A missing task counts as zero. Do not treat ten tasks or
 the two robustness cases as independent biological replicates. Do not pool scores

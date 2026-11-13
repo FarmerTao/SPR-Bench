@@ -1,0 +1,24 @@
+{
+  "instrument": "Biacore-style four-channel optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "sensor_chip": "carboxymethyl dextran (CM5-type)",
+  "temperature_C": 25.0,
+  "running_buffer": "HBS-P+ (10 mM HEPES pH 7.4, 150 mM NaCl, 0.05% P20) with 2.0% (v/v) DMSO",
+  "data_rate_Hz": 2.0,
+  "flow_ul_min": 30.0,
+  "injection_start_s": 0.0,
+  "flow_cells": {
+    "1": {
+      "role": "reference",
+      "surface": "activated and ethanolamine-deactivated, no protein",
+      "immobilized_RU": 0.0
+    },
+    "2": {
+      "role": "active",
+      "ligand": "target protein (monomeric, single binding site)",
+      "ligand_mw_da": 42000.0,
+      "immobilized_RU": 4200.0
+    }
+  },
+  "regeneration": "surface fully regenerated after every cycle; each cycle starts from an analyte-free surface",
+  "response_units": "absolute response (RU), each flow cell recorded independently"
+}

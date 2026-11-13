@@ -1,0 +1,55 @@
+{
+  "seed": 20261113,
+  "analytes": {
+    "CPD-01": {
+      "interaction": "specific",
+      "KD_M": 7.5e-10,
+      "kinetics_resolved": true,
+      "ka_per_M_per_s": 8000000.0,
+      "kd_per_s": 0.006,
+      "_class": "mtl"
+    },
+    "CPD-02": {
+      "interaction": "specific",
+      "KD_M": 2.5e-07,
+      "kinetics_resolved": true,
+      "ka_per_M_per_s": 120000.0,
+      "kd_per_s": 0.03,
+      "_class": "refbind"
+    },
+    "CPD-03": {
+      "interaction": "specific",
+      "KD_M": 1.3333333333333334e-08,
+      "kinetics_resolved": true,
+      "ka_per_M_per_s": 300000.0,
+      "kd_per_s": 0.004,
+      "_class": "clean"
+    },
+    "CPD-04": {
+      "interaction": "none",
+      "_class": "dmso"
+    },
+    "CPD-05": {
+      "interaction": "nonspecific",
+      "_class": "aggregator"
+    },
+    "CPD-06": {
+      "interaction": "specific",
+      "KD_M": 2.5e-09,
+      "kinetics_resolved": true,
+      "ka_per_M_per_s": 80000.0,
+      "kd_per_s": 0.0002,
+      "_class": "slow_bubble"
+    },
+    "CPD-07": {
+      "interaction": "specific",
+      "KD_M": 2e-06,
+      "kinetics_resolved": false,
+      "_class": "fast"
+    },
+    "CPD-08": {
+      "interaction": "none",
+      "_class": "inert"
+    }
+  }
+}
