@@ -1,0 +1,42 @@
+{
+  "seed": 20261114,
+  "k_decay_per_s": 5.45293994058958e-05,
+  "analytes": {
+    "AB-01": {
+      "ka_per_M_per_s": 3000000.0,
+      "kd_per_s": 0.0015,
+      "KD_M": 5e-10,
+      "_class": "fast_on"
+    },
+    "AB-02": {
+      "ka_per_M_per_s": 400000.0,
+      "kd_per_s": 0.008,
+      "KD_M": 2e-08,
+      "_class": "moderate"
+    },
+    "AB-03": {
+      "ka_per_M_per_s": 1200000.0,
+      "kd_per_s": 0.0002,
+      "KD_M": 1.6666666666666669e-10,
+      "_class": "tight"
+    },
+    "AB-04": {
+      "ka_per_M_per_s": 200000.0,
+      "kd_per_s": 8e-05,
+      "KD_M": 4e-10,
+      "_class": "slow"
+    },
+    "AB-05": {
+      "ka_per_M_per_s": 500000.0,
+      "kd_per_s": 4e-05,
+      "KD_M": 8.000000000000001e-11,
+      "_class": "very_slow"
+    },
+    "AB-06": {
+      "ka_per_M_per_s": 100000.0,
+      "kd_per_s": 0.03,
+      "KD_M": 3e-07,
+      "_class": "weak"
+    }
+  }
+}

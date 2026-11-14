@@ -1,10 +1,10 @@
 cff-version: 1.2.0
-title: 'SPR-Bench: experimental protein/peptide SPR analysis tasks for agents'
+title: 'SPR-Bench: ten expert-level surface plasmon resonance analysis tasks for agents'
 message: 'Cite this benchmark and the original experimental sources listed in sources/README.md.'
 type: software
 authors:
   - name: SPR-Bench contributors
-version: 0.7.0
-date-released: 2026-11-12
+version: 0.9.0
+date-released: 2026-11-13
 license: MIT
 repository-code: 'https://github.com/FarmerTao/SPR-Bench'

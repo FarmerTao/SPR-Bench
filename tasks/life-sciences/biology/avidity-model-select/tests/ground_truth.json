@@ -1,0 +1,47 @@
+{
+  "seed": 20261115,
+  "analytes": {
+    "MAB-01": {
+      "model": "bivalent_analyte",
+      "_class": "igg_a",
+      "KD_M": 6.666666666666667e-09
+    },
+    "MAB-02": {
+      "model": "bivalent_analyte",
+      "_class": "igg_d",
+      "KD_M": 6.25e-08
+    },
+    "MAB-03": {
+      "model": "one_to_one",
+      "_class": "fab_a",
+      "KD_M": 6.666666666666667e-09
+    },
+    "MAB-04": {
+      "model": "one_to_one",
+      "_class": "fab_b",
+      "KD_M": 2.6666666666666667e-08
+    },
+    "MAB-05": {
+      "model": "one_to_one",
+      "_class": "fab_e",
+      "KD_M": 1.4999999999999998e-09
+    },
+    "MAB-06": {
+      "model": "heterogeneous_ligand",
+      "_class": "fab_c_het",
+      "KD_M": 2.9999999999999996e-09,
+      "KD2_M": 1.5e-07
+    },
+    "MAB-07": {
+      "model": "bivalent_analyte",
+      "_class": "igg_b",
+      "KD_M": 2.6666666666666667e-08
+    },
+    "MAB-08": {
+      "model": "heterogeneous_ligand",
+      "_class": "fab_f_het",
+      "KD_M": 5e-09,
+      "KD2_M": 4e-07
+    }
+  }
+}

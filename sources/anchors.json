@@ -1,0 +1,22 @@
+{
+  "lrrk2-traces.csv": {
+    "traces": 7,
+    "sample_interval_s": 0.1,
+    "baseline_noise_RU_median": 0.0172
+  },
+  "macrocycle-traces.csv": {
+    "traces": 3,
+    "sample_interval_s": 0.1,
+    "baseline_noise_RU_median": 0.0431
+  },
+  "isg65-traces.csv": {
+    "traces": 36,
+    "sample_interval_s": 1.0,
+    "baseline_noise_RU_median": 0.0978
+  },
+  "stat3.csv": {
+    "traces": 9,
+    "sample_interval_s": 0.9,
+    "baseline_noise_RU_median": 2.3925
+  }
+}

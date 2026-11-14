@@ -1,0 +1,32 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1, Fc2 and Fc3 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 30.0,
+  "data_rate_Hz": 2.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 30.0,
+    "dissociation_s": 30.0
+  },
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "protein": "target protein, one ligand-binding site",
+      "mw_da": 35000.0,
+      "immobilized_RU": 8000.0
+    },
+    "3": {
+      "protein": "unrelated counter-screen protein",
+      "mw_da": 30000.0,
+      "immobilized_RU": 7000.0
+    }
+  },
+  "running_buffer": "PBS-P+ with 5.0 % (v/v) DMSO",
+  "positive_control": {
+    "compound_id": "CONTROL",
+    "mw_da": 320.0,
+    "KD_M": 1.5e-05,
+    "note": "validated 1:1 binder of the target site; KD from an independent full titration"
+  },
+  "regeneration": "none needed; fragments dissociate within the cycle except where noted by the data"
+}

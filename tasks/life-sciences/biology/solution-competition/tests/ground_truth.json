@@ -1,0 +1,25 @@
+{
+  "seed": 20261116,
+  "fabs": {
+    "FAB-01": {
+      "KD_M": 4.810085678485606e-09,
+      "active_fraction": 0.8852965431844942,
+      "_class": "moderate"
+    },
+    "FAB-02": {
+      "KD_M": 4.902481745951035e-11,
+      "active_fraction": 0.8529625689000594,
+      "_class": "very_tight"
+    },
+    "FAB-03": {
+      "KD_M": 2.4607463547948277e-10,
+      "active_fraction": 0.7682498493608538,
+      "_class": "partly_active"
+    },
+    "FAB-04": {
+      "KD_M": 1.9361860074828105e-11,
+      "active_fraction": 0.9103257226136888,
+      "_class": "tight"
+    }
+  }
+}

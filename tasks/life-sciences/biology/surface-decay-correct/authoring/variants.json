@@ -1,0 +1,46 @@
+{
+  "local_rmax": {
+    "kind": "accepted",
+    "description": "kinetic analytes: free Rmax per cycle instead of activity-scaled Rmax",
+    "edits": [
+      [
+        "        def resid(p):\n            return np.concatenate([(langmuir(t, c, 10 ** p[0], 10 ** p[1], p[2] * a, CONTACT) - y)[edges] for c, a, y in series])\n",
+        "        def resid(p):\n            return np.concatenate([(langmuir(t, c, 10 ** p[0], 10 ** p[1], p[3 + k], CONTACT) - y)[edges] for k, (c, a, y) in enumerate(series)])\n"
+      ],
+      [
+        "            (least_squares(resid, [lka, np.log10(kd0), 1.5 * rmax0], bounds=([2, -6, 0], [9, 1, 20 * rmax0])) for lka in (4.0, 5.0, 6.0, 7.0)),",
+        "            (least_squares(resid, [lka, np.log10(kd0), 1.5 * rmax0] + [1.5 * rmax0 * a for _, a, _ in series], bounds=([2, -6, 0] + [0] * len(series), [9, 1, 20 * rmax0] + [20 * rmax0] * len(series))) for lka in (4.0, 5.0, 6.0, 7.0)),"
+      ]
+    ]
+  },
+  "interpolated_activity": {
+    "kind": "accepted",
+    "description": "activity by linear interpolation between neighbouring controls within each regeneration segment",
+    "edits": [
+      [
+        "    def activity(c):\n        return float(np.exp(coef[0] + coef[1] * (c > step_after) + coef[2] * c - coef[0]))\n",
+        "    levels = np.exp(yv - yv[0])\n\n    def activity(c):\n        same = (x > step_after) == (c > step_after)\n        return float(np.interp(c, x[same], levels[same]))\n"
+      ]
+    ]
+  },
+  "no_activity_correction": {
+    "kind": "ablation",
+    "description": "assume constant surface capacity over the run",
+    "edits": [
+      [
+        "    def activity(c):\n        return float(np.exp(coef[0] + coef[1] * (c > step_after) + coef[2] * c - coef[0]))\n",
+        "    def activity(c):\n        return 1.0\n"
+      ]
+    ]
+  },
+  "smooth_decay_only": {
+    "kind": "partial-ablation",
+    "description": "model activity decay but ignore the logged harsh regeneration step (fails on most but not all seeds, depending on how many cycles fall between the harsh regeneration and the next control)",
+    "edits": [
+      [
+        "    seg = (x > step_after).astype(float)\n",
+        "    seg = 0 * x\n"
+      ]
+    ]
+  }
+}

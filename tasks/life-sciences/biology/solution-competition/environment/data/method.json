@@ -1,0 +1,27 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 10.0,
+  "data_rate_Hz": 2.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 60.0,
+    "dissociation_s": 30.0
+  },
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "ligand": "antigen, high-density amine coupling",
+      "ligand_mw_da": 30000.0,
+      "immobilized_RU": 3000.0
+    }
+  },
+  "samples": {
+    "calibration": "Fab alone in running buffer at fab_nominal_M",
+    "competition": "Fab at fab_nominal_M mixed with antigen at antigen_M in solution, incubated 24 h at 25 C to equilibrium before injection",
+    "concentrations": "fab_nominal_M is total Fab protein from A280; antigen_M is active antigen (fully active, determined independently)",
+    "notes": "antigen-bound Fab cannot bind the surface; the same Fab stock is used for calibration and competition samples"
+  },
+  "regeneration": "10 mM glycine pH 2.0 after every cycle",
+  "running_buffer": "HBS-EP+ with 0.1 mg/mL BSA"
+}

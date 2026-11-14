@@ -1,0 +1,38 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 50.0,
+  "data_rate_Hz": 1.0,
+  "surfaces": {
+    "1": "anti-His capture antibody, no ligand captured (reference)",
+    "2": "anti-His capture antibody; His-tagged ligand captured at the start of every cycle"
+  },
+  "ligand": {
+    "description": "His-tagged target protein, one binding site",
+    "mw_da": 28000.0
+  },
+  "capture_injection": {
+    "start_s": -300.0,
+    "duration_s": 60.0,
+    "flow_cells": [
+      2
+    ]
+  },
+  "single_cycle": {
+    "n_injections": 5,
+    "contact_s": 120.0,
+    "gap_s": 60.0,
+    "final_dissociation_s": 1200.0,
+    "injection_starts_s": [
+      0.0,
+      180.0,
+      360.0,
+      540.0,
+      720.0
+    ],
+    "note": "concentrations_M lists the five analyte concentrations in injection order; blank and startup cycles inject running buffer at the same times"
+  },
+  "capture_behaviour": "captured ligand dissociates slowly from the capture antibody; analyte binding does not change this",
+  "regeneration": "both flow cells are regenerated to the bare capture antibody after every cycle",
+  "running_buffer": "HBS-EP+"
+}

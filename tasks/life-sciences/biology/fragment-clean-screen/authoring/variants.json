@@ -1,0 +1,72 @@
+{
+  "linear_solvent": {
+    "kind": "accepted",
+    "description": "linear instead of quadratic solvent-correction curves",
+    "edits": [
+      [
+        "        coef = np.polyfit(x, y, 2)\n",
+        "        coef = np.polyfit(x, y, 1)\n"
+      ]
+    ]
+  },
+  "preceding_blank": {
+    "kind": "accepted",
+    "description": "subtract the preceding blank instead of the nearest one",
+    "edits": [
+      [
+        "        b = min(blanks, key=lambda x: abs(x - c))\n",
+        "        b = max([x for x in blanks if x < c] or blanks[:1])\n"
+      ]
+    ]
+  },
+  "stricter_promiscuity": {
+    "kind": "accepted",
+    "description": "counter-surface and superstoichiometry limits 0.15 and 1.3",
+    "edits": [
+      [
+        "        if r3 / cap3 > 0.1 or occ > 1.2 or",
+        "        if r3 / cap3 > 0.15 or occ > 1.3 or"
+      ]
+    ]
+  },
+  "no_solvent_correction": {
+    "kind": "ablation",
+    "description": "reference subtraction and blanks only, no DMSO solvent correction",
+    "edits": [
+      [
+        "        curves[k] = lambda v, coef=coef: np.polyval(coef, v) - np.polyval(coef, 0.0)\n",
+        "        curves[k] = lambda v: 0 * v\n"
+      ]
+    ]
+  },
+  "no_activity_decay": {
+    "kind": "non-essential",
+    "description": "use the first control's activity for the whole run (costs a few borderline calls but usually stays within the F1 floor; not claimed as a trap)",
+    "edits": [
+      [
+        "        activity = np.interp(c, controls, act)\n",
+        "        activity = act[0]\n"
+      ]
+    ]
+  },
+  "no_mw_normalization": {
+    "kind": "non-essential",
+    "description": "one capacity for all fragments (mean MW 235 Da) instead of MW-scaled capacity (costs a few borderline calls but usually stays within the F1 floor; not claimed as a trap)",
+    "edits": [
+      [
+        "        cap2 = surf[\"2\"][\"immobilized_RU\"] * mw / surf[\"2\"][\"mw_da\"]\n",
+        "        cap2 = surf[\"2\"][\"immobilized_RU\"] * 235.0 / surf[\"2\"][\"mw_da\"]\n"
+      ]
+    ]
+  },
+  "no_counter_screen": {
+    "kind": "ablation",
+    "description": "flag promiscuity only by superstoichiometric target occupancy",
+    "edits": [
+      [
+        "        if r3 / cap3 > 0.1 or occ > 1.2 or (r2 > 2.0 and s2 / r2 > 0.2):\n",
+        "        if occ > 1.2:\n"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "linear_solvent": {
+    "kind": "accepted",
+    "description": "linear instead of quadratic solvent correction",
+    "edits": [
+      [
+        "coef = np.polyfit(xs, ys, 2)",
+        "coef = np.polyfit(xs, ys, 1)"
+      ]
+    ]
+  },
+  "all_blanks": {
+    "kind": "accepted",
+    "description": "average all run blanks for double referencing",
+    "edits": [
+      [
+        "blanks = [corrected(b, traces, corr)[1] for b in bracketing_blanks(cycles, ids)]",
+        "blanks = [corrected(b, traces, corr)[1] for b, rr in cycles.items() if rr[\"cycle_type\"] == \"blank\"]"
+      ]
+    ]
+  },
+  "full_rate": {
+    "kind": "accepted",
+    "description": "fit at the full 2 Hz rate",
+    "edits": [
+      [
+        "down = [(c, t[::2], y[::2], m[::2]) for c, t, y, m in series]",
+        "down = series"
+      ]
+    ]
+  },
+  "wider_edges": {
+    "kind": "accepted",
+    "description": "wider injection-edge masks (-2..+12 s)",
+    "edits": [
+      [
+        "EDGE = (-1.0, 5.0)",
+        "EDGE = (-2.0, 12.0)"
+      ]
+    ]
+  },
+  "spike_window_only": {
+    "kind": "ablation",
+    "description": "mask only +-5 s around the air spike instead of excluding the cycle",
+    "edits": [
+      [
+        "            if spikes(y[mask(t, contact)]).any():\n                continue  # air bubble / spike: exclude the cycle\n            m = mask(t, contact)",
+        "            m = mask(t, contact)\n            bad = np.flatnonzero(spikes(y) & m)\n            for i in bad: m &= np.abs(t - t[i]) > 5"
+      ]
+    ]
+  },
+  "no_solvent_correction": {
+    "kind": "ablation",
+    "description": "no DMSO solvent correction",
+    "edits": [
+      [
+        "return lambda x: np.polyval(coef, x) - np.polyval(coef, 0.0)",
+        "return lambda x: 0 * x"
+      ]
+    ]
+  },
+  "no_transport": {
+    "kind": "ablation",
+    "description": "1:1 without a mass-transport term",
+    "edits": [
+      [
+        "ka, kd, kt = 10**lka, 10**lkd, 10**lkt",
+        "ka, kd, kt = 10**lka, 10**lkd, 1e30"
+      ]
+    ]
+  },
+  "bubble_cycle_kept": {
+    "kind": "ablation",
+    "description": "keep the bubble-disturbed cycle",
+    "edits": [
+      [
+        "if spikes(y[mask(t, contact)]).any():",
+        "if False:"
+      ]
+    ]
+  },
+  "no_blank_referencing": {
+    "kind": "ablation",
+    "description": "no blank double referencing",
+    "edits": [
+      [
+        "            y = y - blank\n",
+        ""
+      ]
+    ]
+  },
+  "no_reference_subtraction": {
+    "kind": "ablation",
+    "description": "no reference-cell subtraction",
+    "edits": [
+      [
+        "return t, (y2 - x) - corr(x)",
+        "return t, y2 - corr(x)"
+      ]
+    ]
+  }
+}

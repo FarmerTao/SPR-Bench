@@ -1,0 +1,27 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 30.0,
+  "data_rate_Hz": 1.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 90.0,
+    "dissociation_s": 300.0
+  },
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "ligand": "target protein, one binding site, amine coupled",
+      "mw_da": 38000.0,
+      "immobilized_RU": 1500.0
+    }
+  },
+  "positive_control": {
+    "analyte_id": "CONTROL",
+    "mw_da": 24000.0,
+    "concentration_M": 5e-08,
+    "note": "well-characterized binder of the same site, injected at one fixed concentration throughout the run"
+  },
+  "design": "analyte concentrations were injected in randomized order across the run; the regeneration column logs each cycle's regeneration",
+  "running_buffer": "HBS-EP+ with 1 % DMSO (matched in all samples)"
+}

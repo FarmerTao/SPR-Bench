@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "spr-kinetic-triage",
+    "description": "Process a raw dual-flow-cell SPR multi-cycle kinetics campaign and recover each analyte's interaction class, rate-resolution status and intrinsic binding constants.",
+    "keywords": ["surface-plasmon-resonance", "binding-kinetics", "mass-transport", "solvent-correction", "hit-validation"],
+    "expert_hours": 6.0,
+    "vendor_sprsim": false
+  },
+  {
+    "slug": "single-cycle-kinetics",
+    "description": "Recover intrinsic rate constants from single-cycle kinetic titrations on a capture surface whose captured ligand level varies and decays.",
+    "keywords": ["surface-plasmon-resonance", "single-cycle-kinetics", "capture-surface", "binding-kinetics", "antibody-characterization"],
+    "expert_hours": 5.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "avidity-model-select",
+    "description": "Choose the interaction model (1:1, bivalent analyte, heterogeneous ligand) for antibody-format SPR data and recover intrinsic site affinities.",
+    "keywords": ["surface-plasmon-resonance", "avidity", "bivalent-analyte", "model-selection", "antibody-characterization"],
+    "expert_hours": 6.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "solution-competition",
+    "description": "Determine solution-phase affinities of tight binders from an SPR inhibition-in-solution assay with a nonlinear calibration and ligand depletion.",
+    "keywords": ["surface-plasmon-resonance", "solution-affinity", "inhibition-in-solution", "ligand-depletion", "picomolar-affinity"],
+    "expert_hours": 5.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "fragment-clean-screen",
+    "description": "Triage a single-concentration SPR fragment screen into specific hits, non-hits and promiscuous compounds from raw dual-surface data.",
+    "keywords": ["surface-plasmon-resonance", "fragment-screening", "solvent-correction", "hit-triage", "drug-discovery"],
+    "expert_hours": 6.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "surface-decay-correct",
+    "description": "Recover kinetic constants from a long randomized SPR run in which the ligand surface loses activity, using interleaved positive-control cycles.",
+    "keywords": ["surface-plasmon-resonance", "surface-activity", "binding-kinetics", "positive-control", "assay-drift"],
+    "expert_hours": 5.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "induced-fit-linkage",
+    "description": "Use contact-time-dependent dissociation to identify two-state (induced-fit) versus 1:1 and heterogeneous binding and recover overall affinities.",
+    "keywords": ["surface-plasmon-resonance", "conformational-change", "two-state-binding", "mechanism", "binding-kinetics"],
+    "expert_hours": 6.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "thermo-vant-hoff",
+    "description": "Derive equilibrium and transition-state thermodynamics, including heat-capacity change, from SPR kinetics recorded at several temperatures.",
+    "keywords": ["surface-plasmon-resonance", "thermodynamics", "van-t-hoff", "eyring", "heat-capacity"],
+    "expert_hours": 6.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "epitope-binning",
+    "description": "Assign antibodies to epitope bins from raw SPR tandem (sandwich) binning sensorgrams with dissociation, capture and nonspecific artifacts.",
+    "keywords": ["surface-plasmon-resonance", "epitope-binning", "antibody-discovery", "competition", "tandem-binding"],
+    "expert_hours": 5.0,
+    "vendor_sprsim": true
+  },
+  {
+    "slug": "cfca-concentration",
+    "description": "Determine active analyte concentrations by calibration-free concentration analysis from transport-limited SPR binding at two flow rates.",
+    "keywords": ["surface-plasmon-resonance", "calibration-free-concentration", "mass-transport", "active-concentration", "biologics"],
+    "expert_hours": 5.0,
+    "vendor_sprsim": true
+  }
+]

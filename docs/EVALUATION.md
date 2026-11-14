@@ -1,33 +1,39 @@
 # Evaluation protocol
 
-This is a public protein/antibody SPR pilot. Ten task scores are computed
-individually, with an aggregate mean over the ten tasks. Macrocycle, STAT3 and
-TBXT contribute one task each; LRRK2, ISG65 and D-box contain related tasks and
-are not independent replicates. No confidence interval based on ten
-independent studies is justified.
+SPR-Bench v0.9 has ten independent tasks. Each trial earns a binary reward: 1
+only if every pytest check of that task's verifier passes, else 0. Partial
+credit is not defined.
 
-All inputs, expected outputs, reference programs and sources are public. Agent
-images exclude reference/test material, but this cannot undo prior exposure.
-Renaming IDs and taking measured subsets tests program reuse, not blind scientific
-generalization. A blind release requires held-out studies and independently
-reviewed labels, versioned acquisition metadata, a freeze date and an exposure
-policy.
+## Running
 
-For any run record: repository commit, data/scoring version, Harbor version,
-model/provider, agent configuration, prompts, tools, resource limits, retries,
-randomness settings and costs. Report every trial, not only the best retry.
-Keep per-task metrics and logs with credentials removed. A missing task counts
-as zero. Report the binary reward (pass rate over all trials); analysis_reward
-and partial_reward are diagnostics. Do not pool results across synthetic v0.5,
-experimental v0.6-v0.8 core tasks, or the simulated TB-Science track.
+Use Harbor with Docker. Validate every task first: `-a oracle` must give
+reward 1 and `-a nop` reward 0. Then run each agent configuration for k >= 5
+trials per task (`-k 5`).
 
-Local tests check source cell provenance, numerical consistency, defective outputs
-and an alternative optimizer. They do not establish independent scientific
-adjudication or secure Harbor runtime integration. No real-agent baseline has yet
-been measured. Harbor + Docker end-to-end testing remains outstanding.
+## Reporting
 
-Do not interpret the score as validated binding classification, drug candidacy,
-clinical utility, or proof of wet-lab reliability. The present score primarily
-measures reproducible numerical analysis under an explicit contract. Expanded
-biological decision scoring requires expert-reviewed evidence and orthogonal
-validation; these have not been fabricated to fill gaps in public datasets.
+- Per task: number of passing trials out of k.
+- Overall: pass@1 = mean binary reward over all trials of all ten tasks, with
+  the per-task breakdown. Tasks are weighted equally.
+- Record repository commit, Harbor version, model/provider, agent and its
+  configuration, prompts, tools, resource limits, retries, randomness settings
+  and cost. Report every trial, not only the best.
+- Run `harbor analyze` on failing trials and keep the trajectories; for each
+  failure, note which scientific step went wrong (the task READMEs and
+  `authoring/variants.json` list the known failure modes).
+
+## Interpretation
+
+The tasks measure whether an agent can carry raw SPR data through expert
+processing to correct scientific conclusions. The data are simulated from a
+physical model with exact latent truth; noise, sampling and affinity ranges
+are anchored on measured exports (`sources/anchors.json`). Passing does not
+validate wet-lab practice, and failing a task does not identify which step
+failed unless the trajectory is analyzed.
+
+## Exposure
+
+Ground truth, generators and default seeds are in this repository. Agents
+with internet access could find them once it is public. For a blind
+evaluation, regenerate each task with a private seed
+(`authoring/generate.py --seed N`) and keep the result out of public view.

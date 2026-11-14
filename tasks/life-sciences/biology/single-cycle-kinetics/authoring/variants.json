@@ -1,0 +1,66 @@
+{
+  "denser_sampling": {
+    "kind": "accepted",
+    "description": "fit every second point instead of every fourth",
+    "edits": [
+      [
+        "sel = np.flatnonzero(keep)[::4]",
+        "sel = np.flatnonzero(keep)[::2]"
+      ]
+    ]
+  },
+  "wider_edges": {
+    "kind": "accepted",
+    "description": "mask -2..+12 s around every injection edge instead of -1..+6 s",
+    "edits": [
+      [
+        "keep &= ~((t > edge - 1) & (t < edge + 6))",
+        "keep &= ~((t > edge - 2) & (t < edge + 12))"
+      ]
+    ]
+  },
+  "no_decay_loss": {
+    "kind": "ablation",
+    "description": "blank-corrected, but bound complex is not lost with departing ligand in the model",
+    "edits": [
+      [
+        "        rm = rmax * np.exp(-kdec * max(time, 0.0))\n",
+        "        rm = rmax\n"
+      ],
+      [
+        "        return [flux / (1 + ka * free / kt) - kdec * r[0]]",
+        "        return [flux / (1 + ka * free / kt)]"
+      ]
+    ]
+  },
+  "unscaled_blank": {
+    "kind": "ablation",
+    "description": "subtract the average blank without scaling the ligand-decay component to each cycle's capture level",
+    "edits": [
+      [
+        "            bound = y - drift - lv * g\n",
+        "            bound = y - drift - np.mean([capture_level(*traces[b], method) for b, rb in cycles.items() if rb[\"cycle_type\"] == \"blank\"]) * g\n"
+      ]
+    ]
+  },
+  "global_rmax": {
+    "kind": "non-essential",
+    "description": "one Rmax shared by replicate cycles with different capture levels (tolerated: passes most seeds, so not claimed as a trap)",
+    "edits": [
+      [
+        "                rmax = p[3 + k]\n",
+        "                rmax = p[3]\n"
+      ]
+    ]
+  },
+  "no_transport": {
+    "kind": "ablation",
+    "description": "plain 1:1 model without a transport coefficient",
+    "edits": [
+      [
+        "    ka, kd, kt = 10**lka, 10**lkd, 10**lkt\n",
+        "    ka, kd, kt = 10**lka, 10**lkd, 1e30\n"
+      ]
+    ]
+  }
+}

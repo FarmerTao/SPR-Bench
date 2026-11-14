@@ -1,7 +1,0 @@
-point_id,compound,target,concentration_M,response_RU,source,source_sheet,source_row,source_column
-D20-p7,sample-001,Cdc20,9.999999999999999e-06,63.0464,D-box,Figure 4C -D20 Fc4-1 isotherm,8,2
-D20-p6,sample-001,Cdc20,4.9999999999999996e-06,56.3541,D-box,Figure 4C -D20 Fc4-1 isotherm,7,2
-D20-p5,sample-001,Cdc20,2.4999999999999998e-06,48.1252,D-box,Figure 4C -D20 Fc4-1 isotherm,6,2
-D20-p4,sample-001,Cdc20,1.2499999999999999e-06,38.3149,D-box,Figure 4C -D20 Fc4-1 isotherm,5,2
-D20-p3,sample-001,Cdc20,6.249999999999999e-07,27.4711,D-box,Figure 4C -D20 Fc4-1 isotherm,4,2
-D20-p1,sample-001,Cdc20,1.5624999999999999e-07,10.4632,D-box,Figure 4C -D20 Fc4-1 isotherm,2,2

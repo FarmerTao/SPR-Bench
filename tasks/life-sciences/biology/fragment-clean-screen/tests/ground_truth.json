@@ -1,0 +1,729 @@
+{
+  "seed": 20261117,
+  "activity": [
+    0.8382904022820861,
+    0.3561508894098515
+  ],
+  "compounds": {
+    "FRG-001": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0086
+    },
+    "FRG-002": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0388
+    },
+    "FRG-003": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0004970425419598554,
+      "dmso_offset_pct": 0.0114
+    },
+    "FRG-004": {
+      "call": "hit",
+      "scored": false,
+      "KD_M": 0.0007864576734032152,
+      "dmso_offset_pct": -0.0423
+    },
+    "FRG-005": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0145
+    },
+    "FRG-006": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0133
+    },
+    "FRG-007": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0025888616893016375,
+      "dmso_offset_pct": -0.002
+    },
+    "FRG-008": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00037597286894417554,
+      "dmso_offset_pct": -0.0082
+    },
+    "FRG-009": {
+      "call": "non_hit",
+      "scored": false,
+      "KD_M": 0.0013351225658402458,
+      "dmso_offset_pct": 0.0088
+    },
+    "FRG-010": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0279
+    },
+    "FRG-011": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0094
+    },
+    "FRG-012": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0342
+    },
+    "FRG-013": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0016799457534772259,
+      "dmso_offset_pct": -0.0099
+    },
+    "FRG-014": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0318
+    },
+    "FRG-015": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 6.082280725623373e-05,
+      "dmso_offset_pct": 0.0116
+    },
+    "FRG-016": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0059
+    },
+    "FRG-017": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.2138
+    },
+    "FRG-018": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.008
+    },
+    "FRG-019": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.002
+    },
+    "FRG-020": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.343
+    },
+    "FRG-021": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0077
+    },
+    "FRG-022": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0003977351299875693,
+      "dmso_offset_pct": -0.0373
+    },
+    "FRG-023": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.3466
+    },
+    "FRG-024": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0044
+    },
+    "FRG-025": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0214
+    },
+    "FRG-026": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0302
+    },
+    "FRG-027": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00016140323137577324,
+      "dmso_offset_pct": -0.0346
+    },
+    "FRG-028": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0264
+    },
+    "FRG-029": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0029
+    },
+    "FRG-030": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.2807
+    },
+    "FRG-031": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0464
+    },
+    "FRG-032": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.002447032315285459,
+      "dmso_offset_pct": -0.0045
+    },
+    "FRG-033": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.3041
+    },
+    "FRG-034": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0013
+    },
+    "FRG-035": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.2287
+    },
+    "FRG-036": {
+      "call": "hit",
+      "scored": false,
+      "KD_M": 0.0007706635539821158,
+      "dmso_offset_pct": -0.0304
+    },
+    "FRG-037": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.193
+    },
+    "FRG-038": {
+      "call": "non_hit",
+      "scored": false,
+      "KD_M": 0.001030882638868381,
+      "dmso_offset_pct": -0.0245
+    },
+    "FRG-039": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0374
+    },
+    "FRG-040": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0005984156520229674,
+      "dmso_offset_pct": 0.0068
+    },
+    "FRG-041": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0067
+    },
+    "FRG-042": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.2324
+    },
+    "FRG-043": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00012934705688614066,
+      "dmso_offset_pct": -0.0028
+    },
+    "FRG-044": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00039678264063210594,
+      "dmso_offset_pct": 0.0155
+    },
+    "FRG-045": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00012402453390036872,
+      "dmso_offset_pct": 0.0189
+    },
+    "FRG-046": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.2654
+    },
+    "FRG-047": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0107
+    },
+    "FRG-048": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0037
+    },
+    "FRG-049": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0007
+    },
+    "FRG-050": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0197
+    },
+    "FRG-051": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.2229
+    },
+    "FRG-052": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 3.0399961870027907e-05,
+      "dmso_offset_pct": -0.0268
+    },
+    "FRG-053": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0082
+    },
+    "FRG-054": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.004694931864106907,
+      "dmso_offset_pct": -0.0199
+    },
+    "FRG-055": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.003067575639528392,
+      "dmso_offset_pct": 0.0014
+    },
+    "FRG-056": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 1.8291363305883632e-05,
+      "dmso_offset_pct": -0.0662
+    },
+    "FRG-057": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.3017
+    },
+    "FRG-058": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0311
+    },
+    "FRG-059": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0018393028703666374,
+      "dmso_offset_pct": -0.002
+    },
+    "FRG-060": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.002728420135146244,
+      "dmso_offset_pct": -0.0382
+    },
+    "FRG-061": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.003739883725193094,
+      "dmso_offset_pct": -0.0199
+    },
+    "FRG-062": {
+      "call": "non_hit",
+      "scored": false,
+      "KD_M": 0.0011285053974549324,
+      "dmso_offset_pct": -0.0001
+    },
+    "FRG-063": {
+      "call": "hit",
+      "scored": false,
+      "KD_M": 0.0008988555471398089,
+      "dmso_offset_pct": 0.0313
+    },
+    "FRG-064": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 3.382228863625486e-05,
+      "dmso_offset_pct": -0.0592
+    },
+    "FRG-065": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0021576074636159965,
+      "dmso_offset_pct": -0.0369
+    },
+    "FRG-066": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0005007455129776898,
+      "dmso_offset_pct": -0.0083
+    },
+    "FRG-067": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0124
+    },
+    "FRG-068": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0319
+    },
+    "FRG-069": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0363
+    },
+    "FRG-070": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0038
+    },
+    "FRG-071": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0135
+    },
+    "FRG-072": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.000349027734981896,
+      "dmso_offset_pct": -0.0397
+    },
+    "FRG-073": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0003344222811852335,
+      "dmso_offset_pct": -0.0219
+    },
+    "FRG-074": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.04
+    },
+    "FRG-075": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0
+    },
+    "FRG-076": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0306
+    },
+    "FRG-077": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0147
+    },
+    "FRG-078": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 4.9474479614396315e-05,
+      "dmso_offset_pct": -0.0167
+    },
+    "FRG-079": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0024
+    },
+    "FRG-080": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0118
+    },
+    "FRG-081": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0294
+    },
+    "FRG-082": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0393
+    },
+    "FRG-083": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0404
+    },
+    "FRG-084": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.2888
+    },
+    "FRG-085": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0254
+    },
+    "FRG-086": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0001373530371104532,
+      "dmso_offset_pct": -0.0379
+    },
+    "FRG-087": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0131
+    },
+    "FRG-088": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00045188339068395826,
+      "dmso_offset_pct": -0.0052
+    },
+    "FRG-089": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0386
+    },
+    "FRG-090": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0004483797994637485,
+      "dmso_offset_pct": -0.0471
+    },
+    "FRG-091": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.2554
+    },
+    "FRG-092": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0008
+    },
+    "FRG-093": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00012992133343492859,
+      "dmso_offset_pct": -0.0319
+    },
+    "FRG-094": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00048520030306985125,
+      "dmso_offset_pct": -0.0368
+    },
+    "FRG-095": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0598
+    },
+    "FRG-096": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0097
+    },
+    "FRG-097": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0267
+    },
+    "FRG-098": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 2.6759130964236633e-05,
+      "dmso_offset_pct": 0.0714
+    },
+    "FRG-099": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0179
+    },
+    "FRG-100": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0031215052597246794,
+      "dmso_offset_pct": 0.0115
+    },
+    "FRG-101": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0018394739401782019,
+      "dmso_offset_pct": -0.0124
+    },
+    "FRG-102": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0263
+    },
+    "FRG-103": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0137
+    },
+    "FRG-104": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0336
+    },
+    "FRG-105": {
+      "call": "non_hit",
+      "scored": false,
+      "KD_M": 0.0010389507630862416,
+      "dmso_offset_pct": 0.029
+    },
+    "FRG-106": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0027
+    },
+    "FRG-107": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0017967284444092028,
+      "dmso_offset_pct": 0.0783
+    },
+    "FRG-108": {
+      "call": "non_hit",
+      "scored": false,
+      "KD_M": 0.0013067014516830332,
+      "dmso_offset_pct": 0.0771
+    },
+    "FRG-109": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0012
+    },
+    "FRG-110": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.008
+    },
+    "FRG-111": {
+      "call": "promiscuous",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.0196
+    },
+    "FRG-112": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0029235541577310115,
+      "dmso_offset_pct": -0.0198
+    },
+    "FRG-113": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": 0.0077
+    },
+    "FRG-114": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0003490877867977412,
+      "dmso_offset_pct": 0.0464
+    },
+    "FRG-115": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.0005864990344559991,
+      "dmso_offset_pct": -0.0641
+    },
+    "FRG-116": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.3201
+    },
+    "FRG-117": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00013028944211723373,
+      "dmso_offset_pct": 0.0294
+    },
+    "FRG-118": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": null,
+      "dmso_offset_pct": -0.323
+    },
+    "FRG-119": {
+      "call": "non_hit",
+      "scored": true,
+      "KD_M": 0.0026461371844040318,
+      "dmso_offset_pct": -0.011
+    },
+    "FRG-120": {
+      "call": "hit",
+      "scored": true,
+      "KD_M": 0.00016526719963563832,
+      "dmso_offset_pct": -0.0265
+    }
+  }
+}

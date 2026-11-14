@@ -8,7 +8,7 @@ permissions:
 jobs:
   trusted-fixtures:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
@@ -17,16 +17,11 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
       - run: python -m pip install -r requirements-dev.txt
-      - run: python tools/check_repository.py
-      - run: python tools/validate.py
-      - run: python tools/check_tbsci.py
-      - run: python tools/docs.py
-      - run: git diff --exit-code
-      - run: harbor lint tasks/* tbsci/tasks/life-sciences/biology/*
+      - run: python tools/scaffold.py --check
+      - run: python tools/check_tasks.py
+      - run: harbor lint tasks/life-sciences/biology/*
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: always()
         with:
-          name: validation-reports
-          path: |
-            validation.json
-            scoring_validation.json
+          name: calibration-records
+          path: tasks/life-sciences/biology/*/authoring/calibration.md

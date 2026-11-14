@@ -1,0 +1,28 @@
+{
+  "end_of_injection": {
+    "kind": "accepted",
+    "description": "read the second-antibody signal at the end of its injection instead of after 30 s",
+    "edits": [["READ_AFTER = 30.0\n", "READ_AFTER = 115.0\n"]]
+  },
+  "threshold_half": {
+    "kind": "accepted",
+    "description": "blocking threshold 0.5 instead of 0.35",
+    "edits": [["BLOCK_RATIO = 0.35\n", "BLOCK_RATIO = 0.5\n"]]
+  },
+  "symmetric_blocking": {
+    "kind": "ablation",
+    "description": "require blocking in both orientations",
+    "edits": [["    blocks = {(a, b) for a in ids for b in ids if min(ratio[a, b], ratio[b, a]) < BLOCK_RATIO}\n", "    blocks = {(a, b) for a in ids for b in ids if max(ratio[a, b], ratio[b, a]) < BLOCK_RATIO}\n"]]
+  },
+  "first_antibody_plateau": {
+    "kind": "ablation",
+    "description": "measure the second antibody against the first antibody's end-of-injection level instead of its buffer-chased trajectory",
+    "edits": [["        base = traces[key[(a, \"buffer\")]][1]\n", "        base = None\n"],
+              ["            pair = (traces[key[(a, b)]][1] - base)[read].mean()\n", "            y = traces[key[(a, b)]][1]\n            pair = y[read].mean() - y[(t >= td[\"second_start_s\"] - 6) & (t <= td[\"second_start_s\"] - 2)].mean()\n"]]
+  },
+  "no_capture_normalization": {
+    "kind": "ablation",
+    "description": "use absolute responses without normalizing to each cycle's capture level",
+    "edits": [["        traces[c] = (t, (y - capture) / capture)\n", "        traces[c] = (t, y - capture)\n"]]
+  }
+}

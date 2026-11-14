@@ -1,0 +1,36 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 30.0,
+  "data_rate_Hz": 1.0,
+  "surfaces": {
+    "1": "anti-His capture antibody, no antigen captured (reference)",
+    "2": "anti-His capture antibody; His-tagged antigen captured at the start of every cycle"
+  },
+  "antigen": {
+    "mw_da": 60000.0,
+    "capture_injection": {
+      "start_s": -260.0,
+      "duration_s": 60.0,
+      "flow_cells": [
+        2
+      ]
+    }
+  },
+  "antibodies": {
+    "format": "IgG",
+    "mw_da": 150000.0,
+    "concentration_M": 1e-07,
+    "note": "antigen density is low enough that each IgG binds one antigen"
+  },
+  "tandem": {
+    "first_start_s": 0.0,
+    "first_duration_s": 200.0,
+    "second_start_s": 200.0,
+    "second_duration_s": 120.0,
+    "dissociation_s": 120.0,
+    "note": "the second injection follows the first without a wash; 'buffer' means running buffer was injected in that slot"
+  },
+  "regeneration": "both flow cells regenerated to the bare capture antibody after every cycle",
+  "running_buffer": "HBS-EP+"
+}

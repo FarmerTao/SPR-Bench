@@ -1,0 +1,27 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "data_rate_Hz": 2.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 36.0,
+    "dissociation_s": 60.0
+  },
+  "flow_cell_geometry_m": {
+    "height": 5e-05,
+    "width": 0.0005,
+    "length": 0.0024
+  },
+  "response_calibration": "1 RU corresponds to 1 pg/mm^2 of bound protein",
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "ligand": "antigen, high-density amine coupling",
+      "mw_da": 30000.0,
+      "immobilized_RU": 5000.0
+    }
+  },
+  "samples": "samples.csv lists each stock's nominal (A280) concentration and the analyte diffusion coefficient at 25 C; each stock was diluted by dilution_factor and injected at flow_ul_min",
+  "regeneration": "10 mM glycine pH 2.0 after every cycle",
+  "running_buffer": "HBS-EP+"
+}

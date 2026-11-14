@@ -1,0 +1,7 @@
+sample_id,format,mw_da,diffusion_coefficient_m2_s,nominal_stock_M
+LOT-01,Fab,50000,9.093e-11,2e-06
+LOT-02,Fab,50000,9.093e-11,2e-06
+LOT-03,Fab,52000,8.975e-11,3e-06
+LOT-04,Fab,48000,9.218e-11,1.5e-06
+LOT-05,Fab,50000,9.093e-11,2e-06
+LOT-06,IgG,150000,6.305e-11,1e-06

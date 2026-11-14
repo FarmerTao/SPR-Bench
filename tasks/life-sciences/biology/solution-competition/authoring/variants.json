@@ -1,0 +1,52 @@
+{
+  "linear_calibration": {
+    "kind": "accepted",
+    "description": "assume the initial rate is proportional to free Fab (no calibration curvature)",
+    "edits": [
+      [
+        "            return r / (a - b * r) if a - b * r > 0 else np.inf\n",
+        "            return r / a\n"
+      ]
+    ]
+  },
+  "nominal_active": {
+    "kind": "ablation",
+    "description": "assume the Fab stock is fully active (active fraction fixed at 1)",
+    "edits": [
+      [
+        "            kd, f = 10 ** p[0], p[1]\n",
+        "            kd, f = 10 ** p[0], 1.0\n"
+      ]
+    ]
+  },
+  "no_depletion": {
+    "kind": "ablation",
+    "description": "hyperbolic free fraction (IC50 = KD), i.e. ignore ligand depletion",
+    "edits": [
+      [
+        "            model = free_fab(f * nom, ag, kd) / f\n",
+        "            model = nom * kd / (kd + ag)\n"
+      ]
+    ]
+  },
+  "later_window": {
+    "kind": "accepted",
+    "description": "initial-rate window 10-50 s instead of 5-40 s",
+    "edits": [
+      [
+        "WINDOW = (5.0, 40.0)\n",
+        "WINDOW = (10.0, 50.0)\n"
+      ]
+    ]
+  },
+  "relative_residuals": {
+    "kind": "non-essential",
+    "description": "weight each Fab series by 1/nominal concentration although the rate noise is homoscedastic (a statistics error, not claimed as an SPR trap)",
+    "edits": [
+      [
+        "            return (model - free) * 1e9  # rate noise is homoscedastic in free-Fab units\n",
+        "            return (model - free) / nom\n"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instrument": "Biacore-style optical biosensor; Fc1 and Fc2 in series (Fc1 upstream)",
+  "temperature_C": 25.0,
+  "flow_ul_min": 30.0,
+  "data_rate_Hz": 1.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 180.0,
+    "dissociation_s": 900.0
+  },
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "ligand": "antigen, random amine coupling",
+      "ligand_mw_da": 42000.0,
+      "immobilized_RU": 260.0
+    }
+  },
+  "analytes": "purified antibody-format binders against the antigen (Fab or IgG); each binding arm carries one paratope",
+  "regeneration": "10 mM glycine pH 1.7 after every cycle; the surface is fully regenerated",
+  "running_buffer": "HBS-EP+"
+}

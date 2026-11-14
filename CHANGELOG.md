@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.0 — 2026-11-13
+
+- Replace the measured-data core tier with ten expert-level SPR tasks in the
+  Terminal-Bench-Science format: spr-kinetic-triage, single-cycle-kinetics,
+  avidity-model-select, solution-competition, fragment-clean-screen,
+  surface-decay-correct, induced-fit-linkage, thermo-vant-hoff,
+  epitope-binning and cfca-concentration.
+- Add a shared biosensor simulation library (tools/sprsim.py) with
+  Leveque transport from flow-cell geometry, vendored into each task.
+- Add tools/scaffold.py (generated boilerplate from tools/catalog.json),
+  tools/calibrate.py (seed calibration scored by each task's own verifier,
+  with reference, independent and single-edit variants), tools/check_tasks.py
+  and tools/anchors.py (noise and sampling anchors from the measured data).
+- The previous core tier remains available at tag v0.8-core.
+
 ## 0.8.0 — 2026-11-13
 
 - Adopt the Terminal-Bench-Science task format for the core tier: canary

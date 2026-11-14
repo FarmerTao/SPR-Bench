@@ -1,23 +1,29 @@
 # Contributing
 
-Use English for code, task prompts and benchmark documentation. Use Python 3.12
-and install requirements-dev.txt. Edit canonical files in tools/, then rebuild
-with tools/ingest.py, tools/build.py and tools/docs.py. Generated copies must match.
-Run tools/check_repository.py and tools/validate.py before submitting.
-Local validation executes trusted code only; never run an unknown submission on
-your host. Use isolated disposable containers for untrusted agents.
+Use English for code, instructions and documentation, and Python 3.12 with
+`requirements-dev.txt`.
 
-Every new dataset needs an experimentally verified origin, clear redistribution
-rights, source/derived hashes, exact extraction coordinates and documented assay
-scope. Simulated curves, fitted predictions, image reconstructions and fabricated
-negative labels are not eligible for this experimental task set. Any separate
-simulation track must be explicitly named and excluded from real-data scores.
+## Task layout
 
-Scoring changes need documented behavior, regression checks, version changes and
-honest scientific limitations. Never hand-edit expected results to make a solver
-pass. Add independent expert review before claiming biological decision validity.
-Preserve original source licenses and attribution. Code contributions are MIT
-licensed; third-party data retain their own licenses.
+Tasks follow the Terminal-Bench-Science format under
+`tasks/life-sciences/biology/<slug>/`. Generated boilerplate (task.toml,
+Dockerfiles, test.sh, solve.sh, README header and calibration table, vendored
+`authoring/sprsim.py`) comes from `tools/catalog.json` via
+`python tools/scaffold.py`; never edit it by hand. Authored files are
+`instruction.md`, the README sections, `tests/test_outputs.py`,
+`solution/solve.py` and `authoring/{generate.py,independent.py,variants.json}`.
+Every task file carries the harbor canary on its first lines.
 
-Pull requests should explain the problem, resulting behavior and validation.
-Do not commit credentials, private evaluation data or unrelated run logs.
+## Changing a task
+
+1. Edit the generator, regenerate data and ground truth.
+2. Make the reference solution pass; keep `diagnostics()` in the test module.
+3. Calibrate: `python tools/calibrate.py <slug> --seeds 1-12 --write`. Correct
+   analyses (reference, independent solver, accepted variants) must pass every
+   seed; essential ablations must fail every seed. Report comparators that pass
+   as passing (`non-essential` or `partial-ablation`) rather than tuning them
+   away. Never edit ground truth or tolerances to make a solver pass.
+4. `python tools/scaffold.py && python tools/check_tasks.py && harbor lint tasks/life-sciences/biology/*`.
+
+Instruction text must be written by the task author (TB-Science screens it
+for AI-generated text). Do not commit credentials or private evaluation data.

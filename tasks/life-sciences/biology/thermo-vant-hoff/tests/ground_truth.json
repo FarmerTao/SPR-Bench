@@ -1,0 +1,26 @@
+{
+  "seed": 20261120,
+  "analytes": {
+    "BND-01": {
+      "dG37_kJ_per_mol": -44.102188163664444,
+      "dH37_kJ_per_mol": 15.0,
+      "dCp_kJ_per_mol_K": -0.6,
+      "Ea_on_kJ_per_mol": 60.0,
+      "_class": "entropic_dcp"
+    },
+    "BND-02": {
+      "dG37_kJ_per_mol": -45.38067934705038,
+      "dH37_kJ_per_mol": -60.0,
+      "dCp_kJ_per_mol_K": -1.2,
+      "Ea_on_kJ_per_mol": 40.0,
+      "_class": "enthalpic_dcp"
+    },
+    "BND-03": {
+      "dG37_kJ_per_mol": -38.97182238622102,
+      "dH37_kJ_per_mol": -20.0,
+      "dCp_kJ_per_mol_K": 0.0,
+      "Ea_on_kJ_per_mol": 25.0,
+      "_class": "flat"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "instrument": "Biacore-style optical biosensor with temperature-controlled flow cells; Fc1 and Fc2 in series (Fc1 upstream)",
+  "flow_ul_min": 30.0,
+  "data_rate_Hz": 1.0,
+  "injection": {
+    "start_s": 0.0,
+    "contact_s": 120.0,
+    "dissociation_s": 300.0
+  },
+  "surfaces": {
+    "1": "activated and deactivated, no protein (reference)",
+    "2": {
+      "ligand": "target protein, one binding site",
+      "mw_da": 40000.0,
+      "immobilized_RU": 700.0
+    }
+  },
+  "temperatures": "the run steps through temperature_C in increasing order; equilibration cycles inject buffer after each temperature change",
+  "standard_state": "1 M",
+  "running_buffer": "HBS-EP+",
+  "regeneration": "surface regenerated after every cycle"
+}

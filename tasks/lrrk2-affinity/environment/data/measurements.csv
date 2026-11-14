@@ -1,8 +1,0 @@
-point_id,compound,concentration_M,response_RU,source,source_sheet,source_row,source_column
-E11-1,E11,7.8125e-09,16.3029,LRRK2,Steady state_E11.txt,2,2
-E11-2,E11,1.5625e-08,22.4121,LRRK2,Steady state_E11.txt,3,2
-E11-3,E11,3.125e-08,29.0654,LRRK2,Steady state_E11.txt,4,2
-E11-4,E11,6.25e-08,35.8254,LRRK2,Steady state_E11.txt,5,2
-E11-5,E11,1.25e-07,43.3086,LRRK2,Steady state_E11.txt,6,2
-E11-6,E11,2.5e-07,51.5719,LRRK2,Steady state_E11.txt,7,2
-E11-7,E11,5e-07,61.8259,LRRK2,Steady state_E11.txt,8,2

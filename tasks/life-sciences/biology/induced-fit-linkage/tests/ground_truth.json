@@ -1,0 +1,37 @@
+{
+  "seed": 20261119,
+  "analytes": {
+    "PEP-01": {
+      "mechanism": "one_to_one",
+      "_class": "simple_fast",
+      "KD_M": 5.0000000000000004e-08
+    },
+    "PEP-02": {
+      "mechanism": "two_state",
+      "_class": "induced_b",
+      "KD_M": 7.142857142857143e-09
+    },
+    "PEP-03": {
+      "mechanism": "heterogeneous_ligand",
+      "_class": "hetero_a",
+      "KD_M": 9.999999999999999e-10,
+      "KD2_M": 3.3333333333333334e-08
+    },
+    "PEP-04": {
+      "mechanism": "one_to_one",
+      "_class": "simple_slow",
+      "KD_M": 1e-08
+    },
+    "PEP-05": {
+      "mechanism": "two_state",
+      "_class": "induced_a",
+      "KD_M": 9.090909090909092e-09
+    },
+    "PEP-06": {
+      "mechanism": "heterogeneous_ligand",
+      "_class": "hetero_b",
+      "KD_M": 1.6666666666666667e-09,
+      "KD2_M": 6.666666666666667e-08
+    }
+  }
+}
