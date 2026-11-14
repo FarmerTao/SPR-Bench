@@ -181,7 +181,13 @@ def main():
     for t in json.loads((ROOT / "tools/catalog.json").read_text()):
         for path, text in files_for(t).items():
             if a.check:
-                if not path.exists() or path.read_text() != text:
+                if not path.exists():
+                    # Ground truth and authoring generators are intentionally
+                    # absent from the public repository; evaluation supplies them.
+                    if "authoring/" in path.as_posix():
+                        continue
+                    stale.append(str(path.relative_to(ROOT)))
+                elif path.read_text() != text:
                     stale.append(str(path.relative_to(ROOT)))
                 continue
             path.parent.mkdir(parents=True, exist_ok=True)

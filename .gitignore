@@ -7,3 +7,7 @@ jobs/
 *.egg-info/
 .uvcache/
 .pytest_cache/
+
+# Private benchmark truth/generators; inject from a private bundle for evaluation.
+tasks/**/tests/ground_truth.json
+tasks/**/authoring/

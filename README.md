@@ -83,12 +83,14 @@ python tools/calibrate.py <task> --seeds 1-12 --write
 python tools/scaffold.py                  # refresh boilerplate and README tables
 ```
 
-## Contamination
+## Contamination and private truth bundle
 
-Ground truth (`tests/ground_truth.json`) and the generators with their default
-seeds are in this repository. TB-Science agents have internet access, so
-publishing this repository before a benchmark freeze exposes the answers; keep
-it private until submission, or regenerate data with new seeds.
+Ground truth (`tests/ground_truth.json`) and task generators (`authoring/`) are
+intentionally not checked into the public repository. The public tree still
+contains the simulated observations, task instructions, reference solutions and
+verifiers, so a local oracle run needs a private truth bundle containing those
+ignored files. Evaluation should inject that bundle at verification time or use
+a private fork; do not publish the truth bundle before a benchmark freeze.
 
 ## License and citation
 

@@ -11,7 +11,9 @@ Dockerfiles, test.sh, solve.sh, README header and calibration table, vendored
 `authoring/sprsim.py`) comes from `tools/catalog.json` via
 `python tools/scaffold.py`; never edit it by hand. Authored files are
 `instruction.md`, the README sections, `tests/test_outputs.py`,
-`solution/solve.py` and `authoring/{generate.py,independent.py,variants.json}`.
+`solution/solve.py` and the private `authoring/{generate.py,independent.py,variants.json}`
+bundle. `tests/ground_truth.json` and `authoring/` are intentionally ignored in
+the public repository; keep them in a private evaluation bundle.
 Every task file carries the harbor canary on its first lines.
 
 ## Changing a task

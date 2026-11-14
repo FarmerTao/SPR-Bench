@@ -15,7 +15,10 @@ ALLOWED = {"instruction.md", "task.toml", "README.md", "environment", "solution"
 REQUIRED = [
     "instruction.md", "task.toml", "README.md", "environment/Dockerfile", "solution/solve.sh",
     "solution/solve.py", "tests/Dockerfile", "tests/test.sh", "tests/test_outputs.py",
-    "tests/ground_truth.json", "authoring/generate.py", "authoring/independent.py", "authoring/README.md",
+]
+HIDDEN_REQUIRED = [
+    "tests/ground_truth.json", "authoring/generate.py", "authoring/independent.py",
+    "authoring/README.md",
 ]
 
 
@@ -46,9 +49,13 @@ def main():
         assert {p.name for p in task.iterdir()} <= ALLOWED, (slug, {p.name for p in task.iterdir()} - ALLOWED)
         for rel in REQUIRED:
             assert (task / rel).is_file(), (slug, rel)
+        hidden_present = all((task / rel).is_file() for rel in HIDDEN_REQUIRED)
         for f in task.rglob("*"):
             if f.is_file() and (f.suffix in {".py", ".sh", ".md", ".toml"} or f.name == "Dockerfile"):
                 assert GUID in f.read_text(), (slug, "missing canary", f.relative_to(task))
+        if not hidden_present:
+            print(f"PASS {slug}: public layout and canaries (oracle skipped: private truth absent)")
+            continue
         visible = " ".join(p.read_text() for p in (task / "environment/data").glob("*.csv"))
         missing = [i for i in ids_in(task) if i not in visible]
         assert not missing, (slug, "ground-truth IDs not in data", missing[:5])
